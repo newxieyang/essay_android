@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="app_tint_color">#4f82ef</color>
+    <color name="app_tint_color_light">#4C93EE</color>
+    <color name="app_orange">#e67e22</color>
+
+
+    <color name="color_text_dark">#212121</color>
+    <color name="color_text_dark_dark">#000000</color>
+    <color name="color_text_sliver">#757575</color>
+    <color name="color_text_sliver_dark">#616161</color>
+    <color name="color_text_sliver_light">#9E9E9E</color>
+    <color name="color_text_light">#f5f5f5</color>
+    <color name="color_text_light_dark">#eeeeee</color>
+
+    <color name="app_navigation">#ffffff</color>
+    <color name="app_green">#228B22</color>
+
+    <color name="mail_start">#f4b400</color>
+    <color name="color_split">#e0e0e0</color>
+    <color name="widget_border">#c0c0c0</color>
+    <color name="activity_background">#ececec</color>
+
+    <color name="color_error">@android:color/holo_red_light</color>
+
+
+    <color name="background_selected">#f0f0f0</color>
+    <color name="float_button_primary">#3E82F7</color>
+
+
+
+
+    <color name="loading_one">#4285f4</color>
+    <color name="loading_two">#db4437</color>
+    <color name="loading_th">#f4b400</color>
+    <color name="loading_four">#0f9d58</color>
+
+
+    <color name="back_dark">#10151c</color>
+    <color name="font_color">#efefef</color>
+
+</resources>

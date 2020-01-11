@@ -1,0 +1,85 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--	<item name="android:windowTranslucentStatus">true</item>-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <item name="colorPrimary">@color/app_navigation</item>
+        <!--&lt;!&ndash;状态栏颜色&ndash;&gt;-->
+        <item name="colorPrimaryDark">@color/widget_border</item>
+        <item name="colorAccent">@color/app_tint_color</item>
+        <item name="android:textColorSecondary">@color/color_text_dark</item>
+        <item name="android:textColorPrimary">@color/color_text_dark</item>
+        <item name="android:color">@android:color/white</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:actionMenuTextColor">@color/color_text_dark</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+    <style name="ActivityStyle">
+        <item name="android:background">@color/activity_background</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <style name="EditTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/vertical_list_normal</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/_9</item>
+        <item name="android:textColorHint">@color/_9</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
+    </style>
+
+    <style name="ButtonStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:textSize">@dimen/text_size_subheading</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+
+    <style name="ListViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:choiceMode">singleChoice</item>
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+
+
+    <style name="RefreshStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/activity_background</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <style name="SplitStyle">
+        <item name="android:background">@color/color_split</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/split_height</item>
+    </style>
+
+
+    <style name="TextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textColor">@color/color_text_dark</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">"hello"</item>
+    </style>
+
+</resources>

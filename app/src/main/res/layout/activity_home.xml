@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iMainDrawer"
+    style="@style/ActivityStyle"
+    android:fitsSystemWindows="true"
+    tools:context=".view.main.home.HomeActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <FrameLayout
+            android:id="@+id/iMainFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </RelativeLayout>
+
+    <!--android:layout_gravity="start"-->
+    <RelativeLayout
+        android:id="@+id/left_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_navigation"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/start_top"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/split_back"
+            android:clickable="true"
+            android:paddingBottom="@dimen/spacing_vertical"
+            >
+
+            <cn.carbs.android.avatarimageview.library.AvatarImageView
+                android:id="@+id/iAvatarImage"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80"
+                android:layout_marginTop="@dimen/horizontal_margin"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:src="@mipmap/ic_launcher" />
+
+
+
+            <TextView
+                android:id="@+id/iNameText"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_slider_text_height"
+                android:layout_below="@+id/iAvatarImage"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/home_name"
+                android:textColor="@color/color_text_light"
+                android:textSize="@dimen/text_size_subheading"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/iSignText"
+                style="@style/TextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_slider_text_height"
+                android:layout_below="@+id/iNameText"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/home_desc"
+                android:textColor="@color/color_text_light"
+                android:textStyle="bold" />
+
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/iSettingButton"-->
+<!--                android:layout_width="@dimen/icon_size"-->
+<!--                android:layout_height="@dimen/icon_size"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginEnd="@dimen/horizontal_margin"-->
+<!--                android:layout_marginTop="@dimen/vertical_margin"-->
+<!--                android:background="@null"-->
+<!--                android:scaleType="centerInside"-->
+<!--                android:contentDescription="@null"-->
+<!--                android:src="@mipmap/ic_setting" />-->
+
+        </RelativeLayout>
+
+
+<!--        <View-->
+<!--            android:layout_below="@+id/start_top"-->
+<!--            android:id="@+id/start_split"-->
+<!--            style="@style/SplitStyle"-->
+<!--            android:background="@color/color_text_sliver_dark" />-->
+
+
+        <LinearLayout
+            android:id="@+id/start_menu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_60"
+            android:layout_below="@+id/start_top"
+            android:gravity="center"
+            android:clickable="true">
+
+            <LinearLayout
+                android:id="@+id/lineEssay"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iEssayButton"
+                    android:layout_width="@dimen/main_slider_button_size"
+                    android:layout_height="@dimen/main_slider_button_size"
+                    android:src="@mipmap/ic_essay"
+                    android:background="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_module_essay"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lineFleet"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:descendantFocusability="blocksDescendants"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iFleetButton"
+                    android:layout_width="@dimen/main_slider_button_size"
+                    android:layout_height="@dimen/main_slider_button_size"
+                    android:src="@mipmap/ic_fleet"
+                    android:background="@null" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_module_fleet"
+                    />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_below="@+id/start_menu"
+            android:id="@+id/start_split"
+            style="@style/SplitStyle"
+            android:background="@color/color_text_sliver_dark" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/menuListView"
+            android:layout_below="@+id/start_menu"
+            android:layout_above="@+id/bottomLine"
+            style="@style/ListViewStyle"
+            android:layout_marginTop="@dimen/spacing_vertical_xx"
+            android:drawSelectorOnTop="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:groupIndicator="@null" />
+
+
+        <LinearLayout
+            android:id="@+id/bottomLine"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_height="@dimen/vertical_list_normal">
+
+            <Button
+                android:id="@+id/exit"
+                style="@style/ButtonStyle"
+                android:text="@string/setting_main_exit"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:background="@drawable/bg_btn_login_selected"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,63 @@
+<resources>
+
+
+    <!--字体大小-->
+    <dimen name="text_size_big">24sp</dimen>
+    <dimen name="text_size_app_bar">20sp</dimen>
+    <dimen name="text_size_title">21sp</dimen>
+    <dimen name="text_size_subheading">17sp</dimen>
+    <dimen name="text_size_body">15sp</dimen>
+    <dimen name="text_size_caption">13sp</dimen>
+
+
+    <!--	垂直边距 -->
+    <!--	工具栏高度 -->
+    <dimen name="vertical_header">56dp</dimen>
+    <!--	内容区域间距离-->
+    <!--	常规列表页高度-->
+    <dimen name="vertical_list_normal">48dp</dimen>
+    <!--	大的列表页高度-->
+    <dimen name="vertical_list_lager">90dp</dimen>
+
+
+    <dimen name="split_height">1px</dimen>
+
+
+    <!--界面顶部head高度-->
+
+    <!--纵向间距-->
+    <dimen name="spacing_vertical">4dp</dimen>
+    <dimen name="spacing_vertical_xx">12dp</dimen>
+    <!--横向间距-->
+
+    <!--	<dimen name="spacing_horizontal_xxX">35dp</dimen>-->
+
+    <!--EditText默认高度-->
+
+    <!--Button默认高度-->
+    <dimen name="height_button">36dp</dimen>
+    <!--	触控区高度 48dp-->
+    <dimen name="height_touch_area">48dp</dimen>
+
+
+    <dimen name="main_slider_text_height">25dp</dimen>
+    <dimen name="main_slider_button_size">42dp</dimen>
+
+
+    <dimen name="_2dp">2dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
+    <dimen name="_10dp">10dp</dimen>
+    <dimen name="_20dp">20dp</dimen>
+    <dimen name="_40dp">40dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
+
+
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+
+    <dimen name="dp_40">80dp</dimen>
+
+
+    <!-- 图标大小-->
+    <dimen name="icon_size">24dp</dimen>
+</resources>

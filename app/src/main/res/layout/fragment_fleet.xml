@@ -1,0 +1,56 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/iContainerView"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/activity_background"
+	>
+
+
+
+	<androidx.appcompat.widget.Toolbar
+		android:id="@+id/activity_header"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:background="@color/app_navigation"
+		/>
+
+
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:id="@+id/swipeLayout"
+		style="@style/RefreshStyle"
+		android:layout_marginTop="?attr/actionBarSize">
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/iRecyclerView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/activity_background"/>
+
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+<!--	<ImageView
+		android:id="@+id/preLoading"
+		android:layout_width="@dimen/icon_size"
+		android:layout_height="@dimen/icon_size"
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:layout_gravity="center"
+		/>-->
+
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+		android:id="@+id/fab"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="right|bottom"
+		android:layout_marginBottom="@dimen/vertical_margin"
+		android:layout_marginRight="@dimen/horizontal_margin"
+		android:scaleType="centerInside"
+		android:src="@mipmap/ic_edit"
+		android:tint="@color/background_selected"
+		app:backgroundTint="@color/float_button_primary"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
