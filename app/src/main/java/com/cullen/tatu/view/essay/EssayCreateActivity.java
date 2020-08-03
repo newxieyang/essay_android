@@ -3,14 +3,18 @@ package com.cullen.tatu.view.essay;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
+
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.Toolbar;
 
 import com.cullen.tatu.R;
 import com.cullen.tatu.api.ApiEssay;
 import com.cullen.tatu.logic.NavigationStyle;
-import com.cullen.tatu.view.main.BaseActivity;
+import com.cullen.tatu.utils.IconResources;
 import com.cullen.tatu.utils.http.JsonCallback;
 import com.cullen.tatu.utils.http.ResponseApi;
-import com.cullen.tatu.view.ui.LineEditText;
+import com.cullen.tatu.view.main.BaseActivity;
 
 import butterknife.BindView;
 
@@ -18,7 +22,10 @@ public class EssayCreateActivity extends BaseActivity {
 
 
     @BindView(R.id.contentView)
-    LineEditText contentView;
+    AppCompatEditText contentView;
+
+    @BindView(R.id.activity_header)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,18 +39,13 @@ public class EssayCreateActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        findViewById(R.id.close).setOnClickListener(view -> finish());
-        findViewById(R.id.save).setOnClickListener(view -> saveEssay());
-    }
-
-    @Override
-    protected String initTitleText() {
-        return "写下我的喜怒哀乐";
-    }
-
-    @Override
-    protected NavigationStyle navigationStyle() {
-        return null;
+        toolbar.setNavigationIcon(IconResources.getNavigationBackIcon());
+        toolbar.setNavigationOnClickListener((View view)->finish());
+        toolbar.inflateMenu(R.menu.bar_menu);
+        toolbar.setOnMenuItemClickListener(item -> {
+            saveEssay();
+            return false;
+        });
     }
 
 

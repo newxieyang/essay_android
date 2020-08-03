@@ -3,7 +3,6 @@ package com.cullen.tatu.view.main;
 import android.os.Bundle;
 
 import com.cullen.tatu.R;
-import com.cullen.tatu.logic.NavigationStyle;
 
 public class GuiderActivity extends BaseActivity {
 
@@ -22,13 +21,4 @@ public class GuiderActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected String initTitleText() {
-        return null;
-    }
-
-    @Override
-    protected NavigationStyle navigationStyle() {
-        return null;
-    }
 }

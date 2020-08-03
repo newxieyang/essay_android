@@ -68,6 +68,10 @@ public class SPSUtils {
         SPSUtils.saveObject(SP_KEY_USER, user);
     }
 
+    public static void deleteUser() {
+        SPSUtils.saveObject(SP_KEY_USER, new UserModel());
+    }
+
     public static UserModel loadUser() {
         String json = SPSUtils.loadObject(SP_KEY_USER);
         if (!TextUtils.isEmpty(json)) {
@@ -102,6 +106,11 @@ public class SPSUtils {
             }
         }
         return Optional.ofNullable(tokenInfo);
+    }
+
+
+    public static void deleteToken() {
+        SPSUtils.saveToken(new TokenInfo());
     }
 
 

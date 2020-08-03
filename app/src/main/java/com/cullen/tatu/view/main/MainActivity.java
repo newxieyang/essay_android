@@ -1,15 +1,14 @@
 package com.cullen.tatu.view.main;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-
 import com.cullen.tatu.R;
 import com.cullen.tatu.view.essay.EssayFragment;
-import com.cullen.tatu.view.fleet.FleetFragment;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
@@ -32,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         alphaTabsIndicator =  findViewById(R.id.alphaIndicator);
         alphaTabsIndicator.setViewPager(mViewPger);
 
-        alphaTabsIndicator.getTabView(0).showNumber(6);
+      /*  alphaTabsIndicator.getTabView(0).showNumber(6);
         alphaTabsIndicator.getTabView(1).showNumber(888);
         alphaTabsIndicator.getTabView(2).showNumber(88);
-        alphaTabsIndicator.getTabView(3).showPoint();
+        alphaTabsIndicator.getTabView(3).showPoint();*/
     }
 
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         public MainAdapter(FragmentManager fm) {
             super(fm);
             fragments.add(new EssayFragment());
-            fragments.add(new FleetFragment());
+            fragments.add(new EssayFragment());
             fragments.add(new DiscoverFragment());
             fragments.add(new MeFragment());
 //            fragments.add(TextFragment.newInstance(titles[3]));/**

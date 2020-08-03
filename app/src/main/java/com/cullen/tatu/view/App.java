@@ -1,18 +1,19 @@
 package com.cullen.tatu.view;
 
 import android.app.Application;
+import android.text.TextUtils;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.cullen.tatu.api.Api;
 import com.cullen.tatu.api.ApiAccount;
-import com.cullen.tatu.view.main.BaseActivity;
 import com.cullen.tatu.model.gen.DaoSession;
 import com.cullen.tatu.model.gen.EssayModelDao;
 import com.cullen.tatu.model.gen.FleetModelDao;
 import com.cullen.tatu.utils.db.DbCore;
 import com.cullen.tatu.utils.http.HttpUtils;
 import com.cullen.tatu.utils.store.SPSUtils;
+import com.cullen.tatu.view.main.BaseActivity;
 import com.vondear.rxtool.RxEncryptTool;
 import com.vondear.rxtool.RxTool;
 
@@ -43,6 +44,9 @@ public class App extends Application {
 
         SPSUtils.loadTokens().ifPresent((tokenInfo) -> {
                     Api.phone = tokenInfo.getUsername();
+                    if(TextUtils.isEmpty(Api.phone)) {
+                        return;
+                    }
                     HttpUtils.initOKHTTP(tokenInfo.getToken());
                     ApiAccount.initInfo();
                     initDataBase();

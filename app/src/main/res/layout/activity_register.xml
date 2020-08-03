@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityStyle"
     android:id="@+id/root"
     android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.user.LoginActivity">
 
 
@@ -11,10 +12,10 @@
         android:id="@+id/logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
         android:layout_marginTop="80dp"
-        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher2"/>
 
@@ -24,8 +25,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:paddingStart="@dimen/horizontal_margin"
+        android:paddingEnd="@dimen/horizontal_margin"
         android:fillViewport="true"
         android:scrollbarThumbVertical="@android:color/transparent"
         android:scrollbars="vertical">
@@ -146,23 +147,8 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <LinearLayout
-        android:id="@+id/service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp">
+
+    <include android:id="@+id/service" layout="@layout/bottom_message" />
 
 
-        <TextView
-            style="@style/TextViewStyle"
-            android:layout_gravity="end"
-            android:text="@string/app_des"
-            android:textColor="@color/color_text_sliver_light"/>
-
-    </LinearLayout>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

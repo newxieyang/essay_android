@@ -4,9 +4,9 @@ package com.cullen.tatu.api;
 public class Api {
 
 
-//    static String base_url = "https://dengtatu.cn/";
+    static String base_url = "https://dengtatu.cn/";
 
-    static String base_url = "http://192.168.1.5:8081/";
+//    static String base_url = "http://192.168.1.5:8081/";
     static String essay_url = base_url + "api/essay/";
     static String fleet_url = base_url + "api/fleet/";
 

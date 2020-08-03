@@ -13,7 +13,9 @@
 		android:id="@+id/activity_header"
 		android:layout_width="match_parent"
 		android:layout_height="?attr/actionBarSize"
-		android:background="@color/app_navigation"
+		android:background="@color/color_primary"
+		app:titleTextColor="@color/color_text_light"
+
 		/>
 
 
@@ -31,17 +33,7 @@
 
 	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-<!--
-	<ImageView
-		android:id="@+id/preLoading"
-		android:layout_width="@dimen/icon_size"
-		android:layout_height="@dimen/icon_size"
-		android:layout_centerHorizontal="true"
-		android:layout_centerVertical="true"
-		android:layout_gravity="center"
-		/>-->
-<!--	app:indicatorColor="@color/color_text_sliver"-->
-<!--	app:indicatorName="LineSpinFadeLoaderIndicator"-->
+
 
 
 	<com.google.android.material.floatingactionbutton.FloatingActionButton

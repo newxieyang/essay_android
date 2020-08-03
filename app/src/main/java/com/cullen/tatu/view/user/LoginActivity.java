@@ -20,23 +20,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.widget.NestedScrollView;
 
-import com.cullen.tatu.view.App;
 import com.cullen.tatu.R;
 import com.cullen.tatu.api.ApiAccount;
-import com.cullen.tatu.logic.NavigationStyle;
-import com.cullen.tatu.view.main.BaseActivity;
-import com.cullen.tatu.view.main.MainActivity;
-import com.cullen.tatu.view.main.home.HomeActivity;
 import com.cullen.tatu.model.TokenInfo;
 import com.cullen.tatu.model.UserModel;
 import com.cullen.tatu.utils.CustomTextWatcher;
 import com.cullen.tatu.utils.http.JsonCallback;
 import com.cullen.tatu.utils.http.ResponseApi;
 import com.cullen.tatu.utils.store.SPSUtils;
+import com.cullen.tatu.view.App;
+import com.cullen.tatu.view.main.BaseActivity;
+import com.cullen.tatu.view.main.MainActivity;
 import com.vondear.rxtool.RxAnimationTool;
 import com.vondear.rxtool.RxBarTool;
 import com.vondear.rxui.activity.AndroidBug5497Workaround;
@@ -67,7 +66,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @BindView(R.id.scrollView)
     NestedScrollView mScrollView;
     @BindView(R.id.service)
-    LinearLayout mService;
+    TextView mService;
 
 
     private Circle mCircleDrawable;
@@ -83,10 +82,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    protected String initTitleText() {
-        return getString(R.string.login_title);
-    }
 
     @Override
     protected int initLayout() {
@@ -192,10 +187,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-    @Override
-    protected NavigationStyle navigationStyle() {
-        return NavigationStyle.Hide;
-    }
 
 
     public boolean isFullScreen(Activity activity) {

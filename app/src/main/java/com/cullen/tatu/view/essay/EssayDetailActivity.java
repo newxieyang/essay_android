@@ -1,15 +1,16 @@
 package com.cullen.tatu.view.essay;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
+
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.cullen.tatu.R;
-import com.cullen.tatu.logic.NavigationStyle;
-import com.cullen.tatu.view.main.BaseActivity;
 import com.cullen.tatu.model.EssayModel;
+import com.cullen.tatu.utils.IconResources;
+import com.cullen.tatu.view.main.BaseActivity;
 import com.vondear.rxtool.RxTimeTool;
 
 import java.text.SimpleDateFormat;
@@ -20,14 +21,16 @@ import butterknife.BindView;
 public class EssayDetailActivity extends BaseActivity {
 
     @BindView(R.id.contentView)
-    TextView contentView;
+    AppCompatTextView contentView;
 
-    @BindView(R.id.dateView)
+/*    @BindView(R.id.dateView)
     TextView dateView;
 
-
     @BindView(R.id.nameView)
-    TextView nameView;
+    TextView nameView;*/
+
+    @BindView(R.id.activity_header)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,33 +45,29 @@ public class EssayDetailActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        AssetManager mgr = getAssets();
-        Typeface tf = Typeface.createFromAsset(mgr, "fonts/cao2.ttf");//仿宋
         Intent intent = getIntent();
         //接收从First_Activity中传输的数据
         EssayModel data = (EssayModel) intent.getSerializableExtra("essay");
         String content = "   " + data.getContent();
         contentView.setText(content);
 
-        nameView.setTypeface(tf);
-        nameView.setText("路人甲");
-        String dateString = RxTimeTool.milliseconds2String(data.getCreateTime(), new SimpleDateFormat("yyyy年MM月dd日", Locale.getDefault()));
-        dateView.setText(dateString);
+        toolbar.setNavigationIcon(IconResources.getNavigationBackIcon());
+        toolbar.setNavigationOnClickListener((View view)->finish());
 
-        findViewById(R.id.close).setOnClickListener(view -> finish());
+        String dateString = RxTimeTool.milliseconds2String(data.getCreateTime(), new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()));
+
+        String tag = "路人甲 于" + dateString;
+
+        toolbar.setTitle(tag);
+
+     /*   nameView.setText("路人甲");
+        String dateString = RxTimeTool.milliseconds2String(data.getCreateTime(), new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()));
+        dateView.setText(dateString);*/
+
     }
 
 
 
-    @Override
-    protected String initTitleText() {
-        return null;
-    }
-
-    @Override
-    protected NavigationStyle navigationStyle() {
-        return null;
-    }
 
     @Override
     public void onBackPressed() {

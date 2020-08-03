@@ -18,6 +18,8 @@ public class IconResources {
     private static Drawable icon_layout_list;
     private static Drawable icon_layout_grid;
 
+    private static Drawable getIcon_navigation_back;
+
     private static Context context;
 
     static {
@@ -41,7 +43,7 @@ public class IconResources {
      */
     public static Drawable getNavigationBackIcon() {
         if (icon_navigation_back == null) {
-            icon_navigation_back = DrawableUtils.createDrawable(context, R.mipmap.ic_nav_left, colorDark);
+            icon_navigation_back = DrawableUtils.createDrawable(context, R.drawable.ic_left, colorWhite);
         }
         return icon_navigation_back;
     }

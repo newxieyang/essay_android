@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/iContentView"
     android:layout_width="match_parent"
     android:layout_height="@dimen/vertical_list_lager"
     android:background="@android:color/white"
-    android:minHeight="@dimen/vertical_list_lager"
-    android:paddingStart="0dp"
-    android:paddingLeft="0dp"
-    android:paddingEnd="0dp"
-    android:paddingRight="0dp"
-    app:cardCornerRadius="4dp"
-    app:cardElevation="3dp">
+    android:paddingStart="@dimen/horizontal_margin"
+    android:paddingEnd="@dimen/horizontal_margin"
+    android:layout_marginBottom="1dp"
+    android:orientation="vertical">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/horizontal_margin"
-        android:layout_marginEnd="@dimen/horizontal_margin"
-        android:orientation="vertical">
 
         <TextView
             android:id="@+id/iNameText"
@@ -67,10 +58,4 @@
 
 
 
-
-    </LinearLayout>
-
-
-
-
-</androidx.cardview.widget.CardView >
+</LinearLayout >

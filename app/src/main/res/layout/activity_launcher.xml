@@ -12,9 +12,9 @@
         android:id="@+id/line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         >
@@ -25,18 +25,10 @@
             android:src="@mipmap/ic_launcher"
             />
 
-
-        <TextView
-            android:layout_marginTop="@dimen/vertical_margin"
-            style="@style/TextViewStyle"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textColor="@color/color_text_sliver_light"
-            android:text="@string/app_des"
-            />
-
     </LinearLayout>
 
+
+    <include layout="@layout/bottom_message" />
 
 
 

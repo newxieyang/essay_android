@@ -9,16 +9,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.LinearLayout;
 
-import com.cullen.tatu.view.App;
 import com.cullen.tatu.R;
 import com.cullen.tatu.api.ApiAccount;
 import com.cullen.tatu.constants.Constants;
-import com.cullen.tatu.logic.NavigationStyle;
-import com.cullen.tatu.view.main.home.HomeActivity;
 import com.cullen.tatu.model.TokenInfo;
 import com.cullen.tatu.utils.PermissionsCheckerUtil;
 import com.cullen.tatu.utils.http.OkGoUpdateHttpUtil;
 import com.cullen.tatu.utils.store.SPSUtils;
+import com.cullen.tatu.view.App;
 import com.cullen.tatu.view.user.LoginActivity;
 import com.vector.update_app.UpdateAppBean;
 import com.vector.update_app.UpdateAppManager;
@@ -60,20 +58,9 @@ public class LauncherActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
         checkPermission();
-
     }
 
-    @Override
-    protected String initTitleText() {
-        return null;
-    }
-
-    @Override
-    protected NavigationStyle navigationStyle() {
-        return NavigationStyle.Hide;
-    }
 
 
     private void goMain() {

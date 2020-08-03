@@ -26,11 +26,10 @@ import androidx.core.widget.NestedScrollView;
 
 import com.cullen.tatu.R;
 import com.cullen.tatu.api.ApiAccount;
-import com.cullen.tatu.logic.NavigationStyle;
-import com.cullen.tatu.view.main.BaseActivity;
 import com.cullen.tatu.utils.CustomTextWatcher;
 import com.cullen.tatu.utils.http.JsonCallback;
 import com.cullen.tatu.utils.http.ResponseApi;
+import com.cullen.tatu.view.main.BaseActivity;
 import com.vondear.rxtool.RxAnimationTool;
 import com.vondear.rxtool.RxBarTool;
 import com.vondear.rxtool.RxRegTool;
@@ -97,17 +96,6 @@ public class RegisterActivity extends BaseActivity {
 
         initEvent();
     }
-
-    @Override
-    protected String initTitleText() {
-        return null;
-    }
-
-    @Override
-    protected NavigationStyle navigationStyle() {
-        return NavigationStyle.Hide;
-    }
-
 
     private void initEvent() {
         mEtMobile.addTextChangedListener(new CustomTextWatcher() {

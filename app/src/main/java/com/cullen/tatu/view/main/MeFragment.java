@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.cullen.tatu.R;
+import com.cullen.tatu.utils.ApplicationUtils;
 import com.cullen.tatu.utils.IconResources;
 
 import java.lang.ref.WeakReference;
@@ -63,7 +64,8 @@ public class MeFragment extends BaseFragment {
     protected void initView(View view) {
 
 
-
+        view.findViewById(R.id.exit).setOnClickListener((view1 ->
+            ApplicationUtils.exitApp()));
 
 
 

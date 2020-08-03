@@ -5,33 +5,26 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.cullen.tatu.view.App;
 import com.cullen.tatu.R;
 import com.cullen.tatu.api.Api;
 import com.cullen.tatu.api.ApiEssay;
 import com.cullen.tatu.constants.Constants;
-import com.cullen.tatu.logic.EssayFolder;
-import com.cullen.tatu.logic.ListLayoutStyle;
-import com.cullen.tatu.view.main.BaseFragment;
-import com.cullen.tatu.view.main.home.HomeActivity;
-import com.cullen.tatu.view.main.slider.EssayMenuItem;
+import com.cullen.tatu.constants.ResourceConstants;
 import com.cullen.tatu.model.EssayModel;
 import com.cullen.tatu.service.EssayService;
-import com.cullen.tatu.utils.IconResources;
+import com.cullen.tatu.view.App;
+import com.cullen.tatu.view.main.BaseFragment;
+import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vondear.rxtool.RxImageTool;
 import com.vondear.rxtool.RxRecyclerViewDividerTool;
@@ -39,6 +32,7 @@ import com.vondear.rxtool.RxRecyclerViewDividerTool;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.BindView;
 
@@ -58,7 +52,6 @@ public class EssayFragment extends BaseFragment {
     @BindView(R.id.activity_header)
     Toolbar toolbar;
 
-    private RxRecyclerViewDividerTool itemDecoration;
 
 
     //   列表数据
@@ -68,7 +61,6 @@ public class EssayFragment extends BaseFragment {
     private WeakReference<Activity> activity;
 
 
-    public EssayMenuItem menuItem;
 
     private EssayAdapter essayAdapter;
 
@@ -78,10 +70,8 @@ public class EssayFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         activity = new WeakReference<>(getActivity());
-
-
+        StatusBarCompat.setStatusBarColor(Objects.requireNonNull(getActivity()), ResourceConstants.colorNav);
     }
 
 
@@ -108,14 +98,10 @@ public class EssayFragment extends BaseFragment {
     @Override
     protected void initView(View view) {
 
-
-        itemDecoration = new RxRecyclerViewDividerTool(RxImageTool.dp2px(3f));
-
         // 新建按钮
         fab.setOnClickListener(view1 ->
                 startActivity(new Intent(getActivity(), EssayCreateActivity.class))
         );
-
 
         toolbar.setTitle(R.string.app_module_essay);
 
@@ -139,25 +125,19 @@ public class EssayFragment extends BaseFragment {
 
     private void initAdapter() {
 
-
         List<EssayItem> list = new ArrayList<>();
         essayAdapter = new EssayAdapter((EssayModel essayModel, int position) -> {
             int truePosition = EssayDataHandler.getPosition(data, essayModel);
             showDetail(truePosition);
         }, list);
 
-        essayAdapter.setSpanSizeLookup(
-                (GridLayoutManager gridLayoutManager, int position) ->
-                        list.get(position).getSpanSize()
-        );
 
         essayAdapter.setFooterView(getLayoutInflater().inflate(R.layout.view_empty_footer,
                 null));
         essayAdapter.setEmptyView(getLayoutInflater().inflate(R.layout.layout_essay_empty, null));
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(essayAdapter);
-        recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setVisibility(View.GONE);
 
         swipeLayout.setVisibility(View.VISIBLE);
