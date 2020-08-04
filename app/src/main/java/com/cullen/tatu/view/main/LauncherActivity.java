@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.cullen.tatu.R;
@@ -29,10 +30,6 @@ import butterknife.BindView;
 public class LauncherActivity extends BaseActivity {
 
     private final static int SEND_SMS_REQUEST_CODE = 0;
-
-
-    @BindView(R.id.line)
-    LinearLayout txt_login;
 
 
     @Override
@@ -62,7 +59,6 @@ public class LauncherActivity extends BaseActivity {
     }
 
 
-
     private void goMain() {
 
         new Handler().postDelayed(() -> {
@@ -70,9 +66,9 @@ public class LauncherActivity extends BaseActivity {
                 Optional<TokenInfo> tokenInfo = SPSUtils.loadTokens();
 
                 Intent intent;
-
+                Log.e("goto main handle", "goto main");
                 if (tokenInfo.isPresent()) {
-                     intent = new Intent(LauncherActivity.this, HomeActivity
+                    intent = new Intent(LauncherActivity.this, HomeActivity
                             .class);
                 } else {
                     intent = new Intent(LauncherActivity.this, LoginActivity
@@ -112,6 +108,7 @@ public class LauncherActivity extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (Constants.ACTION_ACCOUNT_INFO_LOAD.equals(intent.getAction())) {
+                Log.e("goto main broadcast", "goto main");
                 goMain();
             }
         }
@@ -129,7 +126,7 @@ public class LauncherActivity extends BaseActivity {
                 .setActivity(this)
                 //更新地址
                 .setUpdateUrl(ApiAccount.path(ApiAccount.Api.update))
-                .handleException(e -> ApiAccount.initInfo())
+                .handleException(e -> {ApiAccount.initInfo(); Log.e("更新地址失败","更新出错了。。。");})
                 .setUpdateDialogFragmentListener(updateApp -> ApiAccount.initInfo())
                 //实现httpManager接口的对象
                 .setHttpManager(new OkGoUpdateHttpUtil())
@@ -144,6 +141,7 @@ public class LauncherActivity extends BaseActivity {
                     @Override
                     protected void noNewApp(String error) {
                         super.noNewApp(error);
+                        Log.e("no app","更新出错了。。。" + error);
                         ApiAccount.initInfo();
                     }
 

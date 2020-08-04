@@ -2,6 +2,7 @@
 package com.cullen.tatu.api;
 
 import android.content.Intent;
+import android.util.Log;
 
 import com.cullen.tatu.view.App;
 import com.cullen.tatu.constants.Constants;
@@ -68,6 +69,7 @@ public class ApiAccount extends Api {
 
 
     public static void initInfo() {
+        Log.e("initInfo", "这是第几次调用");
         String url = path(Api.initInfo);
         HttpParams params = new HttpParams();
         OkGo.<String>get(url).params(params).execute(new JsonCallback() {

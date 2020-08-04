@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.cullen.tatu.R;
-import com.cullen.tatu.view.essay.EssayFragment;
+import com.cullen.tatu.view.essay.FragmentEssay;
 import com.yinglan.alphatabs.AlphaTabsIndicator;
 
 import java.util.ArrayList;
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         public MainAdapter(FragmentManager fm) {
             super(fm);
-            fragments.add(new EssayFragment());
-            fragments.add(new EssayFragment());
+            fragments.add(new FragmentEssay());
+            fragments.add(new FragmentEssay());
             fragments.add(new DiscoverFragment());
             fragments.add(new MeFragment());
 //            fragments.add(TextFragment.newInstance(titles[3]));/**

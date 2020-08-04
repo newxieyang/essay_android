@@ -272,6 +272,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     new Handler().postDelayed(() -> {
                         // 初始化邮件
                         App.instance.initOther();
+                        ApiAccount.initInfo();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
                     }, 1000);

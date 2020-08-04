@@ -37,7 +37,11 @@ import java.util.Objects;
 import butterknife.BindView;
 
 
-public class EssayFragment extends BaseFragment {
+/****
+ * 所有
+ */
+
+public class FragmentEssay extends BaseFragment {
 
 
     @BindView(R.id.swipeLayout)

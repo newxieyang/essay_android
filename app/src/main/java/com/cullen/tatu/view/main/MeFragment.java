@@ -15,13 +15,7 @@ import java.lang.ref.WeakReference;
 public class MeFragment extends BaseFragment {
 
 
-
-
-
     private WeakReference<Activity> activity;
-
-
-
 
 
     @Override
@@ -55,8 +49,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        view.findViewById(R.id.exit).setOnClickListener((view1 ->
-            ApplicationUtils.exitApp()));
+
 
     }
 
@@ -66,9 +59,6 @@ public class MeFragment extends BaseFragment {
         super.onResume();
 
     }
-
-
-
 
 
 }

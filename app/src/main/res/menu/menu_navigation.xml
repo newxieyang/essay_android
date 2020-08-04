@@ -2,16 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group
         android:id="@+id/group1"
-        android:checkableBehavior="single">
+        android:checkableBehavior="single"
+        >
         <item
             android:id="@+id/item_essay"
             android:icon="@drawable/ic_fav"
             android:title="随笔"/>
 
         <item
-            android:id="@+id/item_me"
-            android:icon="@drawable/ic_fav"
-            android:title="我的"/>
+        android:id="@+id/item_me"
+        android:icon="@drawable/ic_baseline_how_to_reg_24"
+        android:title="我的"/>
+
+        <item
+            android:id="@+id/item_favorite"
+            android:icon="@drawable/ic_baseline_favorite_border_24"
+            android:title="收藏"/>
+
+        <item
+            android:id="@+id/item_draft"
+            android:icon="@drawable/ic_baseline_drafts_24"
+            android:title="草稿"/>
     </group>
 
 

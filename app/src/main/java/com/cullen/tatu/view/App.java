@@ -48,7 +48,7 @@ public class App extends Application {
                         return;
                     }
                     HttpUtils.initOKHTTP(tokenInfo.getToken());
-                    ApiAccount.initInfo();
+//                    ApiAccount.initInfo();
                     initDataBase();
                 });
 
@@ -97,7 +97,6 @@ public class App extends Application {
         while (!activities.isEmpty()) {
             activities.pop().finish();
         }
-        activities.clear();
 
     }
 

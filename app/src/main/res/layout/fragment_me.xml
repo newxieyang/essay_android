@@ -18,7 +18,7 @@
             android:id="@+id/start_top"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@color/color_second"
+            android:background="@color/activity_background"
             android:clickable="true"
             android:paddingBottom="@dimen/spacing_vertical">
 
@@ -65,13 +65,7 @@
         </RelativeLayout>
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            style="@style/ButtonStyle"
-            android:id="@+id/exit"
-            android:layout_below="@+id/start_top"
-            android:layout_marginTop="@dimen/dp_16"
-            android:text="@string/setting_main_exit"
-            />
+
 
     </RelativeLayout>
 

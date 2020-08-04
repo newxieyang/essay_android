@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="@color/white"
-            app:headerLayout="@layout/navigationview_header"
+            app:headerLayout="@layout/navigation_view_header"
             app:menu="@menu/menu_navigation">
 
             <!--添加脚布局-->
@@ -60,10 +60,9 @@
                     android:adjustViewBounds="true"
                     android:background="@android:color/transparent"
                     android:drawableStart="@drawable/ic_setting"
-                    android:drawableLeft="@drawable/ic_setting"
                     android:drawablePadding="5dp"
                     android:gravity="center"
-                    android:paddingLeft="5dp"
+                    android:paddingStart="16dp"
                     android:text="设置"
                     android:textAlignment="inherit"
                     android:textColor="@color/color_primary"/>
@@ -75,10 +74,9 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:drawableStart="@drawable/ic_out"
-                    android:drawableLeft="@drawable/ic_out"
-                    android:drawablePadding="1dp"
+                    android:drawablePadding="16dp"
                     android:gravity="center"
-                    android:paddingLeft="5dp"
+                    android:paddingStart="10dp"
                     android:text="退出"
                     android:textAlignment="center"
                     android:textColor="@color/color_primary"/>
