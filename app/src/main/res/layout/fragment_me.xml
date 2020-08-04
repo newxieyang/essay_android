@@ -3,7 +3,7 @@
     android:id="@+id/iContainerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/activity_background">
+    android:background="@color/white">
 
 
     <!--android:layout_gravity="start"-->
@@ -18,7 +18,7 @@
             android:id="@+id/start_top"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/split_back"
+            android:background="@color/color_second"
             android:clickable="true"
             android:paddingBottom="@dimen/spacing_vertical">
 
@@ -30,10 +30,10 @@
                 android:layout_below="@+id/iAvatarImage"
                 android:layout_marginStart="@dimen/horizontal_margin"
                 android:layout_marginTop="10dp"
-                android:gravity="center"
+                android:gravity="start|center_vertical"
                 android:maxLines="1"
                 android:text="@string/home_name"
-                android:textColor="@color/color_text_light"
+                android:textColor="@color/text_light"
                 android:textSize="@dimen/text_size_subheading"
                 android:textStyle="bold" />
 
@@ -46,20 +46,20 @@
                 android:layout_below="@+id/iNameText"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/horizontal_margin"
-                android:gravity="center"
+                android:gravity="start"
                 android:maxLines="1"
                 android:text="@string/home_desc"
-                android:textColor="@color/color_text_light"
+                android:textColor="@color/text_light"
                 android:textStyle="bold" />
 
             <cn.carbs.android.avatarimageview.library.AvatarImageView
                 android:id="@+id/iAvatarImage"
+                android:layout_marginStart="@dimen/horizontal_margin"
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_80"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/horizontal_margin"
                 android:contentDescription="@null"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/ic_fav" />
 
 
         </RelativeLayout>

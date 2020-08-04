@@ -10,7 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.cullen.tatu.R;
 import com.cullen.tatu.api.ApiEssay;
-import com.cullen.tatu.logic.NavigationStyle;
 import com.cullen.tatu.utils.IconResources;
 import com.cullen.tatu.utils.http.JsonCallback;
 import com.cullen.tatu.utils.http.ResponseApi;

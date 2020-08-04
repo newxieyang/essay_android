@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher2"/>
+        android:src="@drawable/ic_fav"/>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -133,8 +133,7 @@
 
             <Button
                 android:id="@+id/btn_register"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
+                style="@style/ButtonStyle"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/button_corner"

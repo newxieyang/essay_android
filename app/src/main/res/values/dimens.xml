@@ -34,10 +34,10 @@
 
     <!--EditText默认高度-->
 
-    <!--Button默认高度-->
+    <!--Button默认高度 我看看。。ww我-->
     <dimen name="height_button">36dp</dimen>
     <!--	触控区高度 48dp-->
-    <dimen name="height_touch_area">48dp</dimen>
+    <dimen name="button_height">45dp</dimen>
 
 
     <dimen name="main_slider_text_height">25dp</dimen>

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="80dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher2"/>
+        android:src="@drawable/ic_fav"/>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
@@ -133,8 +133,7 @@
 
             <Button
                 android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
+                style="@style/ButtonStyle"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="21dp"
                 android:background="@drawable/button_corner"
@@ -155,7 +154,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:text="注册新用户"
-                    android:textColor="@color/color_text_sliver_light"
+                    android:textColor="@color/text_sliver_light"
                     android:textSize="@dimen/text_size_body"/>
 
                 <TextView
@@ -165,7 +164,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginStart="21dp"
                     android:text="@string/login_forget_pwd"
-                    android:textColor="@color/color_text_sliver_light"/>
+                    android:textColor="@color/text_sliver_light"/>
 
             </LinearLayout>
 

@@ -35,6 +35,7 @@ import com.cullen.tatu.utils.http.ResponseApi;
 import com.cullen.tatu.utils.store.SPSUtils;
 import com.cullen.tatu.view.App;
 import com.cullen.tatu.view.main.BaseActivity;
+import com.cullen.tatu.view.main.HomeActivity;
 import com.cullen.tatu.view.main.MainActivity;
 import com.vondear.rxtool.RxAnimationTool;
 import com.vondear.rxtool.RxBarTool;
@@ -271,7 +272,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     new Handler().postDelayed(() -> {
                         // 初始化邮件
                         App.instance.initOther();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
                     }, 1000);
                 } else {

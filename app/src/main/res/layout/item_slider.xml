@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/horizontal_margin"
         android:contentDescription="@null"
         android:scaleType="fitCenter"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_fav" />
 
     <TextView
         android:id="@+id/iTitleText"
@@ -25,13 +25,8 @@
         android:layout_marginEnd="@dimen/horizontal_margin"
         android:layout_toEndOf="@+id/iIconImage"
         android:gravity="start|center"
-        android:textColor="@color/color_text_dark"
+        android:textColor="@color/text_dark"
         android:textSize="@dimen/text_size_body" />
-
-
-
-
-
 
 
 </RelativeLayout>

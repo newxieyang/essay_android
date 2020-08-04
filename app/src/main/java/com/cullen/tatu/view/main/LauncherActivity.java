@@ -72,7 +72,7 @@ public class LauncherActivity extends BaseActivity {
                 Intent intent;
 
                 if (tokenInfo.isPresent()) {
-                     intent = new Intent(LauncherActivity.this, MainActivity
+                     intent = new Intent(LauncherActivity.this, HomeActivity
                             .class);
                 } else {
                     intent = new Intent(LauncherActivity.this, LoginActivity

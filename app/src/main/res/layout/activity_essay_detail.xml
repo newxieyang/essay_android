@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_primary"
-        app:titleTextColor="@color/color_text_light"
+        app:titleTextColor="@color/text_light"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="@dimen/text_size_app_bar"
-            android:textColor="@color/color_text_sliver_dark"
+            android:textColor="@color/text_sliver_dark"
         />
 
     </androidx.core.widget.NestedScrollView>

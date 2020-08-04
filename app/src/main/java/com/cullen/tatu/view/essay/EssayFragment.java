@@ -49,8 +49,6 @@ public class EssayFragment extends BaseFragment {
     @BindView(R.id.fab)
     FloatingActionButton fab;
 
-    @BindView(R.id.activity_header)
-    Toolbar toolbar;
 
 
 
@@ -103,7 +101,6 @@ public class EssayFragment extends BaseFragment {
                 startActivity(new Intent(getActivity(), EssayCreateActivity.class))
         );
 
-        toolbar.setTitle(R.string.app_module_essay);
 
         initAdapter();
 
@@ -143,11 +140,11 @@ public class EssayFragment extends BaseFragment {
         swipeLayout.setVisibility(View.VISIBLE);
         swipeLayout.setRefreshing(true);
         swipeLayout.setNestedScrollingEnabled(true);
-        swipeLayout.setColorSchemeResources(
+/*        swipeLayout.setColorSchemeResources(
                 R.color.loading_one,
                 R.color.loading_two,
                 R.color.loading_th,
-                R.color.loading_four);
+                R.color.loading_four);*/
 
         swipeLayout.setOnRefreshListener(this::requestData);
 

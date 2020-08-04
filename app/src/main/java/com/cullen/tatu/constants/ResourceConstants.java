@@ -48,11 +48,11 @@ public class ResourceConstants {
     static {
         Context context = App.instance;
 
-        colorDark = ContextCompat.getColor(context, R.color.color_text_dark);
+        colorDark = ContextCompat.getColor(context, R.color.text_dark);
 //        colorBlue = ContextCompat.getColor(context, R.color.app_tint_color);
 //        colorSliverDark = ContextCompat.getColor(context, R.color.color_text_sliver_dark);
-        colorWhite = ContextCompat.getColor(context, R.color.color_text_light_dark);
-        colorGray = ContextCompat.getColor(context, R.color.color_text_sliver);
+        colorWhite = ContextCompat.getColor(context, R.color.text_light_dark);
+        colorGray = ContextCompat.getColor(context, R.color.text_sliver);
 //        colorYellow = ContextCompat.getColor(context, R.color.mail_start);
 //        colorRed = ContextCompat.getColor(context, R.color.color_error);
 //        colorOrange = ContextCompat.getColor(context, R.color.app_orange);

@@ -27,7 +27,7 @@
 				android:maxLines="1"
 				android:ellipsize="end"
 				android:maxEms="4"
-				android:textColor="@color/color_text_dark_dark"
+				android:textColor="@color/text_dark_dark"
 				android:layout_marginEnd="@dimen/_100dp"
 				android:textSize="@dimen/text_size_title"
 				/>

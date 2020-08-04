@@ -3,18 +3,21 @@
     
     <color name="color_primary_dark">#DB7093</color>
     <color name="color_primary">#FFB7CB</color>
+    <color name="color_second">#FFB6C1</color>
 
     <color name="app_tint_color">#4f82ef</color>
     <color name="app_tint_color_light">#4C93EE</color>
 
+    <color name="text_primary">#38ACFF</color>
 
-    <color name="color_text_dark">#212121</color>
-    <color name="color_text_dark_dark">#000000</color>
-    <color name="color_text_sliver">#757575</color>
-    <color name="color_text_sliver_dark">#616161</color>
-    <color name="color_text_sliver_light">#9E9E9E</color>
-    <color name="color_text_light">#f5f5f5</color>
-    <color name="color_text_light_dark">#eeeeee</color>
+
+    <color name="text_dark">#212121</color>
+    <color name="text_dark_dark">#000000</color>
+    <color name="text_sliver">#757575</color>
+    <color name="text_sliver_dark">#616161</color>
+    <color name="text_sliver_light">#9E9E9E</color>
+    <color name="text_light">#f5f5f5</color>
+    <color name="text_light_dark">#eeeeee</color>
 
 
     <color name="color_split">#e0e0e0</color>

@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         alphaTabsIndicator =  findViewById(R.id.alphaIndicator);
         alphaTabsIndicator.setViewPager(mViewPger);
 
-      /*  alphaTabsIndicator.getTabView(0).showNumber(6);
+        alphaTabsIndicator.getTabView(0).showNumber(6);
         alphaTabsIndicator.getTabView(1).showNumber(888);
         alphaTabsIndicator.getTabView(2).showNumber(88);
-        alphaTabsIndicator.getTabView(3).showPoint();*/
+        alphaTabsIndicator.getTabView(3).showPoint();
     }
 
 

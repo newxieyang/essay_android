@@ -5,12 +5,12 @@
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/app_tint_color</item>
-        <item name="android:textColorSecondary">@color/color_text_dark</item>
-        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/text_dark</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:color">@android:color/white</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:actionMenuTextColor">@color/color_text_dark</item>
+        <item name="android:actionMenuTextColor">@color/text_dark</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
@@ -40,7 +40,7 @@
 
     <style name="ButtonStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:layout_height">@dimen/button_height</item>
         <item name="android:textSize">@dimen/text_size_subheading</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
@@ -74,7 +74,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_size_body</item>
-        <item name="android:textColor">@color/color_text_dark</item>
+        <item name="android:textColor">@color/text_dark</item>
         <item name="android:gravity">start</item>
         <item name="android:ellipsize">end</item>
         <item name="android:text">"hello"</item>
@@ -84,7 +84,7 @@
     <style name="ImageButton">
         <item name="android:layout_width">@dimen/height_button</item>
         <item name="android:layout_height">@dimen/height_button</item>
-        <item name="tint">@color/color_text_sliver_dark</item>
+        <item name="tint">@color/text_sliver_dark</item>
     </style>
 
 </resources>

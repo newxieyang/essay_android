@@ -22,7 +22,7 @@
             android:lines="1"
             android:maxLines="1"
             android:layout_marginTop="@dimen/dp_8"
-            android:textColor="@color/color_text_dark_dark"
+            android:textColor="@color/text_dark_dark"
             android:textSize="@dimen/text_size_subheading" />
 
 
@@ -38,7 +38,7 @@
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:maxLines="1"
-                android:textColor="@color/color_text_sliver"
+                android:textColor="@color/text_sliver"
                 android:textSize="@dimen/text_size_caption" />
 
 

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_essay"
+            android:icon="@mipmap/ic_right"
+            android:title="随笔"/>
+
+        <item
+            android:id="@+id/item_me"
+            android:icon="@mipmap/ic_delete"
+            android:title="苹果"/>
+    </group>
+
+<!--    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/single_3"
+            android:icon="@mipmap/category_normal"
+            android:title="github"/>
+
+        <item
+            android:id="@+id/single_4"
+            android:icon="@mipmap/lib_update_app_close"
+            android:title="wechat"/>
+    </group>-->
+
+   <!-- <item
+        android:title="子菜单">
+        <menu>
+            <item
+                android:id="@+id/item_2"
+                android:icon="@mipmap/home_normal"
+                android:title="淘宝"/>
+
+            <item
+                android:id="@+id/item_1"
+                android:icon="@mipmap/ic_edit"
+                android:title="百度"/>
+
+            <item
+                android:id="@+id/item_3"
+                android:icon="@mipmap/ic_info"
+                android:title="腾讯"/>
+        </menu>
+    </item>-->
+</menu>

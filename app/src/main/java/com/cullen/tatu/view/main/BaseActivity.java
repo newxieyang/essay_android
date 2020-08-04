@@ -8,7 +8,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cullen.tatu.constants.ResourceConstants;
-import com.cullen.tatu.logic.NavigationStyle;
 import com.cullen.tatu.view.App;
 import com.githang.statusbar.StatusBarCompat;
 import com.vondear.rxtool.RxKeyboardTool;

@@ -149,44 +149,9 @@ public class IconResources {
     }
 
 
-    private static Drawable ic_menu_essay;
-
-    public static Drawable getIconMenuEssay() {
-        if (ic_menu_essay == null) {
-            ic_menu_essay = DrawableUtils.resizeDrawable(context, R.mipmap
-                    .ic_essay);
-        }
-        return ic_menu_essay;
-    }
-
-    private static Drawable ic_menu_essay_select;
-
-    public static Drawable getIconMenuEssaySelect() {
-        if (ic_menu_essay_select == null) {
-            ic_menu_essay_select = DrawableUtils.resizeDrawable(context, R.mipmap
-                    .ic_essay_select);
-        }
-        return ic_menu_essay_select;
-    }
 
 
-    private static Drawable ic_menu_fleet;
 
-    public static Drawable getIconMenuFleet() {
-        if (ic_menu_fleet == null) {
-            ic_menu_fleet = DrawableUtils.resizeDrawable(context, R.mipmap
-                    .ic_fleet);
-        }
-        return ic_menu_fleet;
-    }
 
-    private static Drawable ic_menu_fleet_select;
 
-    public static Drawable getIconMenuFleetSelect() {
-        if (ic_menu_fleet_select == null) {
-            ic_menu_fleet_select = DrawableUtils.resizeDrawable(context, R.mipmap
-                    .ic_fleet_select);
-        }
-        return ic_menu_fleet_select;
-    }
 }
