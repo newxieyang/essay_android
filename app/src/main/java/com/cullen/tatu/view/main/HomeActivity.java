@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.cullen.tatu.R;
+import com.cullen.tatu.utils.ApplicationUtils;
 import com.cullen.tatu.view.essay.EssayFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,14 +39,14 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);//将toolbar与ActionBar关联
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, 0, 0);
-        drawer.setDrawerListener(toggle);//初始化状态
+        drawer.addDrawerListener(toggle);//初始化状态
         toggle.syncState();
 
 
-        ViewPager mViewPger = findViewById(R.id.mViewPager);
+        ViewPager mViewPager = findViewById(R.id.mViewPager);
         HomeActivity.MainAdapter mainAdapter = new HomeActivity.MainAdapter(getSupportFragmentManager());
-        mViewPger.setAdapter(mainAdapter);
-        mViewPger.addOnPageChangeListener(mainAdapter);
+        mViewPager.setAdapter(mainAdapter);
+        mViewPager.addOnPageChangeListener(mainAdapter);
 
 
         /*---------------------------添加头布局和尾布局-----------------------------*/
@@ -68,28 +69,26 @@ public class HomeActivity extends AppCompatActivity {
         //去掉默认颜色显示原来颜色  设置为null显示本来图片的颜色
         navigationview.setItemIconTintList(csl);*/
 
-        //设置条目点击监听
-        navigationview.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                //安卓
+//        MenuItem preItem = navigationview.i
 
-                //设置哪个按钮被选中
-                menuItem.setChecked(true);
+        navigationview.setNavigationItemSelectedListener((MenuItem item) -> {
+            //设置哪个按钮被选中
+            item.setChecked(true);
 
-
-                switch (menuItem.getItemId()) {
-                    case R.id.item_essay:
-                        mViewPger.setCurrentItem(0, false);
-                        break;
-                    case R.id.item_me:
-                        mViewPger.setCurrentItem(3, false);
-                        break;
-                }
-                drawer.closeDrawers();
-                return false;
+            switch (item.getItemId()) {
+                case R.id.item_essay:
+                    mViewPager.setCurrentItem(0, false);
+                    break;
+                case R.id.item_me:
+                    mViewPager.setCurrentItem(3, false);
+                    break;
             }
+            drawer.closeDrawers();
+            return false;
         });
+
+
+        navigationview.findViewById(R.id.footer_item_out).setOnClickListener((View v)-> ApplicationUtils.exitApp());
     }
 
 

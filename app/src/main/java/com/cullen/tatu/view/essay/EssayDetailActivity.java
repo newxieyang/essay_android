@@ -9,7 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.cullen.tatu.R;
 import com.cullen.tatu.model.EssayModel;
-import com.cullen.tatu.utils.IconResources;
 import com.cullen.tatu.view.main.BaseActivity;
 import com.vondear.rxtool.RxTimeTool;
 
@@ -51,7 +50,7 @@ public class EssayDetailActivity extends BaseActivity {
         String content = "   " + data.getContent();
         contentView.setText(content);
 
-        toolbar.setNavigationIcon(IconResources.getNavigationBackIcon());
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
         toolbar.setNavigationOnClickListener((View view)->finish());
 
         String dateString = RxTimeTool.milliseconds2String(data.getCreateTime(), new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()));

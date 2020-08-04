@@ -37,7 +37,7 @@
 		android:layout_marginBottom="@dimen/vertical_margin"
 		android:layout_marginRight="@dimen/horizontal_margin"
 		android:scaleType="centerInside"
-		android:src="@mipmap/ic_edit"
+		android:src="@drawable/ic_edit"
 		android:tint="@color/background_selected"
 		app:backgroundTint="@color/float_button_primary"/>
 

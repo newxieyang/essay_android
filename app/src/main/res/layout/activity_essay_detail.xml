@@ -13,11 +13,7 @@
         app:titleTextColor="@color/text_light"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
         />
-
-
-
 
 
     <androidx.core.widget.NestedScrollView

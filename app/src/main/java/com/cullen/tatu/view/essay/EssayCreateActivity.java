@@ -10,7 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.cullen.tatu.R;
 import com.cullen.tatu.api.ApiEssay;
-import com.cullen.tatu.utils.IconResources;
 import com.cullen.tatu.utils.http.JsonCallback;
 import com.cullen.tatu.utils.http.ResponseApi;
 import com.cullen.tatu.view.main.BaseActivity;
@@ -38,7 +37,7 @@ public class EssayCreateActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        toolbar.setNavigationIcon(IconResources.getNavigationBackIcon());
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
         toolbar.setNavigationOnClickListener((View view)->finish());
         toolbar.inflateMenu(R.menu.bar_menu);
         toolbar.setOnMenuItemClickListener(item -> {

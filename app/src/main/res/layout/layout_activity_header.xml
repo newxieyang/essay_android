@@ -41,7 +41,7 @@
 				android:visibility="gone"
 				android:scaleType="center"
 				android:contentDescription="@null"
-				android:src="@mipmap/ic_info"/>
+				android:src="@drawable/ic_fav"/>
 
 			<ImageButton
 				android:id="@+id/iRightButton2"
@@ -52,7 +52,7 @@
 				android:scaleType="center"
 				android:layout_toStartOf="@+id/iRightButton"
 				android:contentDescription="@null"
-				android:src="@mipmap/ic_info"/>
+				android:src="@drawable/ic_fav"/>
 
 			<ImageButton
 				android:id="@+id/iRightButton3"
@@ -63,7 +63,7 @@
 				android:scaleType="center"
 				android:layout_toStartOf="@+id/iRightButton2"
 				android:contentDescription="@null"
-				android:src="@mipmap/ic_info"/>
+				android:src="@drawable/ic_fav"/>
 
 
 		</RelativeLayout>
