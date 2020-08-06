@@ -2,12 +2,12 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/color_primary</item>
-        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorPrimary">@color/text_dark</item>
+        <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/app_tint_color</item>
-        <item name="android:textColorSecondary">@color/text_dark</item>
-        <item name="android:textColorPrimary">@color/text_primary</item>
-        <item name="android:color">@android:color/white</item>
+        <item name="android:textColorSecondary">@color/text_sliver_dark</item>
+        <item name="android:textColorPrimary">@color/text_dark</item>
+<!--        <item name="android:color">@android:color/white</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:actionMenuTextColor">@color/text_dark</item>
@@ -16,7 +16,7 @@
 
 
     <style name="ActivityStyle">
-        <item name="android:background">@color/activity_background</item>
+        <item name="android:background">@color/white</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:clipToPadding">false</item>

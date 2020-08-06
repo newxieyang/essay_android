@@ -21,6 +21,10 @@
     <string name="login_btn_register">注册</string>
 
 
+    <string name="title_hint">标题</string>
+    <string name="essay_hint">内容</string>
+
+
     <!--/** Error **/-->
     <string name="stateful_empty">没有任何内容</string>
 
@@ -34,6 +38,15 @@
     <string name="fleet_vacancy">空位</string>
     <string name="fleet_carNum">车牌</string>
     <string name="fleet_desc">备注</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 
 </resources>

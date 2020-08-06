@@ -1,4 +1,4 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/iContainerView"
@@ -9,13 +9,21 @@
 
 
 
-
+	<!--标题栏样式一 toolbar-->
+	<include layout="@layout/nav_toolbar"
+		android:id="@+id/toolbar"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		/>
 
 
 
 	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 		android:id="@+id/swipeLayout"
 		style="@style/RefreshStyle"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/toolbar"
 		>
 
 		<androidx.recyclerview.widget.RecyclerView
@@ -33,12 +41,13 @@
 		android:id="@+id/fab"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_gravity="right|bottom"
 		android:layout_marginBottom="@dimen/vertical_margin"
 		android:layout_marginRight="@dimen/horizontal_margin"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
 		android:scaleType="centerInside"
 		android:src="@drawable/ic_edit"
 		android:tint="@color/background_selected"
 		app:backgroundTint="@color/float_button_primary"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

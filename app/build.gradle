@@ -5,18 +5,18 @@ apply plugin: 'org.greenrobot.greendao'
 def keystorePSW = 'spider'
 def keystoreAlias = 'spider2019'
 def keystoreAliasPSW = 'spider19'
-def keyFile = file('/Users/cullen/android_sign')
+def keyFile = file('/Users/essay/android_sign')
 
 def currentVersion = "1.0.4"
 def currentVersionCode = 6
 
-def macApkPathName = "/Users/cullen/spider_apk/spider" + currentVersionCode + ".apk"
+def macApkPathName = "/Users/essay/spider_apk/spider" + currentVersionCode + ".apk"
 
 android {
     compileSdkVersion compile_sdk_version
 
     defaultConfig {
-        applicationId "com.cullen.android.tatu"
+        applicationId "com.essay.android.essay"
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
         versionCode currentVersionCode
@@ -74,7 +74,7 @@ greendao {
     //指定数据库schema版本号，迁移等操作会用到;
     schemaVersion 4
     //dao的包名，包名默认是entity所在的包；
-    daoPackage 'com.cullen.tatu.model.gen'
+    daoPackage 'com.tatu.essay.model.gen'
     //生成数据库文件的目录;
     targetGenDir 'src/main/java'
 }
@@ -93,6 +93,7 @@ dependencies {
 
     // auto inject view
     implementation 'com.jakewharton:butterknife:10.2.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     // 万能list view https://github.com/CymChad/BaseRecyclerViewAdapterHelper

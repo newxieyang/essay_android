@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <color name="color_primary_dark">#DB7093</color>
-    <color name="color_primary">#FFB7CB</color>
+    <color name="color_primary_dark">@color/white</color>
+    <color name="color_primary">@color/white</color>
     <color name="color_second">#FFB6C1</color>
 
     <color name="app_tint_color">#4f82ef</color>
@@ -20,9 +20,12 @@
     <color name="text_light_dark">#eeeeee</color>
 
 
+    <color name="color_white">@color/white</color>
+
+
     <color name="color_split">#e0e0e0</color>
     <color name="widget_border">#c0c0c0</color>
-    <color name="activity_background">#FFFFF0</color>
+    <color name="activity_background">@color/white</color>
 
 
 
