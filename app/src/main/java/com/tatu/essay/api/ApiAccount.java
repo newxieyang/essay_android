@@ -4,7 +4,7 @@ package com.tatu.essay.api;
 import android.content.Intent;
 import android.util.Log;
 
-import com.tatu.essay.view.App;
+import com.tatu.essay.ui.App;
 import com.tatu.essay.constants.Constants;
 import com.tatu.essay.model.UserModel;
 import com.tatu.essay.utils.http.JsonCallback;

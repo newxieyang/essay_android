@@ -3,7 +3,7 @@ package com.tatu.essay.api;
 
 import android.content.Intent;
 
-import com.tatu.essay.view.App;
+import com.tatu.essay.ui.App;
 import com.tatu.essay.constants.Constants;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.service.EssayService;

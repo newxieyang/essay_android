@@ -3,9 +3,11 @@
     <string name="app_des">design by cullen</string>
 
     <string name="app_module_essay">随笔</string>
-    <string name="app_module_fleet">我的随笔</string>
-    <string name="app_module_discover">发现</string>
-    <string name="app_module_me">我</string>
+    <string name="app_module_favorites">收藏</string>
+    <string name="app_module_draft">草稿</string>
+    <string name="app_module_mime">我的</string>
+    <string name="app_setting">设置</string>
+    <string name="app_logout">退出</string>
 
     <string name="home_name">路人甲</string>
     <string name="home_desc">山高水流长, 我可嚣张一世</string>
@@ -28,25 +30,9 @@
     <!--/** Error **/-->
     <string name="stateful_empty">没有任何内容</string>
 
-    <!--    返乡信息-->
-    <string name="fleet_departure">出发地</string>
-    <string name="fleet_destination">目的地</string>
-    <string name="fleet_phone">联系电话</string>
-    <string name="fleet_contact">联系人</string>
-    <string name="fleet_cost">费用</string>
-    <string name="fleet_departureTime">出发时间</string>
-    <string name="fleet_vacancy">空位</string>
-    <string name="fleet_carNum">车牌</string>
-    <string name="fleet_desc">备注</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+
+
+
 
 
 </resources>

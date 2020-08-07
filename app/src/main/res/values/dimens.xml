@@ -2,65 +2,64 @@
 
 
     <!--字体大小-->
-    <dimen name="text_size_big">24sp</dimen>
-    <dimen name="text_size_app_bar">20sp</dimen>
-    <dimen name="text_size_title">21sp</dimen>
-    <dimen name="text_size_subheading">17sp</dimen>
-    <dimen name="text_size_body">15sp</dimen>
-    <dimen name="text_size_caption">13sp</dimen>
+    <!-- 长篇幅正文，每行建议60字符（英文）左右。短文本，建议每行30字符（英文）左右。 内容留白 16 dp-->
+    <!--大标题-->
+    <dimen name="h0">22sp</dimen>
+    <!-- Appbar文字-->
+    <dimen name="h1">20sp</dimen>
+    <!--小标题-->
+    <dimen name="h2">16sp</dimen>
+    <!--正文/按钮文字-->
+    <dimen name="h3_body">14sp</dimen>
+    <!--小字体是-->
+    <dimen name="h4_caption">12sp</dimen>
 
+
+    <!--
+        所有可操作元素最小点击区域尺寸：48dp X 48dp。
+        侧边抽屉到屏幕右边的距离：56dp
+        -->
+
+    <!--顶部状态栏高度：24dp-->
+    <dimen name="statue_bar">24dp</dimen>
+
+
+    <!-- 用户头像尺寸：64x64dp/40x40dp  另外注意56dp这个数字，许多尺寸可变的控件，比如对话框、菜单等，宽度都可以按56的整数倍来设计。 -->
+    <dimen name="avatar">56dp</dimen>
+
+    <!--   悬浮按钮尺寸：56x56dp/40x40dp-->
+    <dimen name="Floating_button">56dp</dimen>
+    <!-- 大多元素的留白距离 -->
+    <dimen name="space_blank">16dp</dimen>
+    <!-- 卡片间距：8dp -->
+    <dimen name="space_card">8dp</dimen>
+    <!-- 分隔线上下留白：8dp -->
+    <dimen name="space_split">8dp</dimen>
+
+    <!--  屏幕左右对齐基线：16dp-->
+    <dimen name="space_screen_align">16dp</dimen>
 
     <!--	垂直边距 -->
-    <!--	工具栏高度 -->
-    <dimen name="vertical_header">56dp</dimen>
-    <!--	内容区域间距离-->
-    <!--	常规列表页高度-->
-    <dimen name="vertical_list_normal">48dp</dimen>
+    <!--	工具栏高度 Appbar最小高度 56dp -->
+    <dimen name="space_item">56dp</dimen>
+
+    <!--	 底部导航栏高度 48dp -->
+    <dimen name="space_bottom">48dp</dimen>
     <!--	大的列表页高度-->
     <dimen name="vertical_list_lager">90dp</dimen>
 
 
-    <dimen name="split_height">1px</dimen>
+    <!--	触控区高度 48dp  小图标点击区域：48x48dp-->
+    <dimen name="button_height">48dp</dimen>
 
 
-    <!--界面顶部head高度-->
-
-    <!--纵向间距-->
-    <dimen name="spacing_vertical">4dp</dimen>
-    <dimen name="spacing_vertical_xx">12dp</dimen>
-    <!--横向间距-->
-
-    <!--	<dimen name="spacing_horizontal_xxX">35dp</dimen>-->
-
-    <!--EditText默认高度-->
-
-    <!--Button默认高度 我看看。。ww我-->
-    <dimen name="height_button">36dp</dimen>
-    <!--	触控区高度 48dp-->
-    <dimen name="button_height">45dp</dimen>
-
-
-    <dimen name="main_slider_text_height">25dp</dimen>
-    <dimen name="main_slider_button_size">42dp</dimen>
-
-
-    <dimen name="_2dp">2dp</dimen>
-    <dimen name="_5dp">5dp</dimen>
-    <dimen name="_10dp">10dp</dimen>
-    <dimen name="_20dp">20dp</dimen>
-    <dimen name="_40dp">40dp</dimen>
+    <dimen name="corner_radius">10dp</dimen>
     <dimen name="_100dp">100dp</dimen>
+    
+    
+    <dimen name="image_micro">80dp</dimen>
+    <dimen name="image_normal">96dp</dimen>
+    <dimen name="image_big">180dp</dimen>
 
 
-    <dimen name="horizontal_margin">16dp</dimen>
-    <dimen name="vertical_margin">16dp</dimen>
-
-    <dimen name="dp_40">80dp</dimen>
-
-
-    <!-- 图标大小-->
-    <dimen name="icon_size">32dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

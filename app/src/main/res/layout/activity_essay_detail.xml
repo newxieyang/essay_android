@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityStyle"
-    tools:context=".view.essay.EssayDetailActivity">
+    tools:context=".ui.essay.EssayDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/activity_header"
@@ -28,12 +28,12 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_marginTop="@dimen/space_blank"
             style="@style/TextViewStyle"
             android:id="@+id/contentView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/text_size_app_bar"
+            android:textSize="@dimen/h1"
             android:textColor="@color/text_sliver_dark"
         />
 

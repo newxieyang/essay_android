@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/ActivityStyle"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.main.LauncherActivity">
+    tools:context=".ui.main.LauncherActivity">
 
 
 
@@ -17,11 +16,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
+        android:layout_marginBottom="@dimen/space_bottom"
         >
 
         <ImageView
-            android:layout_width="@dimen/dp_160"
-            android:layout_height="@dimen/dp_160"
+            android:layout_width="@dimen/image_big"
+            android:layout_height="@dimen/image_big"
             android:src="@drawable/ic_fav"
             />
 

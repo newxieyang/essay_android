@@ -1,27 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.tatu.essay">
+    package="com.tatu.essay" >
+
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission
+        android:name="com.tatu.essay.broadcast.permission"
+        android:protectionLevel="normal" />
 
     <application
-        android:name="com.tatu.essay.view.App"
+        android:name=".ui.App"
         android:allowBackup="true"
         android:icon="@drawable/ic_fav"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity
-            android:name="com.tatu.essay.view.main.ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name="com.tatu.essay.view.main.MainActivity" />
-        <activity android:name="com.tatu.essay.view.essay.EssayCreateActivity" />
-        <activity android:name="com.tatu.essay.view.user.RegisterActivity" />
-        <activity android:name="com.tatu.essay.view.essay.EssayDetailActivity" />
-        <activity android:name="com.tatu.essay.view.main.GuiderActivity" />
-        <activity android:name="com.tatu.essay.view.user.LoginActivity" />
-        <activity android:name="com.tatu.essay.view.main.HomeActivity" />
-        <activity android:name="com.tatu.essay.view.main.LauncherActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".ui.essay.EssayCreateActivity" />
+        <activity android:name=".ui.user.RegisterActivity" />
+        <activity android:name=".ui.essay.EssayDetailActivity" />
+        <activity android:name=".ui.main.GuiderActivity" />
+        <activity android:name=".ui.user.LoginActivity" />
+        <activity android:name=".ui.main.HomeActivity" />
+        <activity android:name=".ui.main.LauncherActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -44,30 +55,15 @@
         </receiver>
         -->
         <provider
-            android:name="com.tatu.essay.utils.MyFileProvider"
+            android:name=".utils.MyFileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true"
-            tools:replace="name,authorities,exported,grantUriPermissions">
+            tools:replace="name,authorities,exported,grantUriPermissions" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
-    <uses-permission
-        android:name="com.tatu.essay.broadcast.permission"
-        android:protectionLevel="normal" />
 
 </manifest>

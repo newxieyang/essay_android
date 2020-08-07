@@ -1,6 +1,6 @@
 package com.tatu.essay.service;
 
-import com.tatu.essay.view.App;
+import com.tatu.essay.ui.App;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.model.gen.EssayModelDao;

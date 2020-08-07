@@ -15,16 +15,15 @@
 
 		<ImageView
 			android:id="@+id/emptyIcon"
-			android:layout_width="@dimen/_100dp"
-			android:layout_height="@dimen/_100dp"
+			android:layout_width="@dimen/image_normal"
+			android:layout_height="@dimen/image_normal"
 			android:src="@mipmap/empty_file"
 			/>
 
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_below="@+id/emptyIcon"
-			android:layout_marginTop="@dimen/_20dp"
+			android:layout_marginTop="@dimen/space_blank"
 			android:text="@string/stateful_empty"
 			/>
 	</LinearLayout>

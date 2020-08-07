@@ -2,6 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityStyle"
-    tools:context=".view.main.GuiderActivity">
+    tools:context=".ui.main.GuiderActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

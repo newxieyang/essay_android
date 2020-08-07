@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityStyle"
-    tools:context="com.tatu.essay.view.essay.EssayCreateActivity">
+    tools:context="com.tatu.essay.ui.essay.EssayCreateActivity">
 
 
 
@@ -37,10 +37,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="@android:color/white"
                 android:hint="@string/title_hint"
-                android:textSize="22sp"
-                android:padding="10dp"
+                android:textSize="@dimen/h0"
+                android:padding="@dimen/space_card"
                 android:inputType=""
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="@dimen/space_blank"/>
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/contentView"
@@ -52,7 +52,7 @@
                 android:background="@android:color/white"
                 android:hint="@string/essay_hint"
                 android:textSize="16sp"
-                android:padding="10dp"
+                android:padding="@dimen/space_card"
                 android:inputType=""/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -61,7 +61,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="@dimen/space_bottom"
         android:orientation="horizontal"
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"

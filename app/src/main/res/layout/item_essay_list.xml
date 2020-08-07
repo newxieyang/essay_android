@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/vertical_list_lager"
     android:background="@android:color/white"
-    android:paddingStart="@dimen/horizontal_margin"
-    android:paddingEnd="@dimen/horizontal_margin"
+    android:paddingStart="@dimen/space_screen_align"
+    android:paddingEnd="@dimen/space_screen_align"
     android:layout_marginBottom="1dp"
     android:orientation="vertical">
 
@@ -21,15 +21,15 @@
             android:gravity="center_vertical"
             android:lines="1"
             android:maxLines="1"
-            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginTop="@dimen/space_card"
             android:textColor="@color/text_dark_dark"
-            android:textSize="@dimen/text_size_subheading" />
+            android:textSize="@dimen/h2" />
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/space_card"
             >
 
             <TextView
@@ -39,7 +39,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:textColor="@color/text_sliver"
-                android:textSize="@dimen/text_size_caption" />
+                android:textSize="@dimen/h4_caption" />
 
 
             <TextView
@@ -49,8 +49,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:layout_alignParentEnd="true"
-                android:textColor="@color/app_tint_color_light"
-                android:textSize="@dimen/text_size_caption" />
+                android:textSize="@dimen/h4_caption" />
 
 
         </RelativeLayout>

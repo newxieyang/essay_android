@@ -3,15 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/ActivityStyle"
     android:id="@+id/root"
-    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.user.LoginActivity">
+    tools:context=".ui.user.LoginActivity">
 
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/image_normal"
+        android:layout_height="@dimen/image_normal"
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +24,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:paddingStart="@dimen/horizontal_margin"
-        android:paddingEnd="@dimen/horizontal_margin"
+        android:paddingStart="@dimen/space_screen_align"
+        android:paddingEnd="@dimen/space_screen_align"
         android:fillViewport="true"
         android:scrollbarThumbVertical="@android:color/transparent"
         android:scrollbars="vertical">
@@ -39,16 +38,16 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="@dimen/space_item"
                 android:layout_marginTop="200dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingStart="13dp">
+                android:paddingStart="@dimen/space_card">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:layout_marginEnd="@dimen/space_blank"
                     android:src="@drawable/ic_mobile_flag"/>
 
                 <EditText
@@ -64,11 +63,11 @@
                     android:text=""
                     android:textColor="@color/_9"
                     android:textColorHint="@color/_9"
-                    android:textSize="@dimen/text_size_body"/>
+                    android:textSize="@dimen/h3_body"/>
 
                 <ImageView
                     android:id="@+id/iv_clean_phone"
-                    android:layout_width="40dp"
+                    android:layout_width="@dimen/button_height"
                     android:layout_height="fill_parent"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_clear"
@@ -83,15 +82,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="@dimen/space_item"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingStart="13dp">
+                android:paddingStart="@dimen/space_card">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:layout_marginEnd="@dimen/space_blank"
                     android:src="@drawable/ic_password_flag"/>
 
                 <EditText
@@ -107,11 +106,11 @@
                     android:text=""
                     android:textColor="@color/_9"
                     android:textColorHint="@color/_9"
-                    android:textSize="@dimen/text_size_body"/>
+                    android:textSize="@dimen/h3_body"/>
 
                 <ImageView
                     android:id="@+id/clean_password"
-                    android:layout_width="40dp"
+                    android:layout_width="@dimen/button_height"
                     android:layout_height="fill_parent"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_clear"
@@ -119,7 +118,7 @@
 
                 <ImageView
                     android:id="@+id/iv_show_pwd"
-                    android:layout_width="40dp"
+                    android:layout_width="@dimen/button_height"
                     android:layout_height="fill_parent"
                     android:scaleType="centerInside"
                     android:src="@drawable/pass_gone"/>
@@ -134,12 +133,12 @@
             <Button
                 android:id="@+id/btn_register"
                 style="@style/ButtonStyle"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="21dp"
+                android:layout_marginBottom="@dimen/space_card"
+                android:layout_marginTop="@dimen/space_blank"
                 android:background="@drawable/button_corner"
                 android:text="@string/login_btn_register"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_app_bar"/>
+                android:textColor="@color/text_sliver_light"
+                android:textSize="@dimen/h1"/>
 
 
         </LinearLayout>

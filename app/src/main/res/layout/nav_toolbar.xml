@@ -8,18 +8,23 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginEnd="@dimen/dp_16"
-        android:layout_marginTop="@dimen/_5dp"
-        android:layout_marginBottom="@dimen/_5dp"
-        app:cardCornerRadius="@dimen/_10dp"
+        android:layout_marginStart="@dimen/space_blank"
+        android:layout_marginEnd="@dimen/space_blank"
+        android:layout_marginTop="@dimen/space_card"
+        android:layout_marginBottom="@dimen/space_card"
+        app:cardCornerRadius="@dimen/corner_radius"
         >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/activity_header"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            />
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/activity_header"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                />
+        </com.google.android.material.appbar.AppBarLayout>
+
 
     </androidx.cardview.widget.CardView>
 

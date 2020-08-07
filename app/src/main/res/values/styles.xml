@@ -4,10 +4,10 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/text_dark</item>
         <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/app_tint_color</item>
+        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorSecondary">@color/text_sliver_dark</item>
         <item name="android:textColorPrimary">@color/text_dark</item>
-<!--        <item name="android:color">@android:color/white</item>-->
+        <!--        <item name="android:color">@android:color/white</item>-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:actionMenuTextColor">@color/text_dark</item>
@@ -25,23 +25,12 @@
     </style>
 
 
-    <style name="EditTextStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/vertical_list_normal</item>
-        <item name="android:textSize">@dimen/text_size_body</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:background">@null</item>
-        <item name="android:textColor">@color/_9</item>
-        <item name="android:textColorHint">@color/_9</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:layout_marginEnd">@dimen/horizontal_margin</item>
-        <item name="android:layout_marginStart">@dimen/horizontal_margin</item>
-    </style>
+
 
     <style name="ButtonStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/button_height</item>
-        <item name="android:textSize">@dimen/text_size_subheading</item>
+        <item name="android:textSize">@dimen/h2</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
@@ -63,17 +52,12 @@
     </style>
 
 
-    <style name="SplitStyle">
-        <item name="android:background">@color/color_split</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/split_height</item>
-    </style>
 
 
     <style name="TextViewStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textSize">@dimen/h3_body</item>
         <item name="android:textColor">@color/text_dark</item>
         <item name="android:gravity">start</item>
         <item name="android:ellipsize">end</item>
@@ -82,9 +66,18 @@
 
 
     <style name="ImageButton">
-        <item name="android:layout_width">@dimen/height_button</item>
-        <item name="android:layout_height">@dimen/height_button</item>
+        <item name="android:layout_width">@dimen/button_height</item>
+        <item name="android:layout_height">@dimen/button_height</item>
         <item name="tint">@color/text_sliver_dark</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
