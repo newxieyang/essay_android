@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/text_dark</item>
-        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimaryDark">@color/md_white_1000</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorSecondary">@color/text_sliver_dark</item>
         <item name="android:textColorPrimary">@color/text_dark</item>
@@ -16,7 +16,7 @@
 
 
     <style name="ActivityStyle">
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@color/md_white_1000</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:clipToPadding">false</item>
@@ -24,6 +24,12 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+
+    <style name="FragmentStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="background">@color/md_white_1000</item>
+    </style>
 
 
 
@@ -71,13 +77,7 @@
         <item name="tint">@color/text_sliver_dark</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

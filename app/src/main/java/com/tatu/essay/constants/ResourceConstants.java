@@ -1,7 +1,5 @@
 package com.tatu.essay.constants;
 
-import android.content.Context;
-
 import androidx.core.content.ContextCompat;
 
 import com.tatu.essay.ui.App;
@@ -21,7 +19,7 @@ public class ResourceConstants {
 
 
     static {
-        colorWhite = ContextCompat.getColor(App.instance, R.color.white);
+        colorWhite = ContextCompat.getColor(App.instance, R.color.md_white_1000);
     }
 
 

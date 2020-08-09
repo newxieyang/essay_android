@@ -11,10 +11,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.githang.statusbar.StatusBarCompat;
 import com.google.android.material.snackbar.Snackbar;
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.tatu.essay.R;
 import com.tatu.essay.constants.ResourceConstants;
 import com.tatu.essay.ui.essay.FragmentDraft;
@@ -31,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
 
-    private Drawer result = null;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
 
         initViewPage();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         initDrawer(savedInstanceState, toolbar);
@@ -67,11 +73,25 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void initDrawer(Bundle savedInstanceState, Toolbar toolbar) {
+
+
+        // Create the AccountHeader
+        AccountHeader headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withTranslucentStatusBar(true)
+                .withAccountHeader(R.layout.material_drawer_compact_header)
+                .addProfiles(
+                        new ProfileDrawerItem().withName(R.string.home_name).withEmail(R.string.home_desc).withIcon(R.mipmap.ic_avatar).withIdentifier(105)
+                )
+                .withSavedInstance(savedInstanceState)
+                .build();
+
         //Create the drawer
-        result = new DrawerBuilder()
+        Drawer result = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withHasStableIds(true)
+                .withAccountHeader(headerResult)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName(R.string.app_module_essay).withIcon(R.drawable.ic_edit).withIdentifier(0),
                         new PrimaryDrawerItem().withName(R.string.app_module_mime).withIcon(R.drawable.ic_baseline_how_to_reg_24).withIdentifier(1),
@@ -80,19 +100,23 @@ public class HomeActivity extends AppCompatActivity {
 
 
                 ) // add the items we want to use with our Drawer
+                .addStickyDrawerItems(
+                        new SecondaryDrawerItem().withName(R.string.app_setting).withIcon(R.drawable.ic_setting).withIdentifier(4).withSelectable(false),
+                        new SecondaryDrawerItem().withName(R.string.app_logout).withIcon(R.drawable.ic_out).withIdentifier(5).withSelectable(false)
+
+                )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         if (drawerItem != null) {
-                            Integer index = Integer.parseInt("" + drawerItem.getIdentifier());
-                            mViewPager.setCurrentItem(index, false);
-                            Snackbar.make(view, "Replace with your own action" + position,  Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
+                            Integer identifier = Integer.parseInt("" + drawerItem.getIdentifier());
+                            drawerItemClick(identifier);
                         }
 
                         return false;
                     }
                 })
+
                 .withSavedInstance(savedInstanceState)
                 .withShowDrawerOnFirstLaunch(true)
 //              .withShowDrawerUntilDraggedOpened(true)
@@ -106,5 +130,20 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+
+    private void drawerItemClick(Integer identifier) {
+        if(identifier < 4) {
+            mViewPager.setCurrentItem(identifier, false);
+            return;
+        }
+
+        if(identifier == 4) {
+
+        }
+
+        if(identifier == 5) {
+            ApplicationUtils.exitApp();
+        }
+    }
 
 }

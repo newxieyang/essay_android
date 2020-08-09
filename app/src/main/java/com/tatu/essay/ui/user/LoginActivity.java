@@ -25,6 +25,10 @@ import android.widget.Toast;
 
 import androidx.core.widget.NestedScrollView;
 
+import com.tamsiree.rxkit.RxAnimationTool;
+import com.tamsiree.rxkit.RxBarTool;
+import com.tamsiree.rxui.activity.AndroidBug5497Workaround;
+import com.tamsiree.rxui.view.loadingview.style.Circle;
 import com.tatu.essay.R;
 import com.tatu.essay.api.ApiAccount;
 import com.tatu.essay.model.TokenInfo;
@@ -36,10 +40,7 @@ import com.tatu.essay.utils.store.SPSUtils;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.ui.main.HomeActivity;
-import com.vondear.rxtool.RxAnimationTool;
-import com.vondear.rxtool.RxBarTool;
-import com.vondear.rxui.activity.AndroidBug5497Workaround;
-import com.vondear.rxui.view.progressing.style.Circle;
+
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -94,7 +95,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         RxBarTool.StatusBarLightMode(this);
 
         if (isFullScreen(this)) {
-            AndroidBug5497Workaround.assistActivity(this);
+            AndroidBug5497Workaround.Companion.assistActivity(this);
         }
 
         int screenHeight = this.getResources().getDisplayMetrics().heightPixels; //获取屏幕高度

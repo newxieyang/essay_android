@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView style="@style/TextViewStyle"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -7,5 +9,4 @@
     android:textSize="@dimen/h2"
     android:textColor="@color/text_sliver_light"
     android:text="@string/app_des"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" />
+     />

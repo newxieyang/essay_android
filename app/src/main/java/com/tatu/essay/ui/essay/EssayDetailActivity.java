@@ -2,34 +2,38 @@ package com.tatu.essay.ui.essay;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
 import android.view.View;
 
-import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.tatu.essay.R;
+import com.tatu.essay.api.EssayApi;
+import com.tatu.essay.logic.DataState;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.ui.main.BaseActivity;
-import com.vondear.rxtool.RxTimeTool;
+import com.tatu.essay.utils.GsonUtils;
+import com.tatu.essay.utils.http.JsonCallback;
+import com.tatu.essay.utils.http.ResponseApi;
 
-import java.text.SimpleDateFormat;
-import java.util.Locale;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 
 public class EssayDetailActivity extends BaseActivity {
 
     @BindView(R.id.contentView)
-    AppCompatTextView contentView;
+    AppCompatEditText contentView;
 
-/*    @BindView(R.id.dateView)
-    TextView dateView;
-
-    @BindView(R.id.nameView)
-    TextView nameView;*/
-
-    @BindView(R.id.activity_header)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+
+    private boolean draft = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,25 +51,66 @@ public class EssayDetailActivity extends BaseActivity {
         Intent intent = getIntent();
         //接收从First_Activity中传输的数据
         EssayModel data = (EssayModel) intent.getSerializableExtra("essay");
-        String content = "   " + data.getContent();
+
+        draft = data.getState().equals(DataState.DRAFT.getState());
+        contentView.setEnabled(draft);
+
+        String content = data.getContent();
         contentView.setText(content);
 
-        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
-        toolbar.setNavigationOnClickListener((View view)->finish());
+        int iconResId = draft?R.drawable.ic_baseline_done_24:R.drawable.ic_baseline_arrow_back_ios_24;
+        toolbar.setNavigationIcon(iconResId);
 
-        String dateString = RxTimeTool.milliseconds2String(data.getCreateTime(), new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()));
+        toolbar.setNavigationOnClickListener((View view)-> {
+            Editable editable = contentView.getText();
 
-        String tag = "路人甲 于" + dateString;
+            // 标题是空， 内容也是空， 等同删除
+            if(editable == null && TextUtils.isEmpty(data.getTitle())) {
+                save(data.getId(), DataState.DELETE, "");
+                finish();
+                return;
+            }
 
-        toolbar.setTitle(tag);
+            // 草稿已经改变
+            if(!contentView.getText().toString().trim().equals(content.trim())) {
+                save(data.getId(), DataState.DRAFT, editable.toString());
+            }
 
-     /*   nameView.setText("路人甲");
-        String dateString = RxTimeTool.milliseconds2String(data.getCreateTime(), new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()));
-        dateView.setText(dateString);*/
+            finish();
+
+        });
+        toolbar.inflateMenu(R.menu.menu_essay_favorite);
+        toolbar.setOnMenuItemClickListener(item -> {
+            Editable editable = contentView.getText();
+            save(data.getId(), DataState.NORMAL, editable.toString());
+            return false;
+        });
+
+        toolbar.setTitle(data.getTitle());
+
+
 
     }
 
 
+
+    private void save(Long id, DataState dataState, String content) {
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("state", dataState.getState());
+        map.put("content", content);
+
+        EssayApi.update(id, GsonUtils.toJson(map), new JsonCallback() {
+            @Override
+            protected void onResponse(ResponseApi response) {
+                if(response.code != 200) {
+                    if(!DataState.DRAFT.equals(dataState)) {
+                        Snackbar.make(getRootView(), "保存失败", Snackbar.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+    }
 
 
     @Override

@@ -28,7 +28,8 @@
         android:paddingEnd="@dimen/space_screen_align"
         android:fillViewport="true"
         android:scrollbarThumbVertical="@android:color/transparent"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:layout_alignParentLeft="true">
 
         <LinearLayout
             android:id="@+id/content"
@@ -42,18 +43,19 @@
                 android:layout_marginTop="200dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingStart="@dimen/space_card">
+                android:paddingStart="@dimen/space_card"
+                android:paddingEnd="@dimen/space_card">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_blank"
                     android:src="@drawable/ic_mobile_flag"/>
 
                 <EditText
                     android:id="@+id/et_mobile"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/space_blank"
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="@string/login_hint_username"
@@ -61,8 +63,8 @@
                     android:maxLength="11"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="@color/_9"
-                    android:textColorHint="@color/_9"
+                    android:textColor="@color/text_sliver_light"
+                    android:textColorHint="@color/text_sliver_light"
                     android:textSize="@dimen/h3_body"/>
 
                 <ImageView
@@ -78,23 +80,25 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/e"/>
+                android:background="@color/md_grey_200"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/space_item"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingStart="@dimen/space_card">
+                android:paddingStart="@dimen/space_card"
+                android:paddingEnd="@dimen/space_card"
+                >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/space_blank"
-                    android:src="@drawable/ic_password_flag"/>
+                    android:src="@drawable/ic_password_flag" />
 
                 <EditText
                     android:id="@+id/et_password"
+                    android:layout_marginStart="@dimen/space_blank"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -104,8 +108,8 @@
                     android:maxLength="30"
                     android:singleLine="true"
                     android:text=""
-                    android:textColor="@color/_9"
-                    android:textColorHint="@color/_9"
+                    android:textColor="@color/text_sliver_light"
+                    android:textColorHint="@color/text_sliver_light"
                     android:textSize="@dimen/h3_body"/>
 
                 <ImageView
@@ -128,7 +132,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/e"/>
+                android:background="@color/md_grey_200"/>
 
             <Button
                 android:id="@+id/btn_login"
@@ -148,22 +152,24 @@
                 <TextView
                     android:id="@+id/register"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginBottom="@dimen/space_card"
                     android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:layout_marginBottom="@dimen/space_card"
                     android:text="注册新用户"
-                    android:textColor="@color/text_sliver_light"
-                    android:textSize="@dimen/h3_body"/>
+                    android:layout_height="@dimen/button_height"
+                    android:textColor="@color/md_grey_600"
+                    android:textSize="@dimen/h2"/>
 
                 <TextView
                     android:id="@+id/forget_password"
-                    style="@style/TextViewStyle"
-                    android:layout_gravity="end"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/button_height"
+                    android:gravity="end|center_vertical"
                     android:layout_marginBottom="@dimen/space_card"
-                    android:layout_marginStart="@dimen/space_blank"
                     android:text="@string/login_forget_pwd"
-                    android:textColor="@color/text_sliver_light"/>
+                    android:textSize="@dimen/h2"
+                    android:textColor="@color/md_grey_600"/>
 
             </LinearLayout>
 

@@ -14,10 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
-import com.tatu.essay.api.ApiEssay;
+import com.tatu.essay.api.EssayApi;
 import com.tatu.essay.constants.Constants;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.service.EssayService;
@@ -154,7 +153,7 @@ public class FragmentDraft extends BaseFragment {
      */
     private void requestData() {
 
-        ApiEssay.listRecent();
+        EssayApi.drafts();
 
     }
 

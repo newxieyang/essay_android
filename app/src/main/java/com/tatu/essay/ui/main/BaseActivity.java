@@ -8,10 +8,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.githang.statusbar.StatusBarCompat;
+import com.tamsiree.rxkit.RxKeyboardTool;
+import com.tamsiree.rxkit.view.RxToast;
 import com.tatu.essay.constants.ResourceConstants;
 import com.tatu.essay.ui.App;
-import com.vondear.rxtool.RxKeyboardTool;
-import com.vondear.rxtool.view.RxToast;
 
 import butterknife.ButterKnife;
 

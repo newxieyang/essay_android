@@ -4,10 +4,10 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.tamsiree.rxkit.RxTimeTool;
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.model.EssayModel;
-import com.vondear.rxtool.RxTimeTool;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -51,9 +51,17 @@ public class EssayAdapter extends BaseQuickAdapter<EssayItem, BaseViewHolder> {
      */
     private void fillListFile(BaseViewHolder holder, final EssayModel model) {
 
-        holder.setText(R.id.iNameText, model.getContent());
-        holder.setText(R.id.iDescText, getName(model.getCreateBy()));
-        holder.setText(R.id.iTimeText, getTime(model.getCreateTime()));
+        View view = holder.getView(R.id.title);
+        if ((model.getTitle() == null)) {
+            view.setVisibility(View.GONE);
+        } else {
+            view.setVisibility(View.VISIBLE);
+            holder.setText(R.id.title, model.getTitle());
+        }
+
+        holder.setText(R.id.content, model.getContent());
+
+//        holder.setText(R.id.iTimeText, getTime(model.getCreateTime()));
 
         holder.itemView.setOnClickListener((View v) ->
                 listener.itemClick(model, holder.getLayoutPosition())

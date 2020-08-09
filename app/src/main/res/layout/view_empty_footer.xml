@@ -3,6 +3,6 @@
 			  android:layout_width="match_parent"
 			  android:layout_height="@dimen/vertical_list_lager"
 			  android:minHeight="@dimen/vertical_list_lager"
-			  android:textColor="@color/transparent"
+			  android:textColor="@android:color/transparent"
 	>
 </LinearLayout>

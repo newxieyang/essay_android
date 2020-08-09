@@ -6,11 +6,11 @@
     tools:context=".ui.essay.EssayDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/activity_header"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/color_primary"
-        app:titleTextColor="@color/text_light"
+        app:titleTextColor="@color/text_sliver_dark"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -21,19 +21,22 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:paddingStart="@dimen/space_card"
+        android:paddingEnd="@dimen/space_card"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_header"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         android:layout_marginTop="?attr/actionBarSize"
-        >
+        android:layout_alignParentLeft="true">
 
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatEditText
             android:layout_marginTop="@dimen/space_blank"
             style="@style/TextViewStyle"
+            android:background="@android:color/white"
             android:id="@+id/contentView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/h1"
+            android:paddingEnd="@dimen/space_blank"
+            android:paddingStart="@dimen/space_blank"
+            android:textSize="@dimen/h2"
             android:textColor="@color/text_sliver_dark"
         />
 

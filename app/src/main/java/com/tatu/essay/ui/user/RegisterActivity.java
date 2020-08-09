@@ -20,21 +20,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.widget.NestedScrollView;
 
+import com.tamsiree.rxkit.RxAnimationTool;
+import com.tamsiree.rxkit.RxBarTool;
+import com.tamsiree.rxkit.RxRegTool;
+import com.tamsiree.rxui.activity.AndroidBug5497Workaround;
+import com.tamsiree.rxui.view.loadingview.style.Circle;
 import com.tatu.essay.R;
 import com.tatu.essay.api.ApiAccount;
 import com.tatu.essay.utils.CustomTextWatcher;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
 import com.tatu.essay.ui.main.BaseActivity;
-import com.vondear.rxtool.RxAnimationTool;
-import com.vondear.rxtool.RxBarTool;
-import com.vondear.rxtool.RxRegTool;
-import com.vondear.rxui.activity.AndroidBug5497Workaround;
-import com.vondear.rxui.view.progressing.style.Circle;
+
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -62,7 +64,7 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.scrollView)
     NestedScrollView mScrollView;
     @BindView(R.id.service)
-    LinearLayout mService;
+    TextView mService;
 
 
     private Circle mCircleDrawable;
@@ -88,7 +90,7 @@ public class RegisterActivity extends BaseActivity {
         RxBarTool.StatusBarLightMode(this);
 
         if (isFullScreen(this)) {
-            AndroidBug5497Workaround.assistActivity(this);
+            AndroidBug5497Workaround.Companion.assistActivity(this);
         }
 
         int screenHeight = this.getResources().getDisplayMetrics().heightPixels; //获取屏幕高度

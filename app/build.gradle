@@ -2,59 +2,24 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 
-def keystorePSW = 'spider'
-def keystoreAlias = 'spider2019'
-def keystoreAliasPSW = 'spider19'
-def keyFile = file('/Users/essay/android_sign')
-
-def currentVersion = "1.0.4"
-def currentVersionCode = 6
-
-def macApkPathName = "/Users/essay/spider_apk/spider" + currentVersionCode + ".apk"
-
 android {
-    compileSdkVersion compile_sdk_version
+    compileSdkVersion setup.compileSdk
+    buildToolsVersion setup.buildTools
 
     defaultConfig {
-        applicationId "com.essay.android.essay"
-        minSdkVersion min_sdk_version
-        targetSdkVersion target_sdk_version
-        versionCode currentVersionCode
-        versionName currentVersion
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId "com.tatu.essay"
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
+        versionCode release.versionCode
+        versionName release.versionName
+
+        multiDexEnabled true
 
     }
 
-    signingConfigs {
-        myConfig {
-            storeFile keyFile
-            storePassword keystorePSW
-            keyAlias keystoreAlias
-            keyPassword keystoreAliasPSW
-        }
-    }
+
 
     buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//
-//            if (keyFile.exists()) {
-//                signingConfig signingConfigs.myConfig
-//            }
-//
-//            android.applicationVariants.all { variant ->
-//                variant.outputs.all {
-//                    doLast {
-//                        copy {
-//                            // 复制 copyTask 的输出H
-//                            from outputFile
-//                            into macApkPathName
-//                        }
-//                    }
-//                }
-//            }
-//        }
     }
 
     compileOptions {
@@ -81,19 +46,20 @@ greendao {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation "androidx.appcompat:appcompat:${versions.androidX}"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
-    implementation "androidx.annotation:annotation:1.1.0"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-rc1'
+    implementation "androidx.annotation:annotation:${versions.androidX}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
     implementation "com.google.android.material:material:1.1.0"
 
     implementation project(':update-app')
+    implementation project(':drawer')
 
 
     // auto inject view
     implementation 'com.jakewharton:butterknife:10.2.1'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     // 万能list view https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -116,19 +82,14 @@ dependencies {
 
 
     //基础工具库
-    implementation "com.github.tamsiree.RxTool:RxKit:2.2.7"
+    implementation "com.github.tamsiree.RxTool:RxKit:2.6.2"
 
     //UI库
-    implementation "com.github.tamsiree.RxTool:RxUI:2.2.7"
-
-//    implementation 'com.wang.avi:library:2.1.3'
-
-    // 头像
-    implementation 'cn.carbs.android:AvatarImageView:1.0.4'
+    implementation "com.github.tamsiree.RxTool:RxUI:2.6.2"
 
 
     // https://github.com/Bigkoo/Android-PickerView
-    implementation 'com.contrarywind:Android-PickerView:4.1.8'
+//    implementation 'com.contrarywind:Android-PickerView:4.1.8'
 
     implementation 'com.google.code.gson:gson:2.8.6'
 
@@ -138,11 +99,13 @@ dependencies {
     implementation 'net.zetetic:android-database-sqlcipher:4.4.0'
 
 
-    implementation 'com.yinglan.alphatabs:library:1.0.8'
+//    implementation 'com.yinglan.alphatabs:library:1.0.8'
 
 
     // 查看数据库
 //    debugImplementation 'com.amitshekhar.android:debug-db:1.0.3'
+
+//    implementation "com.mikepenz:materialdrawer:6.1.2"
 
 
 }

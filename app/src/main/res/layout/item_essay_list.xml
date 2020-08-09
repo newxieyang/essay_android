@@ -1,60 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/iContentView"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/vertical_list_lager"
-    android:background="@android:color/white"
-    android:paddingStart="@dimen/space_screen_align"
-    android:paddingEnd="@dimen/space_screen_align"
-    android:layout_marginBottom="1dp"
-    android:orientation="vertical">
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/space_card"
+    android:background="@drawable/card_corner"
+    android:padding="@dimen/space_card"
 
+    >
 
+    <!--     <ImageView
+             android:id="@+id/note_image"
+             android:layout_width="match_parent"
+             android:adjustViewBounds="true"
+             android:layout_height="wrap_content"
+             android:scaleType="centerCrop"
+             android:contentDescription="@string/note_picture" />-->
 
-        <TextView
-            android:id="@+id/iNameText"
-            style="@style/TextViewStyle"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:lines="1"
-            android:maxLines="1"
-            android:layout_marginTop="@dimen/space_card"
-            android:textColor="@color/text_dark_dark"
-            android:textSize="@dimen/h2" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:maxLines="2"
+        android:padding="@dimen/space_card"
+        android:textSize="@dimen/h2"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:maxLines="9"
+        android:padding="@dimen/space_card" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/space_card"
-            >
-
-            <TextView
-                android:id="@+id/iDescText"
-                style="@style/TextViewStyle"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:textColor="@color/text_sliver"
-                android:textSize="@dimen/h4_caption" />
-
-
-            <TextView
-                android:id="@+id/iTimeText"
-                style="@style/TextViewStyle"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:layout_alignParentEnd="true"
-                android:textSize="@dimen/h4_caption" />
-
-
-        </RelativeLayout>
+</RelativeLayout>
 
 
 
 
-</LinearLayout >
+
+

@@ -38,6 +38,16 @@ public class EssayModel implements Serializable {
         this.state = state;
     }
 
+
+    public EssayModel(String title, String content, Long createBy,
+                      Integer state) {
+        this.title = title;
+        this.content = content;
+        this.createBy = createBy;
+        this.state = state;
+    }
+
+
     @Generated(hash = 1112032825)
     public EssayModel() {
     }
