@@ -12,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.snackbar.Snackbar;
 import com.tatu.essay.R;
 import com.tatu.essay.api.EssayApi;
-import com.tatu.essay.logic.DataState;
+import com.tatu.essay.logic.EnumDataState;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.utils.GsonUtils;
@@ -52,7 +52,7 @@ public class EssayDetailActivity extends BaseActivity {
         //接收从First_Activity中传输的数据
         EssayModel data = (EssayModel) intent.getSerializableExtra("essay");
 
-        draft = data.getState().equals(DataState.DRAFT.getState());
+        draft = data.getState().equals(EnumDataState.DRAFT.getState());
         contentView.setEnabled(draft);
 
         String content = data.getContent();
@@ -66,14 +66,14 @@ public class EssayDetailActivity extends BaseActivity {
 
             // 标题是空， 内容也是空， 等同删除
             if(editable == null && TextUtils.isEmpty(data.getTitle())) {
-                save(data.getId(), DataState.DELETE, "");
+                save(data.getId(), EnumDataState.DELETE, "");
                 finish();
                 return;
             }
 
             // 草稿已经改变
             if(!contentView.getText().toString().trim().equals(content.trim())) {
-                save(data.getId(), DataState.DRAFT, editable.toString());
+                save(data.getId(), EnumDataState.DRAFT, editable.toString());
             }
 
             finish();
@@ -82,7 +82,7 @@ public class EssayDetailActivity extends BaseActivity {
         toolbar.inflateMenu(R.menu.menu_essay_favorite);
         toolbar.setOnMenuItemClickListener(item -> {
             Editable editable = contentView.getText();
-            save(data.getId(), DataState.NORMAL, editable.toString());
+            save(data.getId(), EnumDataState.NORMAL, editable.toString());
             return false;
         });
 
@@ -94,17 +94,17 @@ public class EssayDetailActivity extends BaseActivity {
 
 
 
-    private void save(Long id, DataState dataState, String content) {
+    private void save(Long id, EnumDataState enumDataState, String content) {
 
         Map<String, Object> map = new HashMap<>();
-        map.put("state", dataState.getState());
+        map.put("state", enumDataState.getState());
         map.put("content", content);
 
         EssayApi.update(id, GsonUtils.toJson(map), new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
                 if(response.code != 200) {
-                    if(!DataState.DRAFT.equals(dataState)) {
+                    if(!EnumDataState.DRAFT.equals(enumDataState)) {
                         Snackbar.make(getRootView(), "保存失败", Snackbar.LENGTH_LONG).show();
                     }
                 }

@@ -37,7 +37,7 @@ android {
 greendao {
 
     //指定数据库schema版本号，迁移等操作会用到;
-    schemaVersion 4
+    schemaVersion 5
     //dao的包名，包名默认是entity所在的包；
     daoPackage 'com.tatu.essay.model.gen'
     //生成数据库文件的目录;
@@ -52,7 +52,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
-    implementation "com.google.android.material:material:1.1.0"
+    implementation "com.google.android.material:material:1.2.0"
 
     implementation project(':update-app')
     implementation project(':drawer')

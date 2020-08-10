@@ -10,7 +10,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.githang.statusbar.StatusBarCompat;
-import com.google.android.material.snackbar.Snackbar;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -18,11 +17,10 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.tatu.essay.R;
 import com.tatu.essay.constants.ResourceConstants;
+import com.tatu.essay.logic.EnumEssayFolder;
 import com.tatu.essay.ui.essay.FragmentDraft;
 import com.tatu.essay.ui.essay.FragmentEssay;
 import com.tatu.essay.ui.essay.FragmentFavorite;
@@ -46,14 +44,11 @@ public class HomeActivity extends AppCompatActivity {
 
         StatusBarCompat.setStatusBarColor(this, ResourceConstants.colorWhite);
 
-        initViewPage();
-
         Toolbar toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         initDrawer(savedInstanceState, toolbar);
-
-//        (View v)-> ApplicationUtils.exitApp()/**/
+        initViewPage();
 
     }
 
@@ -125,7 +120,7 @@ public class HomeActivity extends AppCompatActivity {
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 11
-            result.setSelection(1, false);
+            result.setSelection(0, false);
 
         }
     }

@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpParams;
-import com.tatu.essay.constants.Constants;
+import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.service.EssayService;
 import com.tatu.essay.ui.App;
@@ -48,7 +48,7 @@ public class EssayApi extends Api {
       * @author cullen
       * @date 2020/8/9 21:44 
       */
-    public static void listRecent() {
+    public static void essays() {
 
         HttpParams params = new HttpParams();
         params.put(PAGE_NUM_STR, 1);
@@ -70,10 +70,10 @@ public class EssayApi extends Api {
                 EssayService.saveEssays(models);
 
                 if (models.size() == PAGE_SIZE) {
-                    listRecent();
+                    essays();
                 }
 
-                App.instance.manager.sendBroadcast(new Intent(Constants.ACTION_ESSAY_DATA_LOAD));
+                App.instance.manager.sendBroadcast(new Intent(EnumAction.EssaysLoad.getAction()));
 
             }
         });
@@ -82,9 +82,12 @@ public class EssayApi extends Api {
     }
 
 
-    /***
-     *
-     */
+    /**
+      * @description: TODO
+      * @return ${return_type}
+      * @author cullen
+      * @date 2020/8/9 23:40
+      */
     public static void favorites() {
 
         HttpParams params = new HttpParams();
@@ -97,20 +100,23 @@ public class EssayApi extends Api {
             params.put("createTime", essay.getCreateTime());
         }
 
-        OkGo.<String>get(URL_ESSAYS).params(params).execute(new JsonCallback() {
+        OkGo.<String>get(URL_FAVORITES).params(params).execute(new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
 
-                List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
-                        new TypeToken<List<EssayModel>>() {}.getType());
+                if(response.data != null) {
+                    List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
+                            new TypeToken<List<EssayModel>>() {}.getType());
 
-                EssayService.saveEssays(models);
+                    EssayService.saveEssays(models);
 
-                if (models.size() == PAGE_SIZE) {
-                    favorites();
+                    if (models.size() == PAGE_SIZE) {
+                        favorites();
+                    }
                 }
 
-                App.instance.manager.sendBroadcast(new Intent(Constants.ACTION_ESSAY_DATA_LOAD));
+
+                App.instance.manager.sendBroadcast(new Intent(EnumAction.FavoritesLoad.getAction()));
 
             }
         });
@@ -137,20 +143,23 @@ public class EssayApi extends Api {
             params.put("createTime", essay.getCreateTime());
         }
 
-        OkGo.<String>get(URL_ESSAYS).params(params).execute(new JsonCallback() {
+        OkGo.<String>get(URL_MINE).params(params).execute(new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
 
-                List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
-                        new TypeToken<List<EssayModel>>() {}.getType());
+                if(response.data != null) {
+                    List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
+                            new TypeToken<List<EssayModel>>() {}.getType());
 
-                EssayService.saveEssays(models);
+                    EssayService.saveEssays(models);
 
-                if (models.size() == PAGE_SIZE) {
-                    mime();
+                    if (models.size() == PAGE_SIZE) {
+                        mime();
+                    }
                 }
 
-                App.instance.manager.sendBroadcast(new Intent(Constants.ACTION_ESSAY_DATA_LOAD));
+
+                App.instance.manager.sendBroadcast(new Intent(EnumAction.MineLoad.getAction()));
 
             }
         });
@@ -161,9 +170,7 @@ public class EssayApi extends Api {
 
     /**
       * @description: TODO
-      * @param ${tags}
       * @return ${return_type}
-      * @throws
       * @author cullen
       * @date 2020/8/9 21:43
       */
@@ -179,20 +186,24 @@ public class EssayApi extends Api {
             params.put("createTime", essay.getCreateTime());
         }
 
-        OkGo.<String>get(URL_ESSAYS).params(params).execute(new JsonCallback() {
+        OkGo.<String>get(URL_DRAFTS).params(params).execute(new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
 
-                List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
-                        new TypeToken<List<EssayModel>>() {}.getType());
 
-                EssayService.saveEssays(models);
+                if(response.data != null) {
+                    List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
+                            new TypeToken<List<EssayModel>>() {}.getType());
 
-                if (models.size() == PAGE_SIZE) {
-                    drafts();
+                    EssayService.saveEssays(models);
+
+                    if (models.size() == PAGE_SIZE) {
+                        drafts();
+                    }
                 }
 
-                App.instance.manager.sendBroadcast(new Intent(Constants.ACTION_ESSAY_DATA_LOAD));
+
+                App.instance.manager.sendBroadcast(new Intent(EnumAction.DraftsLoad.getAction()));
 
             }
         });

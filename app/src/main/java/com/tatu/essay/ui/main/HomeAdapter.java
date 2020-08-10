@@ -3,12 +3,11 @@ package com.tatu.essay.ui.main;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeAdapter extends FragmentPagerAdapter {
 
-    private List<BaseFragment> fragments = new ArrayList<>();
+    private List<BaseFragment> fragments;
 
     public HomeAdapter(FragmentManager fm, List<BaseFragment> fragments) {
         super(fm);

@@ -17,7 +17,7 @@
 		>
 
 		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/iRecyclerView"
+			android:id="@+id/recyclerView"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
 			android:background="@color/activity_background"/>
@@ -38,6 +38,7 @@
 		android:scaleType="centerInside"
 		android:src="@drawable/ic_edit"
 		android:tint="@color/colorAccent"
+		android:visibility="gone"
 		app:backgroundTint="@color/float_button_primary"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

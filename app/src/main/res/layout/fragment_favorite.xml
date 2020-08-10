@@ -1,26 +1,36 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:id="@+id/iContainerView"
-	style="@style/FragmentStyle"
-	>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/iContainerView"
+    style="@style/FragmentStyle">
 
 
-	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-		android:id="@+id/swipeLayout"
-		style="@style/RefreshStyle"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        style="@style/RefreshStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/iRecyclerView"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:background="@color/activity_background"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/activity_background" />
 
-	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="@dimen/Floating_button"
+        android:layout_height="@dimen/Floating_button"
+        android:layout_marginEnd="@dimen/space_screen_align"
+        android:layout_marginBottom="@dimen/space_screen_align"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_edit"
+        android:tint="@color/colorAccent"
+        android:visibility="gone"
+        app:backgroundTint="@color/float_button_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.api.EssayApi;
-import com.tatu.essay.constants.Constants;
+import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.service.EssayService;
 import com.tatu.essay.ui.App;
@@ -29,6 +29,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
+import static com.tatu.essay.logic.EnumAction.FavoritesLoad;
+
 /****
  *
  * 喜欢
@@ -39,7 +41,7 @@ public class FragmentFavorite extends BaseFragment {
     @BindView(R.id.swipeLayout)
     SwipeRefreshLayout swipeLayout;
 
-    @BindView(R.id.iRecyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
 
@@ -79,10 +81,6 @@ public class FragmentFavorite extends BaseFragment {
     }
 
 
-    @Override
-    protected int initLayout() {
-        return R.layout.fragment_favorite;
-    }
 
 
     @Override
@@ -100,7 +98,7 @@ public class FragmentFavorite extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        App.instance.manager.registerReceiver(receiver, new IntentFilter(Constants.ACTION_ESSAY_DATA_LOAD));
+        App.instance.manager.registerReceiver(receiver, new IntentFilter(FavoritesLoad.getAction()));
         // 是空的时候请求服务器
         requestData();
 
@@ -111,14 +109,12 @@ public class FragmentFavorite extends BaseFragment {
 
         List<EssayItem> list = new ArrayList<>();
         essayAdapter = new EssayAdapter((EssayModel essayModel, int position) -> {
-            int truePosition = EssayDataHandler.getPosition(data, essayModel);
-            showDetail(truePosition);
+            showDetail(essayModel);
         }, list);
 
 
         essayAdapter.setFooterView(getLayoutInflater().inflate(R.layout.view_empty_footer,
                 null));
-        essayAdapter.setEmptyView(getLayoutInflater().inflate(R.layout.layout_essay_empty, null));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(essayAdapter);
@@ -171,27 +167,19 @@ public class FragmentFavorite extends BaseFragment {
     private void loadData() {
 
 
-        data.addAll(EssayService.loadEssay(pageNum, null));
+        data.addAll(EssayService.loadEssays(pageNum));
         pageNum = (int) Math.floor(data.size() / Api.V_PAGE_SIZE);
         updateUI();
     }
 
 
-    /***
-     * 显示随笔详情
-     */
-    private void showDetail(int position) {
-        Intent intent = new Intent(getActivity(), EssayDetailActivity.class);
-        intent.putExtra("essay", data.get(position));
-        startActivity(intent);
 
-    }
 
 
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (Constants.ACTION_ESSAY_DATA_LOAD.equals(intent.getAction())) {
+            if (FavoritesLoad.getAction().equals(intent.getAction())) {
                 loadData();
             }
         }

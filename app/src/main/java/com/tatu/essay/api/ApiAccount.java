@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.tatu.essay.ui.App;
-import com.tatu.essay.constants.Constants;
+import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.UserModel;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
@@ -85,7 +85,7 @@ public class ApiAccount extends Api {
                 } else {
                     SPSUtils.saveToken(null);
                 }
-                App.instance.manager.sendBroadcast(new Intent(Constants.ACTION_ACCOUNT_INFO_LOAD));
+                App.instance.manager.sendBroadcast(new Intent(EnumAction.AccountLoad.getAction()));
             }
         });
     }

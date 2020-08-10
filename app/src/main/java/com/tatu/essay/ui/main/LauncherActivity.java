@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.tatu.essay.R;
 import com.tatu.essay.api.ApiAccount;
-import com.tatu.essay.constants.Constants;
+import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.TokenInfo;
 import com.tatu.essay.utils.PermissionsCheckerUtil;
 import com.tatu.essay.utils.http.OkGoUpdateHttpUtil;
@@ -33,9 +33,11 @@ public class LauncherActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        App.instance.manager.registerReceiver(receiver, new IntentFilter(Constants.ACTION_ACCOUNT_INFO_LOAD));
+        App.instance.manager.registerReceiver(receiver, new IntentFilter(EnumAction.AccountLoad.getAction()));
         App.instance.initOther();
-        updateLogic();
+//        updateLogic();
+
+        goMain();
 
     }
 
@@ -104,7 +106,7 @@ public class LauncherActivity extends BaseActivity {
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (Constants.ACTION_ACCOUNT_INFO_LOAD.equals(intent.getAction())) {
+            if (EnumAction.AccountLoad.getAction().equals(intent.getAction())) {
                 Log.e("goto main broadcast", "goto main");
                 goMain();
             }

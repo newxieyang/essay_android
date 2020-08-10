@@ -1,8 +1,10 @@
 package com.tatu.essay.ui;
 
 import android.app.Application;
+import android.os.Build;
 import android.text.TextUtils;
 
+import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.tamsiree.rxkit.RxEncryptTool;
@@ -10,7 +12,6 @@ import com.tamsiree.rxkit.RxTool;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.model.gen.DaoSession;
 import com.tatu.essay.model.gen.EssayModelDao;
-import com.tatu.essay.model.gen.FleetModelDao;
 import com.tatu.essay.utils.db.DbCore;
 import com.tatu.essay.utils.http.HttpUtils;
 import com.tatu.essay.utils.store.SPSUtils;
@@ -39,6 +40,7 @@ public class App extends Application {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void initOther() {
 
         SPSUtils.loadTokens().ifPresent((tokenInfo) -> {
@@ -115,7 +117,4 @@ public class App extends Application {
     }
 
 
-    public FleetModelDao getFleetDao() {
-        return getDaoSession().getFleetModelDao();
-    }
 }

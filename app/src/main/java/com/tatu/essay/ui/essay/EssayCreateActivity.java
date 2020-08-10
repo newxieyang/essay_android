@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.api.EssayApi;
-import com.tatu.essay.logic.DataState;
+import com.tatu.essay.logic.EnumDataState;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.utils.GsonUtils;
@@ -91,7 +91,7 @@ public class EssayCreateActivity extends BaseActivity {
             return;
         }
 
-        essayModel.setState(DataState.DRAFT.getState());
+        essayModel.setState(EnumDataState.DRAFT.getState());
 
         EssayApi.save(GsonUtils.toJson(essayModel), new JsonCallback() {
             @Override
@@ -116,7 +116,7 @@ public class EssayCreateActivity extends BaseActivity {
             return;
         }
 
-        essayModel.setState(DataState.NORMAL.getState());
+        essayModel.setState(EnumDataState.NORMAL.getState());
 
         EssayApi.save(GsonUtils.toJson(essayModel), new JsonCallback() {
             @Override
