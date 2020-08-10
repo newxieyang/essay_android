@@ -1,8 +1,6 @@
 package com.tatu.essay.ui.essay;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,7 +14,6 @@ import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.service.EssayService;
 import com.tatu.essay.ui.main.BaseFragment;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 
@@ -28,18 +25,9 @@ public class FragmentEssay extends BaseFragment {
 
 
 
-
-    private WeakReference<Activity> activity;
-
-    private EssayAdapter essayAdapter;
-
-    protected PageInfo pageInfo = new PageInfo();
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity = new WeakReference<>(getActivity());
         action = EnumAction.EssaysLoad.getAction();
     }
 
@@ -56,7 +44,6 @@ public class FragmentEssay extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        activity.clear();
     }
 
 
@@ -78,20 +65,7 @@ public class FragmentEssay extends BaseFragment {
     }
 
 
-    private void initRefreshLayout() {
-        swipeLayout.setColorSchemeColors(Color.rgb(66, 165, 245));
-        swipeLayout.setOnRefreshListener(this::refresh);
-    }
 
-    private void initAdapter() {
-
-        essayAdapter = new EssayAdapter((EssayModel essayModel, int position) -> showDetail(essayModel));
-
-//        essayAdapter.setFooterView(getLayoutInflater().inflate(R.layout.view_empty_footer,
-//                recyclerView));
-        recyclerView.setAdapter(essayAdapter);
-
-    }
 
 
     /**
@@ -104,16 +78,12 @@ public class FragmentEssay extends BaseFragment {
         //当自动加载开启，同时数据不满一屏时，是否继续执行自动加载更多(默认为true)
         essayAdapter.getLoadMoreModule().setEnableLoadMoreIfNotFullPage(false);
     }*/
-    public View getEmptyDataView() {
-        View notDataView = getLayoutInflater().inflate(R.layout.view_empty, recyclerView, false);
-        notDataView.setOnClickListener(v -> refresh());
-        return notDataView;
-    }
+
 
     /**
      * 获取文件列表
      */
-    private void refresh() {
+    public void refresh() {
 
         EssayApi.essays();
 

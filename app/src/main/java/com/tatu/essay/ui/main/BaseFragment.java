@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +21,11 @@ import com.tatu.essay.R;
 import com.tatu.essay.constants.ResourceConstants;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.ui.App;
+import com.tatu.essay.ui.essay.EssayAdapter;
 import com.tatu.essay.ui.essay.EssayDetailActivity;
+import com.tatu.essay.ui.essay.PageInfo;
 
 import java.util.Objects;
-
 
 
 public abstract class BaseFragment extends Fragment {
@@ -32,9 +34,13 @@ public abstract class BaseFragment extends Fragment {
 
     protected String action;
 
-   protected SwipeRefreshLayout swipeLayout;
+    protected SwipeRefreshLayout swipeLayout;
 
     protected RecyclerView recyclerView;
+
+    protected PageInfo pageInfo = new PageInfo();
+
+    protected EssayAdapter essayAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,10 +81,35 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void loadData();
 
+    protected abstract void refresh();
+
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+
+    protected void initRefreshLayout() {
+        swipeLayout.setColorSchemeColors(Color.rgb(66, 165, 245));
+        swipeLayout.setOnRefreshListener(this::refresh);
+    }
+
+    protected void initAdapter() {
+
+        essayAdapter = new EssayAdapter((EssayModel essayModel, int position) -> showDetail(essayModel));
+
+//        essayAdapter.setFooterView(getLayoutInflater().inflate(R.layout.view_empty_footer,
+//                recyclerView));
+        recyclerView.setAdapter(essayAdapter);
+
+    }
+
+
+    public View getEmptyDataView() {
+        View notDataView = getLayoutInflater().inflate(R.layout.view_empty, recyclerView, false);
+        notDataView.setOnClickListener(v -> refresh());
+        return notDataView;
     }
 
 

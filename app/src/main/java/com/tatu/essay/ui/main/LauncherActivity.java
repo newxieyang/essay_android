@@ -67,6 +67,7 @@ public class LauncherActivity extends BaseActivity {
                 Intent intent;
                 Log.e("goto main handle", "goto main");
                 if (tokenInfo.isPresent() && tokenInfo.get().getToken() != null) {
+                    ApiAccount.initInfo();
                     intent = new Intent(LauncherActivity.this, HomeActivity
                             .class);
                 } else {
