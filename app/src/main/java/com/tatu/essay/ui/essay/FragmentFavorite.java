@@ -67,11 +67,20 @@ public class FragmentFavorite extends BaseFragment {
     }
 
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // 是空的时候请求服务器
+        requestData();
+
+    }
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         activity.clear();
-        App.instance.manager.unregisterReceiver(receiver);
     }
 
 
@@ -95,14 +104,7 @@ public class FragmentFavorite extends BaseFragment {
 
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        App.instance.manager.registerReceiver(receiver, new IntentFilter(FavoritesLoad.getAction()));
-        // 是空的时候请求服务器
-        requestData();
 
-    }
 
 
     private void initAdapter() {
@@ -164,7 +166,7 @@ public class FragmentFavorite extends BaseFragment {
     }
 
 
-    private void loadData() {
+    public void loadData() {
 
 
         data.addAll(EssayService.loadEssays(pageNum));
@@ -176,12 +178,4 @@ public class FragmentFavorite extends BaseFragment {
 
 
 
-    BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (FavoritesLoad.getAction().equals(intent.getAction())) {
-                loadData();
-            }
-        }
-    };
 }

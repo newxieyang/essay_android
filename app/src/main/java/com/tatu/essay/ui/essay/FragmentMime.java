@@ -67,12 +67,19 @@ public class FragmentMime extends BaseFragment {
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        // 是空的时候请求服务器
+        requestData();
+
+    }
+
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         activity.clear();
-        App.instance.manager.unregisterReceiver(receiver);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -90,14 +97,7 @@ public class FragmentMime extends BaseFragment {
 
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        App.instance.manager.registerReceiver(receiver, new IntentFilter(MineLoad.getAction()));
-        // 是空的时候请求服务器
-        requestData();
 
-    }
 
 
     private void initAdapter() {
@@ -159,7 +159,7 @@ public class FragmentMime extends BaseFragment {
     }
 
 
-    private void loadData() {
+    public void loadData() {
 
 
         data.addAll(EssayService.loadEssays(pageNum));
@@ -171,12 +171,5 @@ public class FragmentMime extends BaseFragment {
 
 
 
-    BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (MineLoad.getAction().equals(intent.getAction())) {
-                loadData();
-            }
-        }
-    };
+
 }

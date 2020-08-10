@@ -68,10 +68,18 @@ public class FragmentEssay extends BaseFragment {
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        // 是空的时候请求服务器
+        requestData();
+
+    }
+
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         activity.clear();
-        App.instance.manager.unregisterReceiver(receiver);
     }
 
 
@@ -101,14 +109,6 @@ public class FragmentEssay extends BaseFragment {
 
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        App.instance.manager.registerReceiver(receiver, new IntentFilter(EssaysLoad.getAction()));
-        // 是空的时候请求服务器
-        requestData();
-
-    }
 
 
     private void initAdapter() {
@@ -165,7 +165,7 @@ public class FragmentEssay extends BaseFragment {
     }
 
 
-    private void loadData() {
+    public void loadData() {
 
 
         data.addAll(EssayService.loadEssays(pageNum));
@@ -177,12 +177,4 @@ public class FragmentEssay extends BaseFragment {
 
 
 
-    BroadcastReceiver receiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (EssaysLoad.getAction().equals(intent.getAction())) {
-                loadData();
-            }
-        }
-    };
 }

@@ -1,7 +1,10 @@
 package com.tatu.essay.ui.main;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +17,15 @@ import com.githang.statusbar.StatusBarCompat;
 import com.tatu.essay.R;
 import com.tatu.essay.constants.ResourceConstants;
 import com.tatu.essay.model.EssayModel;
+import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.essay.EssayDetailActivity;
 
 import java.util.Objects;
 
 import butterknife.ButterKnife;
+
+import static com.tatu.essay.logic.EnumAction.EssaysLoad;
+import static com.tatu.essay.logic.EnumAction.MineLoad;
 
 
 public abstract class BaseFragment extends Fragment implements View.OnClickListener {
@@ -49,21 +56,25 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onDestroy() {
         super.onDestroy();
+        App.instance.manager.unregisterReceiver(receiver);
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        App.instance.manager.registerReceiver(receiver, new IntentFilter(MineLoad.getAction()));
+    }
 
     protected abstract void initView(View view);
+
+    protected abstract void loadData();
 
 
     @Override
     public void onClick(View v) {
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+
 
 
     @Override
@@ -81,4 +92,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         startActivity(intent);
 
     }
+
+
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (EssaysLoad.getAction().equals(intent.getAction())) {
+                loadData();
+            }
+        }
+    };
 }
