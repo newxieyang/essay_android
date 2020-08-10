@@ -17,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.api.EssayApi;
+import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.service.EssayService;
 import com.tatu.essay.ui.App;
@@ -39,11 +40,6 @@ import static com.tatu.essay.logic.EnumAction.MineLoad;
 public class FragmentMime extends BaseFragment {
 
 
-    @BindView(R.id.swipeLayout)
-    SwipeRefreshLayout swipeLayout;
-
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
 
 
     //   列表数据
@@ -63,6 +59,7 @@ public class FragmentMime extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = new WeakReference<>(getActivity());
+        action = MineLoad.getAction();
     }
 
 
@@ -105,7 +102,7 @@ public class FragmentMime extends BaseFragment {
         List<EssayItem> list = new ArrayList<>();
         essayAdapter = new EssayAdapter((EssayModel essayModel, int position) -> {
             showDetail(essayModel);
-        }, list);
+        });
 
 
         essayAdapter.setFooterView(getLayoutInflater().inflate(R.layout.view_empty_footer,
@@ -113,9 +110,7 @@ public class FragmentMime extends BaseFragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(essayAdapter);
-        recyclerView.setVisibility(View.GONE);
 
-        swipeLayout.setVisibility(View.VISIBLE);
         swipeLayout.setRefreshing(true);
         swipeLayout.setNestedScrollingEnabled(true);
 /*        swipeLayout.setColorSchemeResources(
@@ -145,7 +140,6 @@ public class FragmentMime extends BaseFragment {
             essayAdapter.replaceData(list);
         }
 
-        recyclerView.setVisibility(View.VISIBLE);
 
     }
 

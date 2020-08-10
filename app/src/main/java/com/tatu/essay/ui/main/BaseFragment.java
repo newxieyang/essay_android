@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.githang.statusbar.StatusBarCompat;
 import com.tatu.essay.R;
@@ -22,16 +24,17 @@ import com.tatu.essay.ui.essay.EssayDetailActivity;
 
 import java.util.Objects;
 
-import butterknife.ButterKnife;
-
-import static com.tatu.essay.logic.EnumAction.EssaysLoad;
-import static com.tatu.essay.logic.EnumAction.MineLoad;
 
 
-public abstract class BaseFragment extends Fragment implements View.OnClickListener {
+public abstract class BaseFragment extends Fragment {
 
     protected String TAG;
 
+    protected String action;
+
+   protected SwipeRefreshLayout swipeLayout;
+
+    protected RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_essay, container, false);
-        ButterKnife.bind(this, view);
+
+        swipeLayout = view.findViewById(R.id.swipeLayout);
+        recyclerView = view.findViewById(R.id.recyclerView);
+
         initView(view);
         return view;
     }
@@ -62,19 +68,12 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onResume() {
         super.onResume();
-        App.instance.manager.registerReceiver(receiver, new IntentFilter(MineLoad.getAction()));
+        App.instance.manager.registerReceiver(receiver, new IntentFilter(action));
     }
 
     protected abstract void initView(View view);
 
     protected abstract void loadData();
-
-
-    @Override
-    public void onClick(View v) {
-    }
-
-
 
 
     @Override
@@ -97,7 +96,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (EssaysLoad.getAction().equals(intent.getAction())) {
+            if (action.equals(intent.getAction())) {
                 loadData();
             }
         }

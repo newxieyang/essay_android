@@ -29,8 +29,8 @@ public class EssayAdapter extends BaseQuickAdapter<EssayItem, BaseViewHolder> {
 
     SimpleDateFormat DEFAULT_SDF = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
-    public EssayAdapter(EssayOnclickListener listener, List data) {
-        super(R.layout.item_essay_list, data);
+    public EssayAdapter(EssayOnclickListener listener) {
+        super(R.layout.item_essay_list);
         this.listener = listener;
 
     }

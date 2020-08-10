@@ -38,14 +38,6 @@ import static com.tatu.essay.logic.EnumAction.FavoritesLoad;
 public class FragmentFavorite extends BaseFragment {
 
 
-    @BindView(R.id.swipeLayout)
-    SwipeRefreshLayout swipeLayout;
-
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-
-
-
 
     //   列表数据
     private List<EssayModel> data = new ArrayList<>();
@@ -64,6 +56,7 @@ public class FragmentFavorite extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = new WeakReference<>(getActivity());
+        action = FavoritesLoad.getAction();
     }
 
 
@@ -112,7 +105,7 @@ public class FragmentFavorite extends BaseFragment {
         List<EssayItem> list = new ArrayList<>();
         essayAdapter = new EssayAdapter((EssayModel essayModel, int position) -> {
             showDetail(essayModel);
-        }, list);
+        });
 
 
         essayAdapter.setFooterView(getLayoutInflater().inflate(R.layout.view_empty_footer,
@@ -120,9 +113,7 @@ public class FragmentFavorite extends BaseFragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(essayAdapter);
-        recyclerView.setVisibility(View.GONE);
 
-        swipeLayout.setVisibility(View.VISIBLE);
         swipeLayout.setRefreshing(true);
         swipeLayout.setNestedScrollingEnabled(true);
 /*        swipeLayout.setColorSchemeResources(
@@ -152,7 +143,6 @@ public class FragmentFavorite extends BaseFragment {
             essayAdapter.replaceData(list);
         }
 
-        recyclerView.setVisibility(View.VISIBLE);
 
     }
 

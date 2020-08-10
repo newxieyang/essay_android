@@ -1,18 +1,12 @@
 package com.tatu.essay.ui.essay;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
@@ -20,28 +14,16 @@ import com.tatu.essay.api.EssayApi;
 import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.service.EssayService;
-import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.main.BaseFragment;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-
-import static com.tatu.essay.logic.EnumAction.DraftsLoad;
-
 /****
  * 草稿
  */
 public class FragmentDraft extends BaseFragment {
-
-
-    @BindView(R.id.swipeLayout)
-    SwipeRefreshLayout swipeLayout;
-
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
 
 
 
@@ -61,6 +43,7 @@ public class FragmentDraft extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = new WeakReference<>(getActivity());
+        action = EnumAction.DraftsLoad.getAction();
     }
 
 
@@ -106,7 +89,7 @@ public class FragmentDraft extends BaseFragment {
         List<EssayItem> list = new ArrayList<>();
         essayAdapter = new EssayAdapter((EssayModel essayModel, int position) -> {
             showDetail(essayModel);
-        }, list);
+        });
 
 
         essayAdapter.setFooterView(getLayoutInflater().inflate(R.layout.view_empty_footer,
@@ -114,9 +97,7 @@ public class FragmentDraft extends BaseFragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(essayAdapter);
-        recyclerView.setVisibility(View.GONE);
 
-        swipeLayout.setVisibility(View.VISIBLE);
         swipeLayout.setRefreshing(true);
         swipeLayout.setNestedScrollingEnabled(true);
         swipeLayout.setOnRefreshListener(this::requestData);
@@ -140,7 +121,6 @@ public class FragmentDraft extends BaseFragment {
             essayAdapter.setDiffNewData(list);
         }
 
-        recyclerView.setVisibility(View.VISIBLE);
 
     }
 
