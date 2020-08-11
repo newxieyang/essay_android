@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.tatu.essay.R;
+import com.tatu.essay.api.Api;
 import com.tatu.essay.api.ApiAccount;
 import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.TokenInfo;
@@ -67,6 +68,7 @@ public class LauncherActivity extends BaseActivity {
                 Intent intent;
                 Log.e("goto main handle", "goto main");
                 if (tokenInfo.isPresent() && tokenInfo.get().getToken() != null) {
+                    Api.authorId = SPSUtils.loadUser().getId();
                     ApiAccount.initInfo();
                     intent = new Intent(LauncherActivity.this, HomeActivity
                             .class);

@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.lzy.okgo.model.HttpParams;
 import com.tatu.essay.R;
 import com.tatu.essay.api.EssayApi;
 import com.tatu.essay.logic.EnumDataState;
@@ -58,8 +61,8 @@ public class EssayDetailActivity extends BaseActivity {
         String content = data.getContent();
         contentView.setText(content);
 
-        int iconResId = draft?R.drawable.ic_baseline_done_24:R.drawable.ic_baseline_arrow_back_ios_24;
-        toolbar.setNavigationIcon(iconResId);
+
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
 
         toolbar.setNavigationOnClickListener((View view)-> {
             Editable editable = contentView.getText();
@@ -79,7 +82,10 @@ public class EssayDetailActivity extends BaseActivity {
             finish();
 
         });
+
         toolbar.inflateMenu(R.menu.menu_essay_favorite);
+        int iconResId = draft?R.drawable.ic_baseline_done_24:R.drawable.ic_baseline_favorite_border_24;
+        toolbar.getMenu().getItem(0).setIcon(iconResId);
         toolbar.setOnMenuItemClickListener(item -> {
             Editable editable = contentView.getText();
             save(data.getId(), EnumDataState.NORMAL, editable.toString());
@@ -96,11 +102,11 @@ public class EssayDetailActivity extends BaseActivity {
 
     private void save(Long id, EnumDataState enumDataState, String content) {
 
-        Map<String, Object> map = new HashMap<>();
+        HttpParams map = new HttpParams();
         map.put("state", enumDataState.getState());
         map.put("content", content);
 
-        EssayApi.update(id, GsonUtils.toJson(map), new JsonCallback() {
+        EssayApi.update(id, map, new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
                 if(response.code != 200) {

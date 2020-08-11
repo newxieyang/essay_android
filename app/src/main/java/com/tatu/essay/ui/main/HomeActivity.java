@@ -60,8 +60,8 @@ public class HomeActivity extends AppCompatActivity {
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(new FragmentEssay());
         fragments.add(new FragmentMime());
-        fragments.add(new FragmentDraft());
         fragments.add(new FragmentFavorite());
+        fragments.add(new FragmentDraft());
         HomeAdapter homeAdapter = new HomeAdapter(getSupportFragmentManager(), fragments);
         mViewPager.setAdapter(homeAdapter);
     }

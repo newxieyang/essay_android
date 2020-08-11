@@ -64,13 +64,15 @@ public class EssayApi extends Api {
             @Override
             protected void onResponse(ResponseApi response) {
 
-                List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
-                        new TypeToken<List<EssayModel>>() {}.getType());
+                if(response.code == 200) {
+                    List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
+                            new TypeToken<List<EssayModel>>() {}.getType());
 
-                EssayService.saveEssays(models);
+                    EssayService.saveEssays(models);
 
-                if (models.size() == PAGE_SIZE) {
-                    essays();
+                    if (models.size() == PAGE_SIZE) {
+                        essays();
+                    }
                 }
 
                 App.instance.manager.sendBroadcast(new Intent(EnumAction.EssaysLoad.getAction()));
@@ -99,6 +101,8 @@ public class EssayApi extends Api {
         if (essay != null) {
             params.put("createTime", essay.getCreateTime());
         }
+
+        params.put("userId", Api.authorId);
 
         OkGo.<String>get(URL_FAVORITES).params(params).execute(new JsonCallback() {
             @Override
@@ -142,6 +146,7 @@ public class EssayApi extends Api {
         if (essay != null) {
             params.put("createTime", essay.getCreateTime());
         }
+        params.put("userId", Api.authorId);
 
         OkGo.<String>get(URL_MINE).params(params).execute(new JsonCallback() {
             @Override
@@ -186,6 +191,8 @@ public class EssayApi extends Api {
             params.put("createTime", essay.getCreateTime());
         }
 
+        params.put("userId", Api.authorId);
+
         OkGo.<String>get(URL_DRAFTS).params(params).execute(new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
@@ -222,9 +229,9 @@ public class EssayApi extends Api {
     }
 
 
-    public static void update(long id, String JsonParams, JsonCallback callback) {
+    public static void update(long id, HttpParams params, JsonCallback callback) {
         String url = URL_UPDATE+ "/" + id;
-        OkGo.<String>post(url).upJson(JsonParams).execute(callback);
+        OkGo.<String>post(url).params(params).execute(callback);
     }
 
 
