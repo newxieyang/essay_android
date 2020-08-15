@@ -10,7 +10,6 @@ import com.tatu.essay.api.Api;
 import com.tatu.essay.model.EssayModel;
 
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Locale;
 
 /**

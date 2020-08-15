@@ -33,14 +33,13 @@ import com.tatu.essay.R;
 import com.tatu.essay.api.ApiAccount;
 import com.tatu.essay.model.TokenInfo;
 import com.tatu.essay.model.UserModel;
+import com.tatu.essay.ui.App;
+import com.tatu.essay.ui.main.BaseActivity;
+import com.tatu.essay.ui.main.HomeActivity;
 import com.tatu.essay.utils.CustomTextWatcher;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
 import com.tatu.essay.utils.store.SPSUtils;
-import com.tatu.essay.ui.App;
-import com.tatu.essay.ui.main.BaseActivity;
-import com.tatu.essay.ui.main.HomeActivity;
-
 
 import butterknife.BindView;
 import butterknife.OnClick;

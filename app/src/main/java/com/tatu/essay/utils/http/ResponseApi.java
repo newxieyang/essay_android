@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.lzy.okgo.model.Response;
 
-public class ResponseApi<T> {
+public class ResponseApi {
 
     public int code;
     public JsonObject data;

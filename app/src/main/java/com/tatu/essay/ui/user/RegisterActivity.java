@@ -32,11 +32,10 @@ import com.tamsiree.rxui.activity.AndroidBug5497Workaround;
 import com.tamsiree.rxui.view.loadingview.style.Circle;
 import com.tatu.essay.R;
 import com.tatu.essay.api.ApiAccount;
+import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.utils.CustomTextWatcher;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
-import com.tatu.essay.ui.main.BaseActivity;
-
 
 import butterknife.BindView;
 import butterknife.OnClick;

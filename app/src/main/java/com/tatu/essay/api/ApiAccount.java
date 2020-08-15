@@ -4,15 +4,15 @@ package com.tatu.essay.api;
 import android.content.Intent;
 import android.util.Log;
 
-import com.tatu.essay.ui.App;
-import com.tatu.essay.logic.EnumAction;
-import com.tatu.essay.model.UserModel;
-import com.tatu.essay.utils.http.JsonCallback;
-import com.tatu.essay.utils.http.ResponseApi;
-import com.tatu.essay.utils.store.SPSUtils;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpParams;
+import com.tatu.essay.logic.EnumAction;
+import com.tatu.essay.model.UserModel;
+import com.tatu.essay.ui.App;
+import com.tatu.essay.utils.http.JsonCallback;
+import com.tatu.essay.utils.http.ResponseApi;
+import com.tatu.essay.utils.store.SPSUtils;
 
 public class ApiAccount extends Api {
 

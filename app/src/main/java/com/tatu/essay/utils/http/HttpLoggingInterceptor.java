@@ -2,9 +2,9 @@ package com.tatu.essay.utils.http;
 
 import android.util.Log;
 
-import com.tatu.essay.utils.store.SPSUtils;
 import com.lzy.okgo.utils.IOUtils;
 import com.lzy.okgo.utils.OkLogger;
+import com.tatu.essay.utils.store.SPSUtils;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

@@ -11,7 +11,10 @@ public enum EnumAction {
     // 收藏
     FavoritesLoad("android.intent.action.essay.favorites.load.data"),
     // 草稿
-    DraftsLoad("android.intent.action.essay.drafts.load.data");
+    DraftsLoad("android.intent.action.essay.drafts.load.data"),
+
+
+    EssayDetail("android.intent.action.essay.detail");
 
     private String action;
 

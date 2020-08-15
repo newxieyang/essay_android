@@ -9,22 +9,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.JsonObject;
-import com.lzy.okgo.OkGo;
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.api.ApiAccount;
 import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.TokenInfo;
-import com.tatu.essay.utils.PermissionsCheckerUtil;
-import com.tatu.essay.utils.http.JsonCallback;
-import com.tatu.essay.utils.http.OkGoUpdateHttpUtil;
-import com.tatu.essay.utils.http.ResponseApi;
-import com.tatu.essay.utils.store.SPSUtils;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.user.LoginActivity;
+import com.tatu.essay.utils.PermissionsCheckerUtil;
+import com.tatu.essay.utils.http.OkGoUpdateHttpUtil;
+import com.tatu.essay.utils.store.SPSUtils;
 import com.vector.update_app.UpdateAppBean;
 import com.vector.update_app.UpdateAppManager;
 import com.vector.update_app.UpdateCallback;
@@ -32,8 +27,6 @@ import com.vector.update_app.UpdateCallback;
 import org.json.JSONObject;
 
 import java.util.Optional;
-
-import io.reactivex.rxjava3.core.Observable;
 
 public class LauncherActivity extends BaseActivity {
 

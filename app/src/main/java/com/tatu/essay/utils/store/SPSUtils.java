@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.tatu.essay.ui.App;
+import com.google.gson.Gson;
 import com.tatu.essay.model.TokenInfo;
 import com.tatu.essay.model.UserModel;
-import com.google.gson.Gson;
+import com.tatu.essay.ui.App;
 
 import java.util.Objects;
 import java.util.Optional;

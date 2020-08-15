@@ -13,10 +13,10 @@ import com.tatu.essay.api.Api;
 import com.tatu.essay.model.gen.DaoSession;
 import com.tatu.essay.model.gen.EssayModelDao;
 import com.tatu.essay.model.gen.FavoriteModelDao;
+import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.utils.db.DbCore;
 import com.tatu.essay.utils.http.HttpUtils;
 import com.tatu.essay.utils.store.SPSUtils;
-import com.tatu.essay.ui.main.BaseActivity;
 
 import java.util.Stack;
 

@@ -1,12 +1,10 @@
 package com.tatu.essay.service;
 
-import com.tatu.essay.logic.EnumDataState;
-import com.tatu.essay.ui.App;
 import com.tatu.essay.api.Api;
+import com.tatu.essay.logic.EnumDataState;
 import com.tatu.essay.model.EssayModel;
 import com.tatu.essay.model.gen.EssayModelDao;
-
-import org.greenrobot.greendao.query.WhereCondition;
+import com.tatu.essay.ui.App;
 
 import java.util.List;
 

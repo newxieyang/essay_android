@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 
+import com.lzy.okgo.OkGo;
 import com.tatu.essay.model.UserModel;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.main.LauncherActivity;
 import com.tatu.essay.utils.store.SPSUtils;
-import com.lzy.okgo.OkGo;
 
 public class ApplicationUtils {
 

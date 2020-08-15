@@ -2,7 +2,6 @@ package com.tatu.essay.ui.essay;
 
 import android.os.Bundle;
 
-import com.tatu.essay.api.Api;
 import com.tatu.essay.api.EssayApi;
 import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.logic.EnumEssayFolder;

@@ -2,8 +2,8 @@ package com.tatu.essay.constants;
 
 import androidx.core.content.ContextCompat;
 
-import com.tatu.essay.ui.App;
 import com.tatu.essay.R;
+import com.tatu.essay.ui.App;
 
 /**
  * Created by xieyang on 2017-11-2.

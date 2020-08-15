@@ -96,9 +96,7 @@ public class EssayCreateActivity extends BaseActivity {
         EssayApi.save(GsonUtils.toJson(essayModel), new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
-                if(response.code != 200) {
-                    // TODO 保存到本地
-                }
+
                 finish();
             }
         });
