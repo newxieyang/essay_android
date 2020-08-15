@@ -15,5 +15,3 @@ dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
     api 'com.squareup.okhttp3:okhttp:3.14.9'
 }
-
-//apply from: 'bintray.gradle'

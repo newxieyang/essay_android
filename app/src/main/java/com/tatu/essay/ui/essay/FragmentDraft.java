@@ -20,9 +20,9 @@ public class FragmentDraft extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         action = EnumAction.DraftsLoad.getAction();
         folder = EnumEssayFolder.DRAFTS;
+        super.onCreate(savedInstanceState);
     }
 
 

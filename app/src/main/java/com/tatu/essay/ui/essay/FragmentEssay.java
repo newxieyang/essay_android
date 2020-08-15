@@ -22,9 +22,9 @@ public class FragmentEssay extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         action = EnumAction.EssaysLoad.getAction();
         folder = EnumEssayFolder.ESSAYS;
+        super.onCreate(savedInstanceState);
     }
 
 

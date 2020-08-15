@@ -23,9 +23,9 @@ public class FragmentMime extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         action = MineLoad.getAction();
         folder = EnumEssayFolder.MIME;
+        super.onCreate(savedInstanceState);
     }
 
 

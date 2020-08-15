@@ -39,6 +39,8 @@ public class LauncherActivity extends BaseActivity {
 
     private final static int SEND_SMS_REQUEST_CODE = 0;
 
+    private boolean isGoMain = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,7 @@ public class LauncherActivity extends BaseActivity {
                 Log.e("goto main handle", "goto main");
                 if (tokenInfo.isPresent() && tokenInfo.get().getToken() != null) {
                     Api.authorId = SPSUtils.loadUser().getId();
+                    isGoMain = true;
                     ApiAccount.initInfo();
                     intent = new Intent(LauncherActivity.this, HomeActivity
                             .class);
@@ -121,8 +124,10 @@ public class LauncherActivity extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (EnumAction.AccountLoad.getAction().equals(intent.getAction())) {
-                Log.e("goto main broadcast", "goto main");
-                goMain();
+                if(!isGoMain) {
+                    Log.e("goto main broadcast", "goto main");
+                    goMain();
+                }
             }
         }
     };

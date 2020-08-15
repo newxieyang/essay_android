@@ -6,10 +6,13 @@ import com.tatu.essay.api.Api;
 import com.tatu.essay.api.EssayApi;
 import com.tatu.essay.logic.EnumEssayFolder;
 import com.tatu.essay.model.EssayModel;
+import com.tatu.essay.model.FavoriteModel;
 import com.tatu.essay.service.EssayService;
+import com.tatu.essay.service.FavoritesService;
 import com.tatu.essay.ui.main.BaseFragment;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.tatu.essay.logic.EnumAction.FavoritesLoad;
 
@@ -22,9 +25,9 @@ public class FragmentFavorite extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         action = FavoritesLoad.getAction();
         folder = EnumEssayFolder.FAVORITES;
+        super.onCreate(savedInstanceState);
     }
 
 
@@ -38,8 +41,7 @@ public class FragmentFavorite extends BaseFragment {
 
     public void loadData() {
 
-        List<EssayModel> list = EssayService.loadFavorites(pageInfo.page);
-
+        List<FavoriteModel> list = FavoritesService.loadFavorites(pageInfo.page);
 
         swipeLayout.setRefreshing(false);
 
@@ -48,7 +50,11 @@ public class FragmentFavorite extends BaseFragment {
             return;
         }
 
-        List<EssayItem> items = EssayDataHandler.getList(list);
+        List<Long> ids = list.stream().map(FavoriteModel ::getEssayId).collect(Collectors.toList());
+
+        List<EssayModel> essayModels = EssayService.loadFavorites(ids);
+
+        List<EssayItem> items = EssayDataHandler.getList(essayModels);
 
         if (pageInfo.isFirstPage()) {
             essayAdapter.setList(items);

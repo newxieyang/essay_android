@@ -32,12 +32,9 @@ public class EssayService extends BaseService {
      */
     public static List<EssayModel> loadEssays(int pageNum) {
 
-        String condition = " 1=1 ";
-
-        condition += " and " + EssayModelDao.Properties.State.columnName + "=" + EnumDataState.NORMAL.getState() + " ";
 
         return App.instance.getEssayDao().queryBuilder()
-                .where(new WhereCondition.StringCondition(condition))
+                .where(EssayModelDao.Properties.State.eq(EnumDataState.NORMAL.getState()))
                 .orderDesc(EssayModelDao.Properties.CreateTime)
                 .limit(Api.V_PAGE_SIZE).offset((pageNum - 1) * Api.V_PAGE_SIZE).list();
 
@@ -50,13 +47,12 @@ public class EssayService extends BaseService {
      * @return
      */
     public static List<EssayModel> loadMine(int pageNum, Long authorId) {
-        String condition = " 1=1 ";
-
-        condition += " and " + EssayModelDao.Properties.CreateBy.columnName + "=" + authorId + " ";
-        condition += " and " + EssayModelDao.Properties.State.columnName + "=" + EnumDataState.NORMAL.getState() + " ";
 
         return App.instance.getEssayDao().queryBuilder()
-                .where(new WhereCondition.StringCondition(condition))
+                .where(
+                        EssayModelDao.Properties.State.eq(EnumDataState.NORMAL.getState()),
+                        EssayModelDao.Properties.CreateBy.eq(authorId)
+                )
                 .orderDesc(EssayModelDao.Properties.CreateTime)
                 .limit(Api.V_PAGE_SIZE).offset((pageNum - 1) * Api.V_PAGE_SIZE).list();
 
@@ -65,15 +61,14 @@ public class EssayService extends BaseService {
 
     /***
      * 加载数据
-     * @param pageNum
+     * @param ids
      * @return
      */
-    public static List<EssayModel> loadFavorites(int pageNum) {
-        String condition = " 1=1 ";
+    public static List<EssayModel> loadFavorites(List<Long> ids) {
         return App.instance.getEssayDao().queryBuilder()
-                .where(new WhereCondition.StringCondition(condition))
+                .where(EssayModelDao.Properties.Id.in(ids))
                 .orderDesc(EssayModelDao.Properties.CreateTime)
-                .limit(Api.V_PAGE_SIZE).offset((pageNum - 1) * Api.V_PAGE_SIZE).list();
+                .list();
 
     }
 
@@ -84,12 +79,9 @@ public class EssayService extends BaseService {
      * @return
      */
     public static List<EssayModel> loadDrafts(int pageNum) {
-        String condition = " 1=1 ";
-
-        condition += " and " + EssayModelDao.Properties.State.columnName + "=" + EnumDataState.DRAFT.getState() + " ";
 
         return App.instance.getEssayDao().queryBuilder()
-                .where(new WhereCondition.StringCondition(condition))
+                .where(EssayModelDao.Properties.State.eq(EnumDataState.DRAFT.getState()))
                 .orderDesc(EssayModelDao.Properties.CreateTime)
                 .limit(Api.V_PAGE_SIZE).offset((pageNum - 1) * Api.V_PAGE_SIZE).list();
 

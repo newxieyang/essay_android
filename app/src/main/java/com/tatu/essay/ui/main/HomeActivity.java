@@ -35,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPager mViewPager;
 
 
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,10 +45,11 @@ public class HomeActivity extends AppCompatActivity {
 
         StatusBarCompat.setStatusBarColor(this, ResourceConstants.colorWhite);
 
-        Toolbar toolbar =  findViewById(R.id.toolbar);
+        toolbar =  findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         initDrawer(savedInstanceState, toolbar);
+
+        toolbar.setTitle(getString(R.string.app_module_essay));
         initViewPage();
 
     }
@@ -120,6 +123,7 @@ public class HomeActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             // set the selection to the item with the identifier 11
             result.setSelection(0, false);
+            toolbar.setTitle(getString(R.string.app_module_essay));
 
         }
     }
@@ -128,6 +132,14 @@ public class HomeActivity extends AppCompatActivity {
     private void drawerItemClick(Integer identifier) {
         if(identifier < 4) {
             mViewPager.setCurrentItem(identifier, false);
+            String title = getString(R.string.app_module_essay);
+            switch (identifier) {
+                case 0: title = getString(R.string.app_module_essay); break;
+                case 1: title = getString(R.string.app_module_mime); break;
+                case 2: title = getString(R.string.app_module_favorites); break;
+                case 3: title = getString(R.string.app_module_draft); break;
+            }
+            toolbar.setTitle(title);
             return;
         }
 
