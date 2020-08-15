@@ -12,6 +12,7 @@ import com.tamsiree.rxkit.RxTool;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.model.gen.DaoSession;
 import com.tatu.essay.model.gen.EssayModelDao;
+import com.tatu.essay.model.gen.FavoriteModelDao;
 import com.tatu.essay.utils.db.DbCore;
 import com.tatu.essay.utils.http.HttpUtils;
 import com.tatu.essay.utils.store.SPSUtils;
@@ -116,5 +117,9 @@ public class App extends Application {
         return getDaoSession().getEssayModelDao();
     }
 
+
+    public FavoriteModelDao getFavoriteDao() {
+        return getDaoSession().getFavoriteModelDao();
+    }
 
 }

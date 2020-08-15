@@ -2,6 +2,9 @@
 package com.tatu.essay.api;
 
 import android.content.Intent;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -9,7 +12,9 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpParams;
 import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.EssayModel;
+import com.tatu.essay.model.FavoriteModel;
 import com.tatu.essay.service.EssayService;
+import com.tatu.essay.service.FavoritesService;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
@@ -31,19 +36,18 @@ public class EssayApi extends Api {
 
     public static final String URL_FAVORITE = essay_url + "favorite";
 
-    public static final String URL_DRAFT = essay_url + "draft";
-
     public static final String URL_SAVE = essay_url + "save";
 
+    public static final String URL_UPDATE= essay_url + "update";
 
     public static final String URL_VIEW = essay_url + "view";
 
-    public static final String URL_UPDATE= essay_url + "update";
+    public static final String URL_ESSAYS_IDS = essay_url + "findByIds";
 
     
     
     /**
-      * @description: TODO
+      * @description: 获取essays列表
       * @return ${return_type}
       * @author cullen
       * @date 2020/8/9 21:44 
@@ -64,7 +68,7 @@ public class EssayApi extends Api {
             @Override
             protected void onResponse(ResponseApi response) {
 
-                if(response.code == 200) {
+                if(response.code == 200 && response.data != null) {
                     List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
                             new TypeToken<List<EssayModel>>() {}.getType());
 
@@ -85,7 +89,7 @@ public class EssayApi extends Api {
 
 
     /**
-      * @description: TODO
+      * @description: 获取收藏列表
       * @return ${return_type}
       * @author cullen
       * @date 2020/8/9 23:40
@@ -108,11 +112,11 @@ public class EssayApi extends Api {
             @Override
             protected void onResponse(ResponseApi response) {
 
-                if(response.data != null) {
-                    List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
-                            new TypeToken<List<EssayModel>>() {}.getType());
+                if(response.code == 200 && response.data != null) {
+                    List<FavoriteModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
+                            new TypeToken<List<FavoriteModel>>() {}.getType());
 
-                    EssayService.saveEssays(models);
+                    FavoritesService.saveEssays(models);
 
                     if (models.size() == PAGE_SIZE) {
                         favorites();
@@ -130,7 +134,7 @@ public class EssayApi extends Api {
 
 
     /**
-      * @description: TODO
+      * @description: 获取我的essays
       * @return ${return_type}
       * @author cullen
       * @date 2020/8/9 21:44
@@ -152,7 +156,7 @@ public class EssayApi extends Api {
             @Override
             protected void onResponse(ResponseApi response) {
 
-                if(response.data != null) {
+                if(response.code == 200 && response.data != null) {
                     List<EssayModel> models = new Gson().fromJson(response.data.get("content").getAsJsonArray(),
                             new TypeToken<List<EssayModel>>() {}.getType());
 
@@ -174,7 +178,7 @@ public class EssayApi extends Api {
 
 
     /**
-      * @description: TODO
+      * @description: 获取草稿列表
       * @return ${return_type}
       * @author cullen
       * @date 2020/8/9 21:43
@@ -219,19 +223,52 @@ public class EssayApi extends Api {
     }
 
 
+    /**
+      * @description: 保存essay
+      * @author cullen
+      * @date 2020/8/11 21:38
+      */
     public static void save(String jsonParams, JsonCallback callback) {
         OkGo.<String>post(URL_SAVE).upJson(jsonParams).execute(callback);
     }
 
+
+    /**
+      * @description: essay 详情
+      * @author cullen
+      * @date 2020/8/11 21:39
+      */
     public static void view(Long id, JsonCallback callback) {
         String url = URL_VIEW + "/" + id;
         OkGo.<String>get(url).execute(callback);
     }
 
 
+    /**
+      * @description: 更新
+      * @author cullen
+      * @date 2020/8/11 21:39
+      */
     public static void update(long id, HttpParams params, JsonCallback callback) {
         String url = URL_UPDATE+ "/" + id;
-        OkGo.<String>post(url).params(params).execute(callback);
+        OkGo.<String>put(url).params(params).execute(callback);
+    }
+
+
+    /**
+     * 保存收藏
+     * @param jsonParams
+     * @param callback
+     */
+    public static void saveFavorite(String jsonParams, JsonCallback callback) {
+        OkGo.<String>post(URL_FAVORITE).upJson(jsonParams).execute(callback);
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static void getEssaysByIds(List<Long> ids, JsonCallback callback) {
+        String idsString = String.join(",", (CharSequence) ids);
+        OkGo.<String>get(URL_ESSAYS_IDS).params("ids", idsString).execute(callback);
     }
 
 

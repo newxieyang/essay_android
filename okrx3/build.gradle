@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion setup.compileSdk
+
+    defaultConfig {
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
+        versionCode release.versionCode
+        versionName release.versionName
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
+//    api "com.lzy.net:okgo:$versionName_okgo"
+    api project(':okgo')
+}
+
+//apply from: 'bintray.gradle'

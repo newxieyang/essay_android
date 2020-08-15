@@ -1,1 +1,1 @@
-include ':app', ':update-app', ':drawer'
+include ':app', ':update-app', ':drawer', ':okgo', 'okrx3'

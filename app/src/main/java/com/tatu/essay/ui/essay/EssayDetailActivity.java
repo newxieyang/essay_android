@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.widget.AppCompatEditText;
@@ -14,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.snackbar.Snackbar;
 import com.lzy.okgo.model.HttpParams;
 import com.tatu.essay.R;
+import com.tatu.essay.api.Api;
 import com.tatu.essay.api.EssayApi;
 import com.tatu.essay.logic.EnumDataState;
 import com.tatu.essay.model.EssayModel;
@@ -87,9 +86,14 @@ public class EssayDetailActivity extends BaseActivity {
         int iconResId = draft?R.drawable.ic_baseline_done_24:R.drawable.ic_baseline_favorite_border_24;
         toolbar.getMenu().getItem(0).setIcon(iconResId);
         toolbar.setOnMenuItemClickListener(item -> {
-            Editable editable = contentView.getText();
-            save(data.getId(), EnumDataState.NORMAL, editable.toString());
-            return false;
+            if(draft) {
+                Editable editable = contentView.getText();
+                save(data.getId(), EnumDataState.NORMAL, editable.toString());
+            } else {
+                favorite(data.getId());
+            }
+
+            return true;
         });
 
         toolbar.setTitle(data.getTitle());
@@ -113,6 +117,22 @@ public class EssayDetailActivity extends BaseActivity {
                     if(!EnumDataState.DRAFT.equals(enumDataState)) {
                         Snackbar.make(getRootView(), "保存失败", Snackbar.LENGTH_LONG).show();
                     }
+                }
+            }
+        });
+    }
+
+
+    private void favorite(long essayId) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("essayId",  essayId);
+        map.put("userId", Api.authorId);
+
+        EssayApi.saveFavorite(GsonUtils.toJson(map), new JsonCallback() {
+            @Override
+            protected void onResponse(ResponseApi response) {
+                if(response.code != 200) {
+                    Snackbar.make(getRootView(), "收藏失败", Snackbar.LENGTH_LONG).show();
                 }
             }
         });

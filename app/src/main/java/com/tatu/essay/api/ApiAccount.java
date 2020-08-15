@@ -16,63 +16,21 @@ import com.lzy.okgo.model.HttpParams;
 
 public class ApiAccount extends Api {
 
-    public enum Api {
-        auth, initInfo, passwordModify,
-        passwordModifyEmailSend, update, register
 
-    }
+    public static final String url_auth = base_url + "login";
 
+    public static final String url_user_info = base_url + "user/info";
 
+    public static final String url_android = base_url + "android";
 
-    public String desc(Api api) {
-        switch (api) {
-            case auth:
-                apiDesc = "登录认证";
-                break;
-            case initInfo:
-                apiDesc = "账号信息";
-                break;
-            case passwordModify:
-                apiDesc = "修改密码";
-                break;
-            case passwordModifyEmailSend:
-                apiDesc = "发送重置密码邮件";
-                break;
-            case update:
-                apiDesc = "检查更新";
-                break;
-            case register:
-                apiDesc = "用户注册";
-                break;
-        }
-        return String.format("%s【%s】", apiDesc, this);
-    }
-
-
-    public static String path(Api api) {
-        switch (api) {
-            case auth:
-                return base_url + "api/login";
-            case initInfo:
-                return base_url + "api/user/info";
-            case update:
-                return base_url + "api/android";
-            case register:
-                return base_url + "api/user/register";
-        }
-
-        return "";
-    }
-
-
+    public static final String url_register = base_url + "user/register";
 
 
 
     public static void initInfo() {
         Log.e("initInfo", "这是第几次调用");
-        String url = path(Api.initInfo);
         HttpParams params = new HttpParams();
-        OkGo.<String>get(url).params(params).execute(new JsonCallback() {
+        OkGo.<String>get(url_user_info).params(params).execute(new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
                 // 如果是 200 就保存用户信息  否则就清除token信息
@@ -93,15 +51,13 @@ public class ApiAccount extends Api {
 
 
     public static void auth(String username, String password, JsonCallback callback) {
-        String url = path(Api.auth);
-
         HttpParams params = new HttpParams();
         params.put("username", username);
         params.put("password", password);
 //        params.put("grant_type", "password");
 //        params.put("client_id", "MemberSystem");
 //        HttpHeaders httpHeaders = new HttpHeaders("Authorization", "Basic TWVtYmVyU3lzdGVtOjEyMzQ1");
-        OkGo.<String>post(url).params(params).execute(callback);
+        OkGo.<String>post(url_auth).params(params).execute(callback);
     }
 
 
@@ -110,8 +66,7 @@ public class ApiAccount extends Api {
         HttpParams params =  new HttpParams();
         params.put("password", password);
         params.put("username", username);
-        String url = path(Api.register);
-        OkGo.<String>post(url).params(params).execute(callback);
+        OkGo.<String>post(url_register).params(params).execute(callback);
     }
 
 }

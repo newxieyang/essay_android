@@ -4,12 +4,18 @@ package com.tatu.essay.api;
 public class Api {
 
 
-//    static String base_url = "https://dengtatu.cn/";
+   final static boolean isDebug = false;
 
-    static String base_url = "http://192.168.1.3:8081/";
-    static String essay_url = base_url + "api/essay/";
+   final static String base_url;
+    static {
+        if(isDebug) {
+            base_url = "http://192.168.1.3:8081/api/";
+        } else  {
+            base_url = "https://dengtatu.cn/api/";
+        }
+    }
 
-    String apiDesc;
+    static String essay_url = base_url + "essay/";
 
     public static final int PAGE_SIZE = 50;
 

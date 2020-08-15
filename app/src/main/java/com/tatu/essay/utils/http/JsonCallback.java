@@ -15,29 +15,14 @@ public abstract class JsonCallback extends StringCallback {
     public void onSuccess(Response<String> response) {
 
         onResponse(new ResponseApi(response));
-/*        if (response.code() != 401) {
-        } else {
-//            String header = response.headers().get("Authorization");
-            String header = response.getRawCall().request().header("Authorization");
-            if (TextUtils.isEmpty(header)) {
-                return;
-            }
 
-            // TODO exitApp
-//            ApplicationUtils.exitApp(LogoutType.AuthError);
-
-        }*/
 
     }
 
     @Override
     public void onError(Response<String> response) {
         super.onError(response);
-//        if (TextUtils.isEmpty(response.getException().getMessage()) && TextUtils.isEmpty(response.body())) {
-//        } else {
-//            Log.e("response", response.getException().getMessage());
-//            onSuccess(response);
-//        }
+
 
         if(response.code() != 0) {
             onSuccess(response);

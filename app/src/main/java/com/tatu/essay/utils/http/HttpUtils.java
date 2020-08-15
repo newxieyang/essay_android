@@ -1,16 +1,13 @@
 package com.tatu.essay.utils.http;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
 
-import com.tatu.essay.ui.App;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.model.HttpHeaders;
+import com.tatu.essay.ui.App;
 
 import java.util.concurrent.TimeUnit;
 
@@ -105,24 +102,6 @@ public class HttpUtils {
 
 
 
-    /***
-     * 清除cookie
-     * @param context
-     */
-    public static void clearCookies(Context context) {
-        @SuppressWarnings("unused")
-        CookieSyncManager cookieSyncMngr = CookieSyncManager.createInstance(context);
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.removeAllCookie();
-    }
 
-
-    public static void setCookie(Context context, String url, String cookie) {
-        CookieSyncManager.createInstance(context);
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.setAcceptCookie(true);
-        cookieManager.setCookie(url, cookie);//cookies是在HttpClient中获得的cookie
-        CookieSyncManager.getInstance().sync();
-    }
 
 }

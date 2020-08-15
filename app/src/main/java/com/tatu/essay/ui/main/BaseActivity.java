@@ -1,22 +1,22 @@
 package com.tatu.essay.ui.main;
 
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.githang.statusbar.StatusBarCompat;
+import com.google.android.material.snackbar.Snackbar;
 import com.tamsiree.rxkit.RxKeyboardTool;
-import com.tamsiree.rxkit.view.RxToast;
 import com.tatu.essay.constants.ResourceConstants;
 import com.tatu.essay.ui.App;
 
 import butterknife.ButterKnife;
 
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity extends AppCompatActivity {
 
 
 
@@ -48,17 +48,14 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
 
     protected void showErrorMsg(String msg) {
-        RxToast.error(this, msg, Toast.LENGTH_SHORT, true).show();
+        Snackbar.make(getRootView(), msg, Snackbar.LENGTH_LONG).setBackgroundTint(Color.argb(200,213,0,0)).show();
     }
 
 
     protected void showConfirm(String msg) {
-        RxToast.warning(this, msg, Toast.LENGTH_SHORT, true).show();
+        Snackbar.make(getRootView(), msg, Snackbar.LENGTH_LONG).setBackgroundTint(Color.argb(200,255,215,0)).show();
     }
 
-    protected void showInfo(String msg) {
-        RxToast.success(this, msg, Toast.LENGTH_SHORT, true).show();
-    }
 
 
     public View getRootView() {
@@ -71,10 +68,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected abstract void initView();
 
 
-
-    @Override
-    public void onClick(View v) {
-    }
 
 
     @Override

@@ -45,7 +45,7 @@ import com.tatu.essay.ui.main.HomeActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity  {
 
 
     @BindView(R.id.logo)

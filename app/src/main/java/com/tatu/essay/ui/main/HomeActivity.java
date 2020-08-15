@@ -20,7 +20,6 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.tatu.essay.R;
 import com.tatu.essay.constants.ResourceConstants;
-import com.tatu.essay.logic.EnumEssayFolder;
 import com.tatu.essay.ui.essay.FragmentDraft;
 import com.tatu.essay.ui.essay.FragmentEssay;
 import com.tatu.essay.ui.essay.FragmentFavorite;
