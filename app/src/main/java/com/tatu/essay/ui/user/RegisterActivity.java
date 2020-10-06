@@ -31,7 +31,7 @@ import com.tamsiree.rxkit.RxRegTool;
 import com.tamsiree.rxui.activity.AndroidBug5497Workaround;
 import com.tamsiree.rxui.view.loadingview.style.Circle;
 import com.tatu.essay.R;
-import com.tatu.essay.api.ApiAccount;
+import com.tatu.essay.api.AccountApi;
 import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.utils.CustomTextWatcher;
 import com.tatu.essay.utils.http.JsonCallback;
@@ -241,7 +241,7 @@ public class RegisterActivity extends BaseActivity {
         mCircleDrawable.setVisible(true, true);
         mCircleDrawable.start();
 
-        ApiAccount.register(phoneNum, password, new JsonCallback() {
+        AccountApi.register(phoneNum, password, new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
 //                iLoginProgress.setVisibility(View.GONE);

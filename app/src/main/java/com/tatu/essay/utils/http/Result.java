@@ -31,7 +31,7 @@ public class Result implements Serializable {
     /**
      * 结果对象
      */
-    private JsonObject result;
+    private JsonObject data;
 
     public boolean isSuccess() {
         return success;
@@ -65,11 +65,11 @@ public class Result implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public JsonObject getResult() {
-        return result;
+    public JsonObject getData() {
+        return data;
     }
 
-    public void setResult(JsonObject result) {
-        this.result = result;
+    public void setData(JsonObject data) {
+        this.data = data;
     }
 }

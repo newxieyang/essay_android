@@ -18,7 +18,7 @@ public class ResponseApi {
 
             Result result = new Gson().fromJson(response.body(), Result.class);
             code = result.getCode();
-            data = result.getResult();
+            data = result.getData();
             errMsg = result.getMessage();
 
         } else {

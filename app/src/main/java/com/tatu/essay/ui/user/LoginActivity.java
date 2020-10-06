@@ -30,7 +30,7 @@ import com.tamsiree.rxkit.RxBarTool;
 import com.tamsiree.rxui.activity.AndroidBug5497Workaround;
 import com.tamsiree.rxui.view.loadingview.style.Circle;
 import com.tatu.essay.R;
-import com.tatu.essay.api.ApiAccount;
+import com.tatu.essay.api.AccountApi;
 import com.tatu.essay.model.TokenInfo;
 import com.tatu.essay.model.UserModel;
 import com.tatu.essay.ui.App;
@@ -255,7 +255,7 @@ public class LoginActivity extends BaseActivity  {
         mCircleDrawable.setVisible(true, true);
         mCircleDrawable.start();
 
-        ApiAccount.auth(username, password, new JsonCallback() {
+        AccountApi.auth(username, password, new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
 //                iLoginProgress.setVisibility(View.GONE);
@@ -270,7 +270,7 @@ public class LoginActivity extends BaseActivity  {
                     new Handler().postDelayed(() -> {
                         // 初始化邮件
                         App.instance.initOther();
-                        ApiAccount.initInfo();
+                        AccountApi.initInfo();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
                     }, 1000);

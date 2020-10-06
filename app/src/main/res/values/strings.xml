@@ -12,7 +12,12 @@
     <string name="home_name">路人甲</string>
     <string name="home_desc">山高水流长, 我可嚣张一世</string>
 
-    <string name="setting_main_exit">退出</string>
+    <!--SettingActivity-->
+    <string name="setting_title">设置</string>
+    <string name="setting_user_nickname_hit">昵称</string>
+    <string name="setting_user_phone_hit">手机号</string>
+    <string name="setting_user_des_hit">座右铭</string>
+    <string name="setting_save">保存</string>
 
     <!--LoginActivity-->
     <string name="login_title">登录</string>
@@ -28,11 +33,13 @@
 
 
     <!--/** Error **/-->
-    <string name="stateful_empty" >没有数据</string>
-
-
-
-
+    <string name="stateful_empty">没有数据</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 
 
 </resources>

@@ -41,9 +41,7 @@ public class EssayCreateActivity extends BaseActivity {
     @Override
     protected void initView() {
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
-        toolbar.setNavigationOnClickListener((View view) -> {
-            saveDraft();
-        });
+        toolbar.setNavigationOnClickListener(view -> saveDraft());
         toolbar.inflateMenu(R.menu.menu_essay_create);
         toolbar.setOnMenuItemClickListener(item -> {
             saveEssay();

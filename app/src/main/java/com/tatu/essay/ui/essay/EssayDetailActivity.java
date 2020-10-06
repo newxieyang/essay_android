@@ -112,11 +112,11 @@ public class EssayDetailActivity extends BaseActivity {
                 save(data.getId(), EnumDataState.NORMAL, editable.toString());
             }
             if (state == 1) {
-                favorite(data.getId());
+                favoriteDelete();
             }
 
             if (state == 2) {
-                favoriteDelete();
+                favorite(data.getId());
             }
 
             return true;

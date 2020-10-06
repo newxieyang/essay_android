@@ -18,6 +18,7 @@ public class UserModel implements Serializable {
     private String avatar;
     private Long registerTime;
     private Long loginTime;
+    private String des;
 
 
     public Long getId() {
@@ -82,5 +83,13 @@ public class UserModel implements Serializable {
 
     public void setLoginTime(Long loginTime) {
         this.loginTime = loginTime;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
     }
 }

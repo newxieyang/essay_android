@@ -1,7 +1,9 @@
 package com.tatu.essay.ui.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -20,11 +22,14 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.tatu.essay.R;
 import com.tatu.essay.constants.ResourceConstants;
+import com.tatu.essay.model.UserModel;
 import com.tatu.essay.ui.essay.FragmentDraft;
 import com.tatu.essay.ui.essay.FragmentEssay;
 import com.tatu.essay.ui.essay.FragmentFavorite;
 import com.tatu.essay.ui.essay.FragmentMime;
+import com.tatu.essay.ui.setting.SettingActivity;
 import com.tatu.essay.utils.ApplicationUtils;
+import com.tatu.essay.utils.store.SPSUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +42,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+    private String nickname;
+
+    private String des;
+
+    private AccountHeader headerResult;
+
+    private Drawer result;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,7 +58,7 @@ public class HomeActivity extends AppCompatActivity {
 
         StatusBarCompat.setStatusBarColor(this, ResourceConstants.colorWhite);
 
-        toolbar =  findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initDrawer(savedInstanceState, toolbar);
 
@@ -54,7 +67,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        preUserInfo();
+    }
 
     private void initViewPage() {
         mViewPager = findViewById(R.id.mViewPager);
@@ -71,9 +89,22 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initDrawer(Bundle savedInstanceState, Toolbar toolbar) {
 
+        buildDrawerHeader(savedInstanceState);
 
-        // Create the AccountHeader
-        AccountHeader headerResult = new AccountHeaderBuilder()
+        buildDrawer(savedInstanceState);
+
+        //only set the active selection or active profile if we do not recreate the activity
+        if (savedInstanceState == null) {
+            // set the selection to the item with the identifier 11
+            result.setSelection(0, false);
+            toolbar.setTitle(getString(R.string.app_module_essay));
+
+        }
+    }
+
+
+    private void buildDrawerHeader(Bundle savedInstanceState) {
+        headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withTranslucentStatusBar(true)
                 .withAccountHeader(R.layout.material_drawer_compact_header)
@@ -83,8 +114,11 @@ public class HomeActivity extends AppCompatActivity {
                 .withSavedInstance(savedInstanceState)
                 .build();
 
-        //Create the drawer
-        Drawer result = new DrawerBuilder()
+    }
+
+
+    private void buildDrawer(Bundle savedInstanceState) {
+        result = new DrawerBuilder()
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withHasStableIds(true)
@@ -118,38 +152,53 @@ public class HomeActivity extends AppCompatActivity {
                 .withShowDrawerOnFirstLaunch(true)
 //              .withShowDrawerUntilDraggedOpened(true)
                 .build();
-
-        //only set the active selection or active profile if we do not recreate the activity
-        if (savedInstanceState == null) {
-            // set the selection to the item with the identifier 11
-            result.setSelection(0, false);
-            toolbar.setTitle(getString(R.string.app_module_essay));
-
-        }
     }
 
 
     private void drawerItemClick(Integer identifier) {
-        if(identifier < 4) {
+        if (identifier < 4) {
             mViewPager.setCurrentItem(identifier, false);
             String title = getString(R.string.app_module_essay);
             switch (identifier) {
-                case 0: title = getString(R.string.app_module_essay); break;
-                case 1: title = getString(R.string.app_module_mime); break;
-                case 2: title = getString(R.string.app_module_favorites); break;
-                case 3: title = getString(R.string.app_module_draft); break;
+                case 0:
+                    title = getString(R.string.app_module_essay);
+                    break;
+                case 1:
+                    title = getString(R.string.app_module_mime);
+                    break;
+                case 2:
+                    title = getString(R.string.app_module_favorites);
+                    break;
+                case 3:
+                    title = getString(R.string.app_module_draft);
+                    break;
             }
             toolbar.setTitle(title);
             return;
         }
 
-        if(identifier == 4) {
-
+        if (identifier == 4) {
+            startActivity(new Intent(HomeActivity.this, SettingActivity.class));
         }
 
-        if(identifier == 5) {
+        if (identifier == 5) {
             ApplicationUtils.exitApp();
         }
+    }
+
+
+    /***
+     * 获取用户信息
+     */
+    private void preUserInfo() {
+        UserModel userModel = SPSUtils.loadUser();
+        des = TextUtils.isEmpty(userModel.getDes()) ? getString(R.string.home_desc) : userModel.getDes();
+        nickname = TextUtils.isEmpty(userModel.getNickName()) ? getString(R.string.home_name) : userModel.getNickName();
+
+
+
+        headerResult.clear();
+        headerResult.addProfile(new ProfileDrawerItem().withName(nickname).withEmail(des).withIcon(R.mipmap.ic_avatar).withIdentifier(105), 0);
     }
 
 }

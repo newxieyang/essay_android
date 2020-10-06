@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tatu.essay.ui.setting.SettingActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/White"
+        >
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.mikepenz.materialdrawer.view.BezelImageView
+
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/material_drawer_account_header_height_compact"
+        android:layout_height="@dimen/material_drawer_account_header_height_compact"
+        android:layout_marginStart="@dimen/material_drawer_vertical_padding"
+        android:layout_marginEnd="@dimen/material_drawer_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        android:layout_marginTop="@dimen/space_blank"
+        android:elevation="0dp"
+        android:src="@drawable/ic_fav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_marginStart="@dimen/material_drawer_vertical_padding"
+        android:layout_marginEnd="@dimen/material_drawer_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@+id/avatar"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:hint="@string/setting_user_nickname_hit"
+        android:layout_marginBottom="@dimen/space_card"
+        android:textStyle="bold"
+        android:background="@null"
+        android:textSize="@dimen/h0"
+        android:maxLines="1"
+        android:maxLength="10"
+        android:layout_marginTop="@dimen/space_blank"
+        android:layout_height="@dimen/button_height"/>
+
+    <TextView
+        android:id="@+id/phone"
+        android:layout_marginStart="@dimen/material_drawer_vertical_padding"
+        android:layout_marginEnd="@dimen/material_drawer_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        android:layout_marginTop="@dimen/space_card"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:background="@null"
+        android:hint="@string/setting_user_phone_hit"
+        android:gravity="center"
+        android:textSize="@dimen/h2"/>
+
+    <EditText
+        android:id="@+id/des"
+        android:layout_marginStart="@dimen/material_drawer_vertical_padding"
+        android:layout_marginEnd="@dimen/material_drawer_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/space_card"
+        android:background="@null"
+        android:hint="@string/setting_user_des_hit"
+        android:gravity="center"
+        android:maxLines="5"
+        android:maxLength="50"
+        android:textSize="@dimen/h2"/>
+
+
+
+    <Button
+        android:id="@+id/btn_save"
+        style="@style/ButtonStyle"
+        android:layout_marginStart="@dimen/material_drawer_vertical_padding"
+        android:layout_marginEnd="@dimen/material_drawer_vertical_padding"
+        app:layout_constraintTop_toBottomOf="@+id/des"
+        android:layout_marginBottom="@dimen/space_card"
+        android:layout_marginTop="@dimen/space_blank"
+        android:background="@drawable/button_corner"
+        android:text="@string/setting_save"
+        android:textColor="@color/text_sliver_light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/h1"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

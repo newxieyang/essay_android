@@ -12,7 +12,7 @@ import android.util.Log;
 import com.google.gson.JsonObject;
 import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
-import com.tatu.essay.api.ApiAccount;
+import com.tatu.essay.api.AccountApi;
 import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.TokenInfo;
 import com.tatu.essay.ui.App;
@@ -75,7 +75,7 @@ public class LauncherActivity extends BaseActivity {
                 if (tokenInfo.isPresent() && tokenInfo.get().getToken() != null) {
                     Api.authorId = SPSUtils.loadUser().getId();
                     isGoMain = true;
-                    ApiAccount.initInfo();
+                    AccountApi.initInfo();
                     intent = new Intent(LauncherActivity.this, HomeActivity
                             .class);
                 } else {
@@ -136,12 +136,12 @@ public class LauncherActivity extends BaseActivity {
                 //当前Activity
                 .setActivity(this)
                 //更新地址
-                .setUpdateUrl(ApiAccount.url_android)
+                .setUpdateUrl(AccountApi.url_android)
                 .handleException(e -> {
-                    ApiAccount.initInfo();
+                    AccountApi.initInfo();
                     Log.e("更新地址失败", "更新出错了。。。");
                 })
-                .setUpdateDialogFragmentListener(updateApp -> ApiAccount.initInfo())
+                .setUpdateDialogFragmentListener(updateApp -> AccountApi.initInfo())
                 //实现httpManager接口的对象
                 .setHttpManager(new OkGoUpdateHttpUtil())
                 .build()
@@ -156,7 +156,7 @@ public class LauncherActivity extends BaseActivity {
                     protected void noNewApp(String error) {
                         super.noNewApp(error);
                         Log.e("no app", "更新出错了。。。" + error);
-                        ApiAccount.initInfo();
+                        AccountApi.initInfo();
                     }
 
 

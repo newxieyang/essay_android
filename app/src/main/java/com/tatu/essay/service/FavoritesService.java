@@ -36,6 +36,11 @@ public class FavoritesService extends BaseService {
 
 
     public static void deleteFavorite(FavoriteModel model) {
-        App.instance.getFavoriteDao().delete(model);
+        FavoriteModelDao dao = App.instance.getFavoriteDao();
+       boolean has = dao.hasKey(model);
+       if(has) {
+           dao.delete(model);
+       }
+
     }
 }

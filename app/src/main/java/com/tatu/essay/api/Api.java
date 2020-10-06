@@ -4,18 +4,27 @@ package com.tatu.essay.api;
 public class Api {
 
 
-   final static boolean isDebug = false;
+   final static boolean isDebug = true;
 
    final static String base_url;
     static {
         if(isDebug) {
-            base_url = "http://192.168.1.3:8081/api/";
+            base_url = "http://192.168.1.4:8081/api/";
         } else  {
             base_url = "https://dengtatu.cn/api/";
         }
     }
 
-    static String essay_url = base_url + "essay/";
+    static final String essay_url = base_url + "essay/";
+
+//    简历
+    static final String resume_url = base_url + "resume/";
+
+    // 工作经验
+    static final String experience_url  = base_url + "experiences/";
+
+    // 技能&工具
+    static final String skill_url  = base_url + "skill/";
 
     public static final int PAGE_SIZE = 50;
 
@@ -28,21 +37,21 @@ public class Api {
     /**
      * 当前记录起始索引
      */
-    static String PAGE_NUM_STR = "pageNumber";
+    static final String PAGE_NUM_STR = "pageNumber";
 
     /**
      * 每页显示记录数
      */
-    static String PAGE_SIZE_STR = "pageSize";
+    static final String PAGE_SIZE_STR = "pageSize";
 
     /**
      * 排序列
      */
-    static String ORDER_BY_COLUMN = "orderByColumn";
+    static final String ORDER_BY_COLUMN = "orderByColumn";
 
 
 
-    public static int  V_PAGE_SIZE =  20;
+    public static  final int  V_PAGE_SIZE =  20;
 
 
 }
