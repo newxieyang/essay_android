@@ -22,7 +22,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.tatu.essay.R;
 import com.tatu.essay.constants.ResourceConstants;
-import com.tatu.essay.model.UserModel;
+import com.tatu.essay.vo.UserVo;
 import com.tatu.essay.ui.essay.FragmentDraft;
 import com.tatu.essay.ui.essay.FragmentEssay;
 import com.tatu.essay.ui.essay.FragmentFavorite;
@@ -33,6 +33,7 @@ import com.tatu.essay.utils.store.SPSUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -191,9 +192,13 @@ public class HomeActivity extends AppCompatActivity {
      * 获取用户信息
      */
     private void preUserInfo() {
-        UserModel userModel = SPSUtils.loadUser();
-        des = TextUtils.isEmpty(userModel.getDes()) ? getString(R.string.home_desc) : userModel.getDes();
-        nickname = TextUtils.isEmpty(userModel.getNickName()) ? getString(R.string.home_name) : userModel.getNickName();
+        Optional<UserVo> userModel = SPSUtils.loadUser();
+
+        userModel.ifPresent(val -> {
+            des = TextUtils.isEmpty(val.getDes()) ? getString(R.string.home_desc) : val.getDes();
+            nickname = TextUtils.isEmpty(val.getNickName()) ? getString(R.string.home_name) : val.getNickName();
+        });
+
 
 
 

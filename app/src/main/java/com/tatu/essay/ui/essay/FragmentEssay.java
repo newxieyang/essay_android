@@ -40,9 +40,6 @@ public class FragmentEssay extends BaseFragment {
 
         List<EssayModel> list = EssayService.loadEssays(pageInfo.page);
 
-
-
-
         swipeLayout.setRefreshing(false);
 
         if (list.isEmpty()) {

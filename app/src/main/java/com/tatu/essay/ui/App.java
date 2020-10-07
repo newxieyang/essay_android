@@ -44,8 +44,9 @@ public class App extends Application {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void initOther() {
 
-        SPSUtils.loadTokens().ifPresent((tokenInfo) -> {
+        SPSUtils.loadUser().ifPresent((tokenInfo) -> {
                     Api.phone = tokenInfo.getUsername();
+                    Api.authorId  = tokenInfo.getUserId();
                     if(TextUtils.isEmpty(Api.phone)) {
                         return;
                     }

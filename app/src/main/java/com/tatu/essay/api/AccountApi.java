@@ -8,7 +8,7 @@ import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpParams;
 import com.tatu.essay.logic.EnumAction;
-import com.tatu.essay.model.UserModel;
+import com.tatu.essay.vo.UserVo;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
@@ -35,11 +35,9 @@ public class AccountApi extends Api {
                 // 如果是 200 就保存用户信息  否则就清除token信息
                 // TODO 未来要去刷新TOKEN 信息
                 if (response.code == 200) {
-                    UserModel user = new Gson().fromJson(response.data.toString(), UserModel.class);
-                    authorId = user.getId();
+                    UserVo user = new Gson().fromJson(response.data.toString(), UserVo.class);
+                    user.setToken(SPSUtils.loadUser().get().getToken());
                     SPSUtils.saveUser(user);
-                } else {
-                    SPSUtils.saveToken(null);
                 }
                 App.instance.manager.sendBroadcast(new Intent(EnumAction.AccountLoad.getAction()));
             }

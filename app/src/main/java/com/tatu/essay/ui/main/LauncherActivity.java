@@ -14,7 +14,7 @@ import com.tatu.essay.R;
 import com.tatu.essay.api.Api;
 import com.tatu.essay.api.AccountApi;
 import com.tatu.essay.logic.EnumAction;
-import com.tatu.essay.model.TokenInfo;
+import com.tatu.essay.vo.UserVo;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.user.LoginActivity;
 import com.tatu.essay.utils.PermissionsCheckerUtil;
@@ -68,12 +68,11 @@ public class LauncherActivity extends BaseActivity {
 
         new Handler().postDelayed(() -> {
             runOnUiThread(() -> {
-                Optional<TokenInfo> tokenInfo = SPSUtils.loadTokens();
-
+                Optional<UserVo> userModel = SPSUtils.loadUser();
                 Intent intent;
                 Log.e("goto main handle", "goto main");
-                if (tokenInfo.isPresent() && tokenInfo.get().getToken() != null) {
-                    Api.authorId = SPSUtils.loadUser().getId();
+                if (userModel.isPresent() && userModel.get().getToken() != null &&  userModel.get().getUserId() != null) {
+                    Api.authorId = userModel.get().getUserId();
                     isGoMain = true;
                     AccountApi.initInfo();
                     intent = new Intent(LauncherActivity.this, HomeActivity

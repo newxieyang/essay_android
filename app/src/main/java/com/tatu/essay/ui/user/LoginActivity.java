@@ -25,14 +25,14 @@ import android.widget.Toast;
 
 import androidx.core.widget.NestedScrollView;
 
+import com.google.gson.Gson;
 import com.tamsiree.rxkit.RxAnimationTool;
 import com.tamsiree.rxkit.RxBarTool;
 import com.tamsiree.rxui.activity.AndroidBug5497Workaround;
 import com.tamsiree.rxui.view.loadingview.style.Circle;
 import com.tatu.essay.R;
 import com.tatu.essay.api.AccountApi;
-import com.tatu.essay.model.TokenInfo;
-import com.tatu.essay.model.UserModel;
+import com.tatu.essay.vo.UserVo;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.ui.main.HomeActivity;
@@ -40,6 +40,8 @@ import com.tatu.essay.utils.CustomTextWatcher;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
 import com.tatu.essay.utils.store.SPSUtils;
+
+import java.util.Optional;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -100,9 +102,9 @@ public class LoginActivity extends BaseActivity  {
         int screenHeight = this.getResources().getDisplayMetrics().heightPixels; //获取屏幕高度
         keyHeight = screenHeight / 3;//弹起高度为屏幕高度的1/3
 
-        UserModel records = SPSUtils.loadUser();
+        Optional<UserVo> records = SPSUtils.loadUser();
 
-        username = records.getPhone();
+        records.ifPresent(val ->  username = val.getUsername());
 
         if (!TextUtils.isEmpty(username)) {
             mEtMobile.setText(username);
@@ -263,14 +265,12 @@ public class LoginActivity extends BaseActivity  {
                 mCircleDrawable.setVisible(false, true);
                 if (response.code == 200) {
                     // 保存用户
-                    TokenInfo tokenEntity = new TokenInfo(response.data.get("authorization").getAsString());
-                    tokenEntity.setUsername(username);
-                    SPSUtils.saveToken(tokenEntity);
+                    UserVo userVo = new Gson().fromJson(response.data, UserVo.class);
+                    SPSUtils.saveUser(userVo);
 
                     new Handler().postDelayed(() -> {
                         // 初始化邮件
                         App.instance.initOther();
-                        AccountApi.initInfo();
                         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                         finish();
                     }, 1000);

@@ -1,4 +1,4 @@
-package com.tatu.essay.model;
+package com.tatu.essay.vo;
 
 
 

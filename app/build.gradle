@@ -87,6 +87,10 @@ dependencies {
     implementation 'net.zetetic:android-database-sqlcipher:4.4.0'
 
 
+//    https://github.com/Binary-Finery/Bungee
+    implementation 'com.github.Binary-Finery:Bungee:3.0'
+
+
 //    implementation 'com.yinglan.alphatabs:library:1.0.8'
 
 

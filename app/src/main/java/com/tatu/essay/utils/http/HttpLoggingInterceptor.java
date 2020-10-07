@@ -95,7 +95,7 @@ public class HttpLoggingInterceptor implements Interceptor {
 //
         builder.headers(originRequest.headers());
 
-        SPSUtils.loadTokens().ifPresent(tokenInfo1 ->  builder.header("Authorization", tokenInfo1.getToken()));
+        SPSUtils.loadUser().ifPresent(tokenInfo1 ->  builder.header("Authorization", tokenInfo1.getToken()));
 
 
 //        LogRecordService.uploadLog(account.tokenString(), "request_token");

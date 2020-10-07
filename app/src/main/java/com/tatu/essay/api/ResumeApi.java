@@ -6,14 +6,11 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.HttpParams;
-import com.tatu.essay.R;
 import com.tatu.essay.logic.EnumAction;
 import com.tatu.essay.model.ResumeModel;
-import com.tatu.essay.model.UserModel;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
-import com.tatu.essay.utils.store.SPSUtils;
 
 /**
  * @author cullen
@@ -37,7 +34,6 @@ public class ResumeApi extends Api {
             protected void onResponse(ResponseApi response) {
                 if (response.code == 20) {
                     ResumeModel user = new Gson().fromJson(response.data.toString(), ResumeModel.class);
-                    authorId = user.getId();
                 }
                 App.instance.manager.sendBroadcast(new Intent(EnumAction.AccountLoad.getAction()));
             }
@@ -54,7 +50,6 @@ public class ResumeApi extends Api {
             protected void onResponse(ResponseApi response) {
                 if (response.code == 20) {
                     ResumeModel user = new Gson().fromJson(response.data.toString(), ResumeModel.class);
-                    authorId = user.getId();
                 }
                 App.instance.manager.sendBroadcast(new Intent(EnumAction.AccountLoad.getAction()));
             }
@@ -71,7 +66,6 @@ public class ResumeApi extends Api {
             protected void onResponse(ResponseApi response) {
                 if (response.code == 20) {
                     ResumeModel user = new Gson().fromJson(response.data.toString(), ResumeModel.class);
-                    authorId = user.getId();
                 }
                 App.instance.manager.sendBroadcast(new Intent(EnumAction.AccountLoad.getAction()));
             }

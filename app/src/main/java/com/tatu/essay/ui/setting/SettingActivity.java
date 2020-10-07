@@ -2,7 +2,6 @@ package com.tatu.essay.ui.setting;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,11 +11,13 @@ import androidx.appcompat.widget.Toolbar;
 import com.mikepenz.materialdrawer.view.BezelImageView;
 import com.tatu.essay.R;
 import com.tatu.essay.api.AccountApi;
-import com.tatu.essay.model.UserModel;
+import com.tatu.essay.vo.UserVo;
 import com.tatu.essay.ui.main.BaseActivity;
 import com.tatu.essay.utils.http.JsonCallback;
 import com.tatu.essay.utils.http.ResponseApi;
 import com.tatu.essay.utils.store.SPSUtils;
+
+import java.util.Optional;
 
 import butterknife.BindView;
 
@@ -38,7 +39,7 @@ public class SettingActivity extends BaseActivity {
     @BindView(R.id.btn_save)
     Button btnSave;
 
-    UserModel info;
+    UserVo info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +60,14 @@ public class SettingActivity extends BaseActivity {
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_ios_24);
         toolbar.setNavigationOnClickListener(view -> finish());
 
-        info = SPSUtils.loadUser();
+        Optional<UserVo> userModelOptional =  SPSUtils.loadUser();
+        userModelOptional.ifPresent(val -> {
+            info = val;
+            phoneView.setText(val.getUsername());
+        });
 
-        phoneView.setText(info.getPhone());
+
+
 
         if (!TextUtils.isEmpty(info.getNickName())) {
             nameEditor.setText(info.getNickName());
@@ -87,7 +93,7 @@ public class SettingActivity extends BaseActivity {
         }
 
 
-        AccountApi.updateUserInfo(info.getId(), nickname, des, new JsonCallback() {
+        AccountApi.updateUserInfo(info.getUserId(), nickname, des, new JsonCallback() {
             @Override
             protected void onResponse(ResponseApi response) {
                 if (response.code == 200) {

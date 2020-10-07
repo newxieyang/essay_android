@@ -30,6 +30,8 @@ import com.tatu.essay.ui.essay.PageInfo;
 
 import java.util.Objects;
 
+import spencerstudios.com.bungeelib.Bungee;
+
 
 public abstract class BaseFragment extends Fragment {
 
@@ -155,7 +157,7 @@ public abstract class BaseFragment extends Fragment {
         Intent intent = new Intent(getActivity(), EssayDetailActivity.class);
         intent.putExtra("essay", essayModel);
         startActivity(intent);
-
+        Bungee.shrink(getContext());
     }
 
 

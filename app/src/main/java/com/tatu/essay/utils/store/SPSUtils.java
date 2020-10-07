@@ -5,8 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
-import com.tatu.essay.model.TokenInfo;
-import com.tatu.essay.model.UserModel;
+import com.tatu.essay.vo.UserVo;
 import com.tatu.essay.ui.App;
 
 import java.util.Objects;
@@ -22,38 +21,51 @@ public class SPSUtils {
     // 统一SP文件存储名
     private static final String SP_FILE_NAME = "SP_TATU_FILE";
 
-    private static SharedPreferences.Editor editor(String spFileName) {
-        return sp(spFileName).edit();
+    private static SharedPreferences.Editor editor() {
+        return sp().edit();
     }
 
 
-    private static SharedPreferences sp(String spFileName) {
-        return App.instance.getSharedPreferences(spFileName, Context.MODE_PRIVATE);
+    private static SharedPreferences sp() {
+        return App.instance.getSharedPreferences(SPSUtils.SP_FILE_NAME, Context.MODE_PRIVATE);
     }
 
 
     /**
      * 保存
      *
-     * @param SP_KEY
      * @param object
      */
-    private static void saveObject(String SP_KEY, Object object) {
-        SharedPreferences.Editor editor = SPSUtils.editor(SP_FILE_NAME);
-        String json = Objects.isNull(object)?"":new Gson().toJson(object);
-        editor.putString(SP_KEY, json);
-        editor.commit();
+    private static void saveObject(String spKey,Object object) {
+        SharedPreferences.Editor editor = SPSUtils.editor();
+        if(Objects.isNull(object)) {
+            deleteObject(spKey);
+        } else {
+
+            String json = new Gson().toJson(object);
+            editor.putString(SPSUtils.SP_KEY_USER, json);
+            editor.commit();
+        }
     }
 
 
     /***
      * 获取值
-     * @param spKey
      * @return
      */
     private static String loadObject(String spKey) {
-        SharedPreferences sp = SPSUtils.sp(SP_FILE_NAME);
+        SharedPreferences sp = SPSUtils.sp();
         return sp.getString(spKey, "");
+    }
+
+
+    private static void deleteObject(String spKey) {
+        SharedPreferences sp = SPSUtils.sp();
+        if(sp.contains(spKey)) {
+            SharedPreferences.Editor editor = SPSUtils.editor();
+            editor.remove(spKey);
+            editor.apply();
+        }
     }
 
 
@@ -64,54 +76,24 @@ public class SPSUtils {
     private static final String SP_KEY_USER = "KEY_USER";
 
 
-    public static void saveUser(UserModel user) {
+    public static void saveUser(UserVo user) {
         SPSUtils.saveObject(SP_KEY_USER, user);
     }
 
     public static void deleteUser() {
-        SPSUtils.saveObject(SP_KEY_USER, new UserModel());
+        SPSUtils.deleteObject(SP_KEY_USER);
     }
 
-    public static UserModel loadUser() {
+    public static Optional<UserVo> loadUser() {
         String json = SPSUtils.loadObject(SP_KEY_USER);
         if (!TextUtils.isEmpty(json)) {
-            return new Gson().fromJson(json, UserModel.class);
+            return Optional.of(new Gson().fromJson(json, UserVo.class));
         }
-        return new UserModel();
-    }
-
-
-    /******
-     * token ........
-     */
-
-    private static final String SP_KEY_TOKEN = "KEY_TOKEN";
-
-
-    public static void saveToken(TokenInfo account) {
-        SPSUtils.saveObject(SP_KEY_TOKEN, account);
+        return Optional.empty();
     }
 
 
 
-    public static Optional<TokenInfo> loadTokens() {
-        String json = SPSUtils.loadObject(SP_KEY_TOKEN);
-
-        TokenInfo tokenInfo = null;
-        if (!TextUtils.isEmpty(json)) {
-            try {
-                tokenInfo = new Gson().fromJson(json, TokenInfo.class);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return Optional.ofNullable(tokenInfo);
-    }
-
-
-    public static void deleteToken() {
-        SPSUtils.saveToken(new TokenInfo());
-    }
 
 
     /*****
@@ -121,14 +103,14 @@ public class SPSUtils {
 
     public static void saveNew(boolean hasRead) {
 
-        SharedPreferences.Editor editor = SPSUtils.editor(SP_FILE_NAME);
+        SharedPreferences.Editor editor = SPSUtils.editor();
         editor.putBoolean(SP_KEY_LAUNCHER, hasRead);
-        editor.commit();
+        editor.apply();
     }
 
 
     public static boolean loadNew() {
-        SharedPreferences sp = SPSUtils.sp(SP_FILE_NAME);
+        SharedPreferences sp = SPSUtils.sp();
         return sp.getBoolean(SP_KEY_LAUNCHER, false);
     }
 

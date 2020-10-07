@@ -7,7 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 
 import com.lzy.okgo.OkGo;
-import com.tatu.essay.model.UserModel;
+import com.tatu.essay.vo.UserVo;
 import com.tatu.essay.ui.App;
 import com.tatu.essay.ui.main.LauncherActivity;
 import com.tatu.essay.utils.store.SPSUtils;
@@ -89,8 +89,7 @@ public class ApplicationUtils {
      */
     public static void removeAccountInfo() {
         // 清理用户信息
-        SPSUtils.saveUser(new UserModel());
-        SPSUtils.deleteToken();
+        SPSUtils.deleteUser();
         toLoginActivity(App.instance);
 
     }

@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
+import spencerstudios.com.bungeelib.Bungee;
 
 public class EssayDetailActivity extends BaseActivity {
 
@@ -74,7 +75,7 @@ public class EssayDetailActivity extends BaseActivity {
             // 标题是空， 内容也是空， 等同删除
             if (editable == null && TextUtils.isEmpty(data.getTitle())) {
                 save(data.getId(), EnumDataState.DELETE, "");
-                finish();
+                this.onBackPressed();
                 return;
             }
 
@@ -83,7 +84,7 @@ public class EssayDetailActivity extends BaseActivity {
                 save(data.getId(), EnumDataState.DRAFT, editable.toString());
             }
 
-            finish();
+            this.onBackPressed();
 
         });
 
@@ -191,6 +192,7 @@ public class EssayDetailActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Bungee.shrink(this);
         super.finish();
     }
 }
